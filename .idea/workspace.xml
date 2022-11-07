@@ -59,7 +59,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2HCETlC4kyVfJ4r9E6FKmi61ijz" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -72,29 +72,17 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/juuu0/Desktop/9rl/week_8_project/99-Moa-B/src/main/java/com/moa/moabackend/entity"
+    "last_opened_file_path": "C:/Users/juuu0/Desktop/9rl/week_8_project/99-Moa-B/src/main/java/com/moa/moabackend/service"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\service" />
+      <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\entity\schedule" />
+      <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\repository" />
+      <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\controller" />
       <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\entity" />
-      <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\config" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="moa-backend" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="moa-backend" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

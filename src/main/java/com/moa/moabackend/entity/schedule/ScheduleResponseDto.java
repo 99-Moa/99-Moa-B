@@ -5,33 +5,22 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import java.time.LocalDateTime;
 
-@Getter
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Builder
-public class Schedule {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private Long id;
-
-    @Column
+public class ScheduleResponseDto {
     private String meetingDate;
 //    private LocalDateTime meetingDate;
 
-    @Column
     private String title;
 
-    @Column
     private String meetingTime;
 //    private LocalDateTime meetingTime;
 
-    @Column
     private String location;
 
-    @Column
     private String content;
 }
