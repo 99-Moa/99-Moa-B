@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f4f99a2-6f43-45b5-98d0-9c38e961b325" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/MoaBackendApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/config/config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/Friend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/schedule/Schedule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/repository/FriendRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/security/security" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/moa/moabackend/MoaBackendApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/FriendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +32,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2HCETlC4kyVfJ4r9E6FKmi61ijz" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -59,8 +44,9 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/juuu0/Desktop/9rl/week_8_project/99-Moa-B"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/신현재/Desktop/코딩/[Inflearn]/week05MiniProjectBackend",
+    "spring.configuration.checksum": "1475e1be66e999c948f80ce3f850557a"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -71,8 +57,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667780678115</updated>
+      <workItem from="1667893412579" duration="305000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
