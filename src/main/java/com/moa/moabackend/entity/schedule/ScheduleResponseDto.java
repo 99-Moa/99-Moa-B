@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 @Getter
 @Builder
 public class ScheduleResponseDto {
+    private Long id;
+
     private String meetingDate;
 //    private LocalDateTime meetingDate;
 

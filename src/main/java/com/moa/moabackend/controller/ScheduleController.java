@@ -25,4 +25,22 @@ public class ScheduleController {
     public ResponseDto<List<ScheduleResponseDto>> getAllSchedules () {
         return scheduleService.getAllSchedules();
     }
+
+    // 일정 상세 조회
+    @GetMapping("/schedules/{scheduleId}")
+    public ResponseDto<ScheduleResponseDto> getOneSchedule (@PathVariable Long scheduleId) {
+        return scheduleService.getOneSchedule(scheduleId);
+    }
+
+    // 일정 수정
+    @PutMapping("/schedules/{scheduleId}")
+    public ResponseDto<String> updateSchedule (@PathVariable Long scheduleId, @RequestBody ScheduleRequestDto requestDto) {
+        return scheduleService.updateSchedule(scheduleId, requestDto);
+    }
+
+    // 일정 삭제
+    @DeleteMapping("/schedules/{scheduleId}")
+    public ResponseDto<String> deleteSchedule (@PathVariable Long scheduleId) {
+        return scheduleService.deleteSchedule(scheduleId);
+    }
 }

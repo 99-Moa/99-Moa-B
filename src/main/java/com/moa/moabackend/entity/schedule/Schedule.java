@@ -34,4 +34,12 @@ public class Schedule {
 
     @Column
     private String content;
+
+    public void update(ScheduleRequestDto requestDto) {
+        this.meetingDate = requestDto.getMeetingDate();
+        this.title = requestDto.getTitle();
+        this.meetingTime = requestDto.getMeetingTime();
+        this.location = requestDto.getLocation();
+        this.content = requestDto.getContent();
+    }
 }

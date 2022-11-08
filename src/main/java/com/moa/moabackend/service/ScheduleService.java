@@ -46,14 +46,40 @@ public class ScheduleService {
         for (Schedule schedule : schedules) {
             scheduleResponseLIst.add(
                     ScheduleResponseDto.builder()
+                            .id(schedule.getId())
                             .meetingDate(schedule.getMeetingDate())
                             .title(schedule.getTitle())
-                            .meetingTime(schedule.getMeetingTime())
-                            .location(schedule.getLocation())
-                            .content(schedule.getContent())
                             .build()
             );
         }
         return ResponseDto.success(scheduleResponseLIst);
+    }
+
+    // 일정 상세 조회
+    public ResponseDto<ScheduleResponseDto> getOneSchedule(Long scheduleId) {
+        Schedule schedule = scheduleRepository.findById(scheduleId).get();
+        return ResponseDto.success(
+                ScheduleResponseDto.builder()
+                        .meetingDate(schedule.getMeetingDate())
+                        .title(schedule.getTitle())
+                        .meetingTime(schedule.getMeetingTime())
+                        .location(schedule.getLocation())
+                        .content(schedule.getContent())
+                        .build()
+        );
+    }
+
+    // 일정 수정
+    public ResponseDto<String> updateSchedule(Long scheduleId, ScheduleRequestDto requestDto) {
+        Schedule schedule = scheduleRepository.findById(scheduleId).get();
+        schedule.update(requestDto);
+        return ResponseDto.success("일정이 수정되었습니다.");
+    }
+
+    // 일정 삭제
+    public ResponseDto<String> deleteSchedule(Long scheduleId) {
+        Schedule schedule = scheduleRepository.findById(scheduleId).get();
+        scheduleRepository.delete(schedule);
+        return ResponseDto.success("일정이 삭제되었습니다.");
     }
 }
