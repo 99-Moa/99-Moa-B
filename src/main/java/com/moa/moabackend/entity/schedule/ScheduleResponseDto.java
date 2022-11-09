@@ -5,7 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,13 +15,11 @@ import java.time.LocalDateTime;
 public class ScheduleResponseDto {
     private Long id;
 
-    private String meetingDate;
-//    private LocalDateTime meetingDate;
+    private LocalDate meetingDate;
 
     private String title;
 
-    private String meetingTime;
-//    private LocalDateTime meetingTime;
+    private LocalTime meetingTime;
 
     private String location;
 

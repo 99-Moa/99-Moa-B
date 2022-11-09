@@ -8,7 +8,8 @@ import com.moa.moabackend.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +35,9 @@ public class ScheduleService {
     // 일정 생성
     public ResponseDto<ScheduleResponseDto> addSchedule(ScheduleRequestDto requestDto) {
         Schedule schedule = Schedule.builder()
-                .meetingDate(requestDto.getMeetingDate())
-//                .meetingDate(LocalDateTime.parse(requestDto.getMeetingDate()))
+                .meetingDate(LocalDate.parse(requestDto.getMeetingDate()))
                 .title(requestDto.getTitle())
-                .meetingTime(requestDto.getMeetingTime())
-//                .meetingTime(LocalDateTime.parse(requestDto.getMeetingTime()))
+                .meetingTime(LocalTime.parse(requestDto.getMeetingTime()))
                 .location(requestDto.getLocation())
                 .content(requestDto.getContent())
                 .build();

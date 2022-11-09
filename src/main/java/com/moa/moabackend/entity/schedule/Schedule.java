@@ -4,8 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter
 @Entity
@@ -19,15 +22,14 @@ public class Schedule {
     private Long id;
 
     @Column
-    private String meetingDate;
-//    private LocalDateTime meetingDate;
+    private LocalDate meetingDate;
 
     @Column
     private String title;
 
     @Column
-    private String meetingTime;
-//    private LocalDateTime meetingTime;
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime meetingTime;
 
     @Column
     private String location;
@@ -36,9 +38,9 @@ public class Schedule {
     private String content;
 
     public void update(ScheduleRequestDto requestDto) {
-        this.meetingDate = requestDto.getMeetingDate();
+        this.meetingDate = LocalDate.parse(requestDto.getMeetingDate());
         this.title = requestDto.getTitle();
-        this.meetingTime = requestDto.getMeetingTime();
+        this.meetingTime = LocalTime.parse(requestDto.getMeetingTime());
         this.location = requestDto.getLocation();
         this.content = requestDto.getContent();
     }
