@@ -17,6 +17,20 @@ import java.util.List;
 public class ScheduleService {
     private final ScheduleRepository scheduleRepository;
 
+    // calendar
+    public ResponseDto<List<ScheduleResponseDto>> getCalendar() {
+        List<ScheduleResponseDto> scheduleResponseLIst = new ArrayList<>();
+        List<Schedule> schedules = scheduleRepository.findAll();
+        for (Schedule schedule : schedules) {
+            scheduleResponseLIst.add(
+                    ScheduleResponseDto.builder()
+                            .meetingDate(schedule.getMeetingDate())
+                            .build()
+            );
+        }
+        return ResponseDto.success(scheduleResponseLIst);
+    }
+
     // 일정 생성
     public ResponseDto<ScheduleResponseDto> addSchedule(ScheduleRequestDto requestDto) {
         Schedule schedule = Schedule.builder()

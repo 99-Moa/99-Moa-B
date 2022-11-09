@@ -14,6 +14,12 @@ import java.util.List;
 public class ScheduleController {
     private final ScheduleService scheduleService;
 
+    // calendar
+    @GetMapping("/calendar")
+    public ResponseDto<List<ScheduleResponseDto>> getCalendar () {
+        return scheduleService.getCalendar();
+    }
+
     // 일정 생성
     @PostMapping("/schedules")
     public ResponseDto<ScheduleResponseDto> addSchedule (@RequestBody ScheduleRequestDto requestDto) {
