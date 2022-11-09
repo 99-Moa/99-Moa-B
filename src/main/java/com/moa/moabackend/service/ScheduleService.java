@@ -55,7 +55,7 @@ public class ScheduleService {
     // 일정 목록 조회
     public ResponseDto<List<ScheduleResponseDto>> getAllSchedules() {
         List<ScheduleResponseDto> scheduleResponseLIst = new ArrayList<>();
-        List<Schedule> schedules = scheduleRepository.findAll();
+        List<Schedule> schedules = scheduleRepository.findAllByOrderByMeetingDate();
         for (Schedule schedule : schedules) {
             scheduleResponseLIst.add(
                     ScheduleResponseDto.builder()
