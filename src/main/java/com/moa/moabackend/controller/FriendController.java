@@ -40,14 +40,14 @@ public class FriendController {
 
 //     전체 유저 중 친구 찾기
     @PostMapping("/friends/search")
-    public ResponseDto<FriendResDto> searchFriend(@RequestBody FriendReqDto friendReqDto,
+    public ResponseDto<FriendResDto.SearchFriendResDto> searchFriend(@RequestBody FriendReqDto friendReqDto,
                                                   @AuthenticationPrincipal UserDetailsImpl userDetails){
         return ResponseDto.success(friendService.searchFriend(userDetails.getUser(), friendReqDto));
     }
 //
 //    // 내 친구 목록 중 친구 목록 조회
     @GetMapping("/friends")
-    public ResponseDto<List<FriendResDto>> getMyFriend(@AuthenticationPrincipal UserDetailsImpl userDetails){
+    public ResponseDto<List<FriendResDto.GetMyFriendResDto>> getMyFriend(@AuthenticationPrincipal UserDetailsImpl userDetails){
         return ResponseDto.success(friendService.getMyFriend(userDetails.getUser()));
     }
 
@@ -58,10 +58,10 @@ public class FriendController {
 //
 //
     // 친구 삭제
-    @DeleteMapping("/friends/{userName}")
-    public ResponseDto<?> deleteFriend(@PathVariable String userName,
+    @DeleteMapping("/friends/{frienId}")
+    public ResponseDto<?> deleteFriend(@PathVariable Long frienId,
             @AuthenticationPrincipal UserDetailsImpl userDetails){
-        return ResponseDto.success(friendService.deleteFriend(userDetails.getUser(), userName));
+        return ResponseDto.success(friendService.deleteFriend(userDetails.getUser(), frienId));
     }
 
 }

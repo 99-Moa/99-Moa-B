@@ -1,5 +1,6 @@
 package com.moa.moabackend.entity.friend;
 
+import com.moa.moabackend.entity.user.Timestamped;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class Friend {
+public class Friend extends Timestamped {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

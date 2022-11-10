@@ -11,12 +11,31 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FriendResDto {
 
-    private String friendUsername;
+    @Getter
+    public static class SearchFriendResDto {
+        private String friendUsername;
 
-    private String imgUrl;
+        private String imgUrl;
 
-    public FriendResDto(User user) {
-        this.friendUsername = user.getUserName();
-        this.imgUrl = user.getImgUrl();
+        public SearchFriendResDto(User user) {
+            this.friendUsername = user.getUserName();
+            this.imgUrl = user.getImgUrl();
+
+        }
+    }
+
+        @Getter
+        public static class GetMyFriendResDto {
+            private Long id;
+
+            private String friendUsername;
+
+            private String imgUrl;
+
+            public GetMyFriendResDto(Long friendId, User user) {
+                this.id = friendId;
+                this.friendUsername = user.getUserName();
+                this.imgUrl = user.getImgUrl();
+            }
     }
 }
