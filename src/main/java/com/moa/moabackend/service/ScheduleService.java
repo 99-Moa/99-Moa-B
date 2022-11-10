@@ -23,9 +23,9 @@ public class ScheduleService {
     private final UserRepository userRepository;
 
     // calendar
-    public ResponseDto<List<ScheduleResponseDto>> getCalendar() {
+    public ResponseDto<List<ScheduleResponseDto>> getCalendar(User user) {
         List<ScheduleResponseDto> scheduleResponseLIst = new ArrayList<>();
-        List<Schedule> schedules = scheduleRepository.findAll();
+        List<Schedule> schedules = scheduleRepository.findAllByUser(user);
         for (Schedule schedule : schedules) {
             scheduleResponseLIst.add(
                     ScheduleResponseDto.builder()

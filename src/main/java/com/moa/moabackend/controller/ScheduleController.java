@@ -18,8 +18,8 @@ public class ScheduleController {
 
     // calendar
     @GetMapping("/calendar")
-    public ResponseDto<List<ScheduleResponseDto>> getCalendar() {
-        return scheduleService.getCalendar();
+    public ResponseDto<List<ScheduleResponseDto>> getCalendar(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return scheduleService.getCalendar(userDetails.getUser());
     }
 
     // 일정 생성
