@@ -4,24 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f4f99a2-6f43-45b5-98d0-9c38e961b325" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/MoaBackendApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/config/config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/Friend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/schedule/Schedule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/repository/FriendRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/security/security" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/moa/moabackend/MoaBackendApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="2f4f99a2-6f43-45b5-98d0-9c38e961b325" name="Changes" comment="Changes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/dongjinlee.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/IdCheckRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/LoginRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/NameCheckRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/UserRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/UserResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/security/user/UserDetailsImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/security/user/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +63,12 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="MoaBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="moa-backend.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.moa.moabackend.MoaBackendApplication" />
     "last_opened_file_path": "C:/Users/juuu0/Desktop/9rl/week_8_project/99-Moa-B/src/main/java/com/moa/moabackend/entity"
   }
 }]]></component>
@@ -107,12 +104,35 @@
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
             <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="feature/1-로그인회원가입" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
