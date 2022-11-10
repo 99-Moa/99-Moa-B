@@ -20,8 +20,8 @@ public class MypageController {
 
     // 마이프로필 수정
     @PutMapping("/mypage")
-    public ResponseDto updateMypage(@AuthenticationPrincipal UserDetailsImpl userDetails, MypageRequestDto requestDto, @RequestPart(value = "file", required = false) MultipartFile file) throws IOException {
-        return mypageService.updateMypage(userDetails.getUser(), requestDto, file);
+    public ResponseDto updateMypage(@AuthenticationPrincipal UserDetailsImpl userDetails, MypageRequestDto requestDto, @RequestPart(value = "file", required = false) MultipartFile imgUrl) throws IOException {
+        return mypageService.updateMypage(userDetails.getUser(), requestDto, imgUrl);
     }
 
     // 유저 정보 가져오기

@@ -22,11 +22,23 @@ public class MypageService {
 
     // 마이페이지 수정
     public ResponseDto<String> updateMypage(User user, MypageRequestDto requestDto, MultipartFile imgUrl) throws IOException {
-        // 이미지 업로드 .upload(파일, 경로)
-        String imgPath = s3Uploader.upload(imgUrl, "images");
-        // requestDto의 imgUrl을 imgPath의 값으로 설정
-        requestDto.setImgUrl(imgPath);
-
+        // 닉네임 중복 검사, 공백일 시 닉네임 그대로
+        if(userRepository.findByUserName(requestDto.getUserName()).isPresent()) {
+            return ResponseDto.fail(409, "중복된 닉네임입니다.", "Conflict");
+        }
+        if (requestDto.getUserName().equals("")) {
+            requestDto.setUserName(user.getUserName());
+        }
+        
+        // 공백일 시 imgUrl 그대로
+        if (imgUrl.isEmpty()) {
+            requestDto.setImgUrl(user.getImgUrl());
+        } else {
+            // 이미지 업로드 .upload(파일, 경로)
+            String imgPath = s3Uploader.upload(imgUrl, "images");
+            // requestDto의 imgUrl을 imgPath의 값으로 설정
+            requestDto.setImgUrl(imgPath);
+        }
         user.updateUser(requestDto);
         userRepository.save(user);
 
