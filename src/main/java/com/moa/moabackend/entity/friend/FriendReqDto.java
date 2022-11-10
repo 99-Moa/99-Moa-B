@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-@NoArgsConstructor
 public class FriendReqDto {
     //친구 닉네임
     private String userName;

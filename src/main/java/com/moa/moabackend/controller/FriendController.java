@@ -4,9 +4,11 @@ package com.moa.moabackend.controller;
 import com.moa.moabackend.entity.ResponseDto;
 import com.moa.moabackend.entity.friend.FriendReqDto;
 import com.moa.moabackend.entity.friend.FriendResDto;
+import com.moa.moabackend.security.user.UserDetailsImpl;
 import com.moa.moabackend.service.FriendService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,30 +35,33 @@ public class FriendController {
     @PostMapping("friends/add")
     public ResponseDto<?> addFriend(@RequestBody FriendReqDto friendReqDto,
                                     @AuthenticationPrincipal UserDetailsImpl userDetails){
-        return ResponseDto.success(friendService.addFriend(userDetails.getAccount(), friendReqDto));
+        return ResponseDto.success(friendService.addFriend(userDetails.getUser(), friendReqDto));
     }
 
-    // 전체 유저 중 친구 찾기
+//     전체 유저 중 친구 찾기
     @PostMapping("/friends/search")
     public ResponseDto<FriendResDto> searchFriend(@RequestBody FriendReqDto friendReqDto,
                                                   @AuthenticationPrincipal UserDetailsImpl userDetails){
-        return ResponseDto.success(friendService.searchFriend(userDetails.getAccount(), friendReqDto));
+        return ResponseDto.success(friendService.searchFriend(userDetails.getUser(), friendReqDto));
     }
-
-    // 내 친구 목록 중 친구 목록 조회
+//
+//    // 내 친구 목록 중 친구 목록 조회
     @GetMapping("/friends")
     public ResponseDto<List<FriendResDto>> getMyFriend(@AuthenticationPrincipal UserDetailsImpl userDetails){
-        return ResponseDto.success(friendService.getMyFriend(userDetails.getAccount());
+        return ResponseDto.success(friendService.getMyFriend(userDetails.getUser()));
     }
 
-
     // 친구 그룹 조회
-    @GetMapping("/friends/group")
-    public
-
-
-
+//    @GetMapping("/friends/group")
+//    public
+//
+//
+//
     // 친구 삭제
-    @DeleteMapping
+    @DeleteMapping("/friends/{userName}")
+    public ResponseDto<?> deleteFriend(@PathVariable String userName,
+            @AuthenticationPrincipal UserDetailsImpl userDetails){
+        return ResponseDto.success(friendService.deleteFriend(userDetails.getUser(), userName));
+    }
 
 }

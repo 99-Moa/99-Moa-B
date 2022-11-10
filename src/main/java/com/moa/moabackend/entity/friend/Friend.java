@@ -19,13 +19,13 @@ public class Friend {
     @Id
     private Long id;
 
-    private Long userId;
+    private String userId;
 
     private String userName;
 
     private String friendUsername;
 
-    public Friend(Long userId, String userName, String friendUsername) {
+    public Friend(String userId, String userName, String friendUsername) {
         this.userId = userId;
         this.userName = userName;
         this.friendUsername = friendUsername;

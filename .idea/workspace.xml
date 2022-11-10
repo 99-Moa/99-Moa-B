@@ -5,39 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f4f99a2-6f43-45b5-98d0-9c38e961b325" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/config/CorsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/FriendController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/ResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendReqDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendResDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/FriendService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/moa-backend.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/moa-backend.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/moa-backend.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/moa-backend.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/moa-backend.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/2022_11_10_8_58_________Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/2022_11_10_8_58_________Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/MoaBackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/MoaBackendApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/config/config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/FriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/FriendController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/Friend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/schedule/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/schedule/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendReqDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendResDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendResDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/IdCheckRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/IdCheckRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/ResponseDto.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/repository/FriendRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/repository/FriendRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/moa/moabackend/MoaBackendApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/moa/moabackend/MoaBackendApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/FriendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/FriendService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,11 +76,15 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/신현재/Desktop/코딩/[Inflearn]/ttinder",
+    "last_opened_file_path": "C:/Users/신현재/Desktop/코딩/[Inflearn]/99-Moa-B/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -107,9 +93,19 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\신현재\Desktop\코딩\[Inflearn]\99-Moa-B\src\main\resources" />
       <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\entity" />
       <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\config" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MoaBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="moa-backend.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.moa.moabackend.MoaBackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -122,6 +118,7 @@
       <workItem from="1667992630912" duration="2091000" />
       <workItem from="1668003364737" duration="2230000" />
       <workItem from="1668009537193" duration="1029000" />
+      <workItem from="1668048214182" duration="12265000" />
     </task>
     <servers />
   </component>
