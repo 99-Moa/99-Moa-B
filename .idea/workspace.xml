@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="2f4f99a2-6f43-45b5-98d0-9c38e961b325" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -13,6 +14,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendResDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendResDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/FriendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/FriendService.java" afterDir="false" />
     </list>
+=======
+    <list default="true" id="2f4f99a2-6f43-45b5-98d0-9c38e961b325" name="Changes" comment="" />
+>>>>>>> main
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,12 +78,17 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+<<<<<<< HEAD
     "last_opened_file_path": "C:/Users/신현재/Desktop/코딩/[Inflearn]/week05MiniProjectBackend",
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+=======
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/신현재/Desktop/코딩/[Inflearn]/99-Moa-B"
+>>>>>>> main
   }
 }]]></component>
   <component name="RecentsManager">
@@ -112,11 +121,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <recent_temporary>
       <list>
         <item itemvalue="Application.MoaBackendApplication" />
       </list>
     </recent_temporary>
+=======
+    <configuration name="MoaBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="moa-backend.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.moa.moabackend.MoaBackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+>>>>>>> main
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -126,6 +145,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667780678115</updated>
+      <workItem from="1667829386492" duration="46000" />
     </task>
     <servers />
   </component>
