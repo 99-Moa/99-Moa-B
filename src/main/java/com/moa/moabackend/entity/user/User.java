@@ -24,6 +24,8 @@ public class User extends Timestamped {
     @NotBlank
     private String userName;
 
+    private String imgUrl = "anonymous";
+
     public User(UserRequestDto userRequestDto) {
         this.userId = userRequestDto.getUserId();
         this.password = userRequestDto.getPassword();

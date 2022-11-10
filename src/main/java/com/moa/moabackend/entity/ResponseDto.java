@@ -18,6 +18,9 @@ public class ResponseDto<T> {
         return new ResponseDto<>(false, null, new Error(httpStatus, message, detail));
     }
 
+    // detail : Not Found, Bad request
+    // message : 사용자를 찾을 수 없습니다.
+
     @Getter
     @AllArgsConstructor
     static class Error{
