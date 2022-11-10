@@ -19,16 +19,11 @@ public class FriendController {
 
     private final FriendService friendService;
 
-    // 질문!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // Req, Res Dto Api 요청별로 나눌지??? 아니면 하나로 돌려쓸지???
-    // UserDetailsImpl 필요
-    // S3는 시원님 코드로
     // friend에 friendId가 필요한지?? 그냥 닉네임으로만 저장하면 안되는지???
-    // 친구 추가  API에서 request 에 userName -> friendUserName 으로 변경??
     // ResponseDto 에서 message 랑 detail 차이??
     // 이미 추가된 친구 제외?? or 프론트 단에서 처리??? 아예 리턴을 안하는걸로
     // // 전체 유저 중 친구 찾기는 UserController로 가는것이 어떤지???????
-    // 친구 삭제 api 어디갓음??
 
     // 친구 추가
     // input : "userName": “닉네임”
