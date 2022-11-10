@@ -32,4 +32,10 @@ public class User extends Timestamped {
         this.passwordCheck = userRequestDto.getPasswordCheck();
         this.userName = userRequestDto.getUserName();
     }
+
+    // 프로필 수정 메소드
+    public void updateUser(MypageRequestDto requestDto) {
+        this.userName = requestDto.getUserName();
+        this.imgUrl = requestDto.getImgUrl();
+    }
 }
