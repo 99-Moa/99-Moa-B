@@ -23,12 +23,12 @@ public class ScheduleService {
     private final UserRepository userRepository;
 
     // calendar
-    public ResponseDto<List<ScheduleResponseDto>> getCalendar(User user) {
-        List<ScheduleResponseDto> scheduleResponseLIst = new ArrayList<>();
+    public ResponseDto<List<ScheduleResponseDto.Calendar>> getCalendar(User user) {
+        List<ScheduleResponseDto.Calendar> scheduleResponseLIst = new ArrayList<>();
         List<Schedule> schedules = scheduleRepository.findAllByUser(user);
         for (Schedule schedule : schedules) {
             scheduleResponseLIst.add(
-                    ScheduleResponseDto.builder()
+                    ScheduleResponseDto.Calendar.builder()
                             .meetingDate(schedule.getMeetingDate())
                             .build()
             );
@@ -37,7 +37,7 @@ public class ScheduleService {
     }
 
     // 일정 생성
-    public ResponseDto<ScheduleResponseDto> addSchedule(ScheduleRequestDto requestDto, User user) {
+    public ResponseDto<String> addSchedule(ScheduleRequestDto requestDto, User user) {
         Schedule schedule = Schedule.builder()
                 .meetingDate(LocalDate.parse(requestDto.getMeetingDate()))
                 .title(requestDto.getTitle())
@@ -48,25 +48,17 @@ public class ScheduleService {
 //                .userNameList(requestDto.getUserNameList())
                 .build();
         scheduleRepository.save(schedule);
-        return ResponseDto.success(
-                ScheduleResponseDto.builder()
-                .meetingDate(schedule.getMeetingDate())
-                .title(schedule.getTitle())
-                .meetingTime(schedule.getMeetingTime())
-                .location(schedule.getLocation())
-                .content(schedule.getContent())
-//                .userNameList(schedule.getUserNameList())
-                .build());
+        return ResponseDto.success("일정 등록 성공");
     }
 
     // 일정 목록 조회
-    public ResponseDto<List<ScheduleResponseDto>> getAllSchedules(User user) {
-        List<ScheduleResponseDto> scheduleResponseLIst = new ArrayList<>();
+    public ResponseDto<List<ScheduleResponseDto.ScheduleList>> getAllSchedules(User user) {
+        List<ScheduleResponseDto.ScheduleList> scheduleResponseLIst = new ArrayList<>();
 //        List<Schedule> schedules = scheduleRepository.findAllByOrderByMeetingDate();
         List<Schedule> schedules = scheduleRepository.findAllByUser(user);
         for (Schedule schedule : schedules) {
             scheduleResponseLIst.add(
-                    ScheduleResponseDto.builder()
+                    ScheduleResponseDto.ScheduleList.builder()
                             .id(schedule.getId())
                             .meetingDate(schedule.getMeetingDate())
                             .title(schedule.getTitle())
@@ -77,10 +69,10 @@ public class ScheduleService {
     }
 
     // 일정 상세 조회
-    public ResponseDto<ScheduleResponseDto> getOneSchedule(Long scheduleId) {
+    public ResponseDto<ScheduleResponseDto.ScheduleDetail> getOneSchedule(Long scheduleId) {
         Schedule schedule = scheduleRepository.findById(scheduleId).get();
         return ResponseDto.success(
-                ScheduleResponseDto.builder()
+                ScheduleResponseDto.ScheduleDetail.builder()
                         .meetingDate(schedule.getMeetingDate())
                         .title(schedule.getTitle())
                         .meetingTime(schedule.getMeetingTime())

@@ -18,25 +18,25 @@ public class ScheduleController {
 
     // calendar
     @GetMapping("/calendar")
-    public ResponseDto<List<ScheduleResponseDto>> getCalendar(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseDto<List<ScheduleResponseDto.Calendar>> getCalendar(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         return scheduleService.getCalendar(userDetails.getUser());
     }
 
     // 일정 생성
     @PostMapping("/schedules")
-    public ResponseDto<ScheduleResponseDto> addSchedule(@RequestBody ScheduleRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseDto<String> addSchedule(@RequestBody ScheduleRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return scheduleService.addSchedule(requestDto, userDetails.getUser());
     }
 
     // 일정 목록 조회
     @GetMapping("/schedules")
-    public ResponseDto<List<ScheduleResponseDto>> getAllSchedules(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseDto<List<ScheduleResponseDto.ScheduleList>> getAllSchedules(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         return scheduleService.getAllSchedules(userDetails.getUser());
     }
 
     // 일정 상세 조회
     @GetMapping("/schedules/{scheduleId}")
-    public ResponseDto<ScheduleResponseDto> getOneSchedule(@PathVariable Long scheduleId) {
+    public ResponseDto<ScheduleResponseDto.ScheduleDetail> getOneSchedule(@PathVariable Long scheduleId) {
         return scheduleService.getOneSchedule(scheduleId);
     }
 
