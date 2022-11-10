@@ -1,5 +1,6 @@
 package com.moa.moabackend.entity.schedule;
 
+import com.moa.moabackend.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Getter
 @Entity
@@ -36,6 +38,13 @@ public class Schedule {
 
     @Column
     private String content;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+//    @OneToMany
+//    private List<String> userNameList;
 
     public void update(ScheduleRequestDto requestDto) {
         this.meetingDate = LocalDate.parse(requestDto.getMeetingDate());

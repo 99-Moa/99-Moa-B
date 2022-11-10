@@ -1,7 +1,10 @@
 package com.moa.moabackend.entity.schedule;
 
+import com.moa.moabackend.entity.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -15,4 +18,6 @@ public class ScheduleRequestDto {
     private String location;
 
     private String content;
+
+//    private List<String> userNameList;
 }
