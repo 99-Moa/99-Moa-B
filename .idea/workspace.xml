@@ -5,8 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f4f99a2-6f43-45b5-98d0-9c38e961b325" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/config/CorsConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/FriendController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/ResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendReqDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendResDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/FriendService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/moa-backend.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/moa-backend.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/moa-backend.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/moa-backend.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/moa-backend.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/MoaBackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/MoaBackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/config/config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/Friend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/schedule/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/schedule/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/repository/FriendRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/repository/FriendRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/moa/moabackend/MoaBackendApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/moa/moabackend/MoaBackendApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +49,23 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="moa-backend" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -28,6 +76,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../../Program Files/Zulu/zulu-11/lib/src.zip!/java.base/java/lang/Integer.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -36,6 +87,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
@@ -44,11 +96,21 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/신현재/Desktop/코딩/[Inflearn]/week05MiniProjectBackend",
+    "last_opened_file_path": "C:/Users/신현재/Desktop/코딩/[Inflearn]/ttinder",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "spring.configuration.checksum": "1475e1be66e999c948f80ce3f850557a"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\entity" />
+      <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\config" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,7 +119,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667780678115</updated>
-      <workItem from="1667893412579" duration="305000" />
+      <workItem from="1667992630912" duration="2091000" />
+      <workItem from="1668003364737" duration="2230000" />
+      <workItem from="1668009537193" duration="1029000" />
     </task>
     <servers />
   </component>
@@ -77,5 +141,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
