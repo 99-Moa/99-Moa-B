@@ -98,6 +98,7 @@ public class ScheduleService {
             return ResponseDto.fail(404, "사용자가 일치하지 않습니다.", "Not Found");
         }
         schedule.update(requestDto);
+        scheduleRepository.save(schedule);
         return ResponseDto.success("일정이 수정되었습니다.");
     }
 
