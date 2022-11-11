@@ -30,18 +30,18 @@ public class UserController {
     public ResponseDto<?> signup(@RequestBody @Valid UserRequestDto userRequestDto) {
         return userService.signup(userRequestDto);
     }
-        // 로그인
+    // 로그인
     @PostMapping("/signin")
     public ResponseDto<?> signin(@RequestBody @Valid LoginRequestDto loginRequestDto, HttpServletResponse response){
         return userService.signin(loginRequestDto, response);
     }
-        // userID 중복확인
+    // userID 중복확인
     @PostMapping("/userIdCheck")
     public ResponseDto<?> idCheck(@RequestBody @Valid IdCheckRequestDto idCheckRequestDto){
         return userService.idCheck(idCheckRequestDto);
     }
 
-        //닉네임 중복체크
+    //닉네임 중복체크
     @PostMapping("/userNameCheck")
     public ResponseDto<?> nameCheck(@RequestBody @Valid NameCheckRequestDto idCheckRequestDto){
         return userService.nameCheck(idCheckRequestDto);

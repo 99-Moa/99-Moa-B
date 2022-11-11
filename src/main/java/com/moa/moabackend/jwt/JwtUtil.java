@@ -34,7 +34,7 @@ public class JwtUtil {
     private static final long ACCESS_TIME = 1000 * 1000L;
     // REFRESH_TIME 60초*100
     private static final long REFRESH_TIME = 6000 * 1000L;
-    public static final String ACCESS_TOKEN = "Access_Token";
+    public static final String ACCESS_TOKEN = "Access_Token"; /*authorization*/
     public static final String REFRESH_TOKEN = "Refresh_Token";
 
 
