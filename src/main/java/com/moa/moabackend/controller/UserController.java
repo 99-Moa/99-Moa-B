@@ -2,17 +2,17 @@ package com.moa.moabackend.controller;
 
 
 import com.moa.moabackend.entity.ResponseDto;
+import com.moa.moabackend.entity.friend.FriendRequestDto;
+import com.moa.moabackend.entity.friend.FriendResponseDto;
 import com.moa.moabackend.entity.user.*;
 import com.moa.moabackend.jwt.JwtUtil;
 import com.moa.moabackend.security.user.UserDetailsImpl;
+import com.moa.moabackend.service.FriendService;
 import com.moa.moabackend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -23,6 +23,7 @@ public class UserController {
 
     private final UserService userService;
     private final JwtUtil jwtUtil;
+    private final FriendService friendService;
 
 
     // 회원가입
@@ -35,17 +36,6 @@ public class UserController {
     public ResponseDto<?> signin(@RequestBody @Valid LoginRequestDto loginRequestDto, HttpServletResponse response){
         return userService.signin(loginRequestDto, response);
     }
-        // userID 중복확인
-    @PostMapping("/userIdCheck")
-    public ResponseDto<?> idCheck(@RequestBody @Valid IdCheckRequestDto idCheckRequestDto){
-        return userService.idCheck(idCheckRequestDto);
-    }
-
-        //닉네임 중복체크
-    @PostMapping("/userNameCheck")
-    public ResponseDto<?> nameCheck(@RequestBody @Valid NameCheckRequestDto idCheckRequestDto){
-        return userService.nameCheck(idCheckRequestDto);
-    }
 
     // 토큰 재발행
     @GetMapping("/issue/token")
@@ -54,6 +44,9 @@ public class UserController {
         return new UserResponseDto("Success IssuedToken", HttpStatus.OK.value());
     }
 
-
-
+    // 전체 유저 중 친구 찾기
+    @GetMapping ("/users/{userName}")  // URL변경필요 : GET /users
+    public ResponseDto<FriendResponseDto.SearchFriendResDto> searchFriend(@PathVariable String userName, @AuthenticationPrincipal UserDetailsImpl userDetails){
+        return friendService.searchFriend(userDetails.getUser(), userName);
+    }
 }

@@ -1,6 +1,7 @@
 package com.moa.moabackend.entity.user;
 
 
+import com.moa.moabackend.entity.Timestamped;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

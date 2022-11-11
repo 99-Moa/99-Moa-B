@@ -1,6 +1,6 @@
 package com.moa.moabackend.entity.friend;
 
-import com.moa.moabackend.entity.user.Timestamped;
+import com.moa.moabackend.entity.Timestamped;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

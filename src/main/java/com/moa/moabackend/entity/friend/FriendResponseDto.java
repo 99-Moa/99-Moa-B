@@ -1,15 +1,13 @@
 package com.moa.moabackend.entity.friend;
 
 import com.moa.moabackend.entity.user.User;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Getter
 //@Builder
 @RequiredArgsConstructor
-public class FriendResDto {
+public class FriendResponseDto {
 
     @Getter
     public static class SearchFriendResDto {
