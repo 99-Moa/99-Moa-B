@@ -1,6 +1,6 @@
 package com.moa.moabackend.jwt;
 
-import com.moa.moabackend.entity.RefreshToken;
+import com.moa.moabackend.entity.user.RefreshToken;
 import com.moa.moabackend.repository.RefreshTokenRepository;
 import com.moa.moabackend.security.user.UserDetailsServiceImpl;
 import io.jsonwebtoken.Jwts;
