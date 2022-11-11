@@ -2,6 +2,7 @@ package com.moa.moabackend.service;
 
 import com.moa.moabackend.entity.ResponseDto;
 import com.moa.moabackend.entity.RefreshToken;
+import com.moa.moabackend.entity.friend.FriendResponseDto;
 import com.moa.moabackend.entity.user.*;
 import com.moa.moabackend.jwt.JwtUtil;
 import com.moa.moabackend.jwt.TokenDto;
@@ -92,6 +93,17 @@ public class UserService {
         return ResponseDto.success(
                 "로그인 성공"
         );
+    }
+
+    // 친구 찾기
+    public ResponseDto<FriendResponseDto.SearchFriendResDto> searchFriend(User user, String userName ){
+        // 내 정보
+        User user1 = userRepository.findByUserName(user.getUserName()).orElseThrow();
+        // 친구 정보
+        // 친구에 해당하는 유저 없을 시 예외처리 추가
+        User userFriend = userRepository.findByUserName((userName)).orElseThrow();
+        return ResponseDto.success(new FriendResponseDto.SearchFriendResDto(userFriend));
+        // 이미 추가된 친구 안보이기 제외 추가
     }
     private void setHeader(HttpServletResponse response, TokenDto tokenDto) {
         response.addHeader(JwtUtil.ACCESS_TOKEN, tokenDto.getAccessToken());

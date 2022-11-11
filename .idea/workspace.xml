@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7dbed776-211d-4151-bfb0-21c51d864659" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/FriendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/FriendService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +166,7 @@
       <updated>1667780678115</updated>
       <workItem from="1667829386492" duration="46000" />
       <workItem from="1668126765942" duration="4899000" />
-      <workItem from="1668144057568" duration="4130000" />
+      <workItem from="1668144057568" duration="4651000" />
     </task>
     <servers />
   </component>

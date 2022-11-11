@@ -36,16 +36,6 @@ public class FriendService {
         }
     }
 
-    // 친구 찾기
-    public ResponseDto<FriendResponseDto.SearchFriendResDto> searchFriend(User user, String userName ){
-        // 내 정보
-        User user1 = userRepository.findByUserName(user.getUserName()).orElseThrow();
-        // 친구 정보
-        // 친구에 해당하는 유저 없을 시 예외처리 추가
-        User userFriend = userRepository.findByUserName((userName)).orElseThrow();
-        return ResponseDto.success(new FriendResponseDto.SearchFriendResDto(userFriend));
-        // 이미 추가된 친구 안보이기 제외 추가
-    }
 
     // 내 친구 목록 중 친구 목록 조회
     public ResponseDto<List<FriendResponseDto.GetMyFriendResDto>> getMyFriend(User user){
