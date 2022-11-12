@@ -28,12 +28,12 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/signup")
-    public ResponseDto<?> signup(@RequestBody @Valid UserRequestDto userRequestDto) {
+    public ResponseDto<String> signup(@RequestBody @Valid UserRequestDto userRequestDto) {
         return userService.signup(userRequestDto);
     }
         // 로그인
     @PostMapping("/signin")
-    public ResponseDto<?> signin(@RequestBody @Valid LoginRequestDto loginRequestDto, HttpServletResponse response){
+    public ResponseDto<String> signin(@RequestBody @Valid LoginRequestDto loginRequestDto, HttpServletResponse response){
         return userService.signin(loginRequestDto, response);
     }
 
