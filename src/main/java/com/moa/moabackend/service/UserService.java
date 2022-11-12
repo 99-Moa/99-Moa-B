@@ -1,7 +1,8 @@
 package com.moa.moabackend.service;
 
 import com.moa.moabackend.entity.ResponseDto;
-import com.moa.moabackend.entity.RefreshToken;
+import com.moa.moabackend.entity.user.RefreshToken;
+import com.moa.moabackend.entity.friend.FriendResponseDto;
 import com.moa.moabackend.entity.user.*;
 import com.moa.moabackend.jwt.JwtUtil;
 import com.moa.moabackend.jwt.TokenDto;
@@ -23,6 +24,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final RefreshTokenRepository refreshTokenRepository;
+    private final FriendService friendService;
 
     // 회원가입
     public ResponseDto<?> signup(UserRequestDto userRequestDto){
@@ -93,6 +95,27 @@ public class UserService {
                 "로그인 성공"
         );
     }
+
+    // 친구 찾기
+    public ResponseDto<FriendResponseDto.SearchFriendResDto> searchFriend(User user, String friendUsername ) {
+
+        // 친구에 해당하는 존재여부 -> Null값 예외처리 추가
+        User userFriend = userRepository.findByUserName((friendUsername)).orElseThrow();
+        // 이미 추가된 친구 제외
+        if (friendService.checkMyFriend(user.getUserId(), friendUsername)) {
+            return ResponseDto.fail(400, "Bad Request", "이미 등록된 친구입니다.");
+            // 자기 자신을 추가
+        } else if (user.getUserName().equals(friendUsername)) {
+            return ResponseDto.fail(400, "Bad Request", "자기자신을 검색할 수 없습니다.");
+        } else {
+            return ResponseDto.success(
+                    FriendResponseDto.SearchFriendResDto.builder()
+                            .friendUsername(userFriend.getUserName())
+                            .imgUrl(userFriend.getImgUrl())
+                            .build());
+        }
+    }
+
     private void setHeader(HttpServletResponse response, TokenDto tokenDto) {
         response.addHeader(JwtUtil.ACCESS_TOKEN, tokenDto.getAccessToken());
         response.addHeader(JwtUtil.REFRESH_TOKEN, tokenDto.getRefreshToken());

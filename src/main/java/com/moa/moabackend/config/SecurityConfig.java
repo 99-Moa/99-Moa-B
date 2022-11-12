@@ -1,19 +1,32 @@
 package com.moa.moabackend.config;
 
+import com.moa.moabackend.entity.ResponseDto;
+import com.moa.moabackend.entity.friend.FriendResponseDto;
+import com.moa.moabackend.entity.schedule.ScheduleResponseDto;
+import com.moa.moabackend.entity.user.MypageRequestDto;
+import com.moa.moabackend.entity.user.UserResponseDto;
 import com.moa.moabackend.jwt.JwtAuthFilter;
 import com.moa.moabackend.jwt.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.io.IOException;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -40,21 +53,33 @@ public class SecurityConfig {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.authorizeRequests()
-                // 로그인
-                .antMatchers(HttpMethod.POST, "/api/user/signup").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/user/login").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/issue/token").permitAll()
+                // UserController
+                .antMatchers(HttpMethod.POST, "/signup").permitAll()
+                .antMatchers(HttpMethod.POST, "/signin").permitAll()
+                .antMatchers(HttpMethod.GET, "/issue/token").permitAll()
+                .antMatchers(HttpMethod.GET, "/users/{userName}").permitAll()
 
-                // 게시글
-                .antMatchers(HttpMethod.GET, "/api/posts").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/posts/{postId}").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/posts").authenticated()
-                .antMatchers(HttpMethod.PUT, "/api/posts/{postId}").authenticated()
-                .antMatchers(HttpMethod.DELETE, "/api/posts/{postId}").authenticated()
+                // AuthController
+                .antMatchers(HttpMethod.POST, "/userIdCheck").permitAll()
+                .antMatchers(HttpMethod.POST, "/userNameCheck").permitAll()
 
-                // 댓글
-                .antMatchers(HttpMethod.POST, "/api/posts/{postId}/comments").authenticated()
-                .antMatchers(HttpMethod.DELETE, "/api/posts/{postId}/comments/{commentsId}").authenticated()
+                // MypageController
+                .antMatchers(HttpMethod.PUT, "/mypage").authenticated()
+                .antMatchers(HttpMethod.GET, "/mypage").authenticated()
+
+                // FriendController
+                .antMatchers(HttpMethod.POST, "/friends").authenticated()
+                .antMatchers(HttpMethod.GET, "/friends").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/friends/{friendId}").authenticated()
+
+                // ScheduleController
+                .antMatchers(HttpMethod.GET, "/calendar").authenticated()
+                .antMatchers(HttpMethod.POST, "/schedules").authenticated()
+                .antMatchers(HttpMethod.GET, "/schedules").authenticated()
+                .antMatchers(HttpMethod.GET, "/schedules/{scheduleId}").authenticated()
+                .antMatchers(HttpMethod.PUT, "/schedules/{scheduleId}").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/schedules/{scheduleId}").authenticated()
+
                 // 파일 업로드 권한 설정?
 //                .anyRequest().permitAll()
                 .and().addFilterBefore(new JwtAuthFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);

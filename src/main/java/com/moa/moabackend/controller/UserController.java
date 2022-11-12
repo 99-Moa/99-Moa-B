@@ -23,7 +23,6 @@ public class UserController {
 
     private final UserService userService;
     private final JwtUtil jwtUtil;
-    private final FriendService friendService;
 
 
     // 회원가입
@@ -47,6 +46,6 @@ public class UserController {
     // 전체 유저 중 친구 찾기
     @GetMapping ("/users/{userName}")  // URL변경필요 : GET /users
     public ResponseDto<FriendResponseDto.SearchFriendResDto> searchFriend(@PathVariable String userName, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        return friendService.searchFriend(userDetails.getUser(), userName);
+        return userService.searchFriend(userDetails.getUser(), userName);
     }
 }
