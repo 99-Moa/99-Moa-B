@@ -23,7 +23,7 @@ public class ScheduleController {
     }
 
     // 일정 생성
-    @PostMapping("/schedules")
+    @PostMapping("/schedule")
     public ResponseDto<String> addSchedule(@RequestBody ScheduleRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return scheduleService.addSchedule(requestDto, userDetails.getUser());
     }
@@ -35,19 +35,19 @@ public class ScheduleController {
     }
 
     // 일정 상세 조회
-    @GetMapping("/schedules/{scheduleId}")
+    @GetMapping("/schedule/{scheduleId}")
     public ResponseDto<ScheduleResponseDto.ScheduleDetail> getOneSchedule(@PathVariable Long scheduleId) {
         return scheduleService.getOneSchedule(scheduleId);
     }
 
     // 일정 수정
-    @PutMapping("/schedules/{scheduleId}")
+    @PutMapping("/schedule/{scheduleId}")
     public ResponseDto<String> updateSchedule(@PathVariable Long scheduleId, @RequestBody ScheduleRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return scheduleService.updateSchedule(scheduleId, requestDto, userDetails.getUser());
     }
 
     // 일정 삭제
-    @DeleteMapping("/schedules/{scheduleId}")
+    @DeleteMapping("/schedule/{scheduleId}")
     public ResponseDto<String> deleteSchedule(@PathVariable Long scheduleId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         return scheduleService.deleteSchedule(scheduleId, userDetails.getUser());
     }
