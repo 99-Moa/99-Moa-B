@@ -17,13 +17,13 @@ public class AuthController {
 
     // userID 중복확인
     @PostMapping("/userIdCheck")
-    public ResponseDto<?> idCheck(@RequestBody @Valid IdCheckRequestDto idCheckRequestDto){
+    public ResponseDto<String> idCheck(@RequestBody @Valid IdCheckRequestDto idCheckRequestDto){
         return userService.idCheck(idCheckRequestDto);
     }
 
     //닉네임 중복체크
     @PostMapping("/userNameCheck")
-    public ResponseDto<?> nameCheck(@RequestBody @Valid NameCheckRequestDto idCheckRequestDto){
+    public ResponseDto<String> nameCheck(@RequestBody @Valid NameCheckRequestDto idCheckRequestDto){
         return userService.nameCheck(idCheckRequestDto);
     }
 }
