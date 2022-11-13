@@ -12,12 +12,12 @@ import javax.validation.constraints.Pattern;
 public class UserRequestDto {
 
     @NotBlank(message="아이디는 필수 입력사항입니다.")
-    @Pattern(regexp = "^[.]{4,16}$",
-            message = "아이디는 4자 ~ 16자의 아이디여야 합니다.")
+    @Pattern(regexp = "^[a-zA-Z0-9]{4,16}$",
+            message = "아이디는 4자 ~ 16자의 영어와 숫자여야 합니다.")
     private String userId;
 
     @NotBlank(message="닉네임은 필수 입력사항입니다.")
-    @Pattern(regexp = "^[.][^@$!%*#?&]{2,8}$",
+    @Pattern(regexp = "^[a-zA-Z0-9ㄱ-ㅎ가-힣][^@$!%*#?&]{2,8}$",
             message = "닉네임은 2자 ~ 8자여야 하고 특수기호는 포함할 수 없습니다.")
     private String userName;
 
