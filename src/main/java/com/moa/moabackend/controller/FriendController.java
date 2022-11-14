@@ -19,7 +19,7 @@ public class FriendController {
     private final FriendService friendService;
 
     // 친구 추가
-    @PostMapping("/friends")  // URL변경 : /add삭제
+    @PostMapping("/friend")  // URL변경 : /add삭제
     public ResponseDto<String> addFriend(@RequestBody FriendRequestDto friendRequestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
         return friendService.addFriend(userDetails.getUser(), friendRequestDto);
     }
@@ -31,7 +31,7 @@ public class FriendController {
     }
 
     // 친구 삭제
-    @DeleteMapping("/friends/{friendId}")
+    @DeleteMapping("/friend/{friendId}")
     public ResponseDto<String> deleteFriend(@PathVariable Long friendId, @AuthenticationPrincipal UserDetailsImpl userDetails){
         return friendService.deleteFriend(userDetails.getUser(), friendId);
     }

@@ -27,7 +27,7 @@ public class UserService {
     private final FriendService friendService;
 
     // 회원가입
-    public ResponseDto<?> signup(UserRequestDto userRequestDto){
+    public ResponseDto<String> signup(UserRequestDto userRequestDto){
         // userid 중복 검사
         // Exception 값 컨펌!
         if(userRepository.findByUserId(userRequestDto.getUserId()).isPresent()){
@@ -44,7 +44,7 @@ public class UserService {
     }
 
     // ID 중복확인
-    public ResponseDto<?> idCheck(IdCheckRequestDto idCheckRequestDto){
+    public ResponseDto<String> idCheck(IdCheckRequestDto idCheckRequestDto){
         String result = "";
         if(userRepository.findByUserId(idCheckRequestDto.getUserId()).isPresent()) {
             result = "ID가 이미 존재합니다.";
@@ -55,7 +55,7 @@ public class UserService {
     }
 
     //닉네임 중복확인
-    public ResponseDto<?> nameCheck(NameCheckRequestDto nameCheckRequestDto){
+    public ResponseDto<String> nameCheck(NameCheckRequestDto nameCheckRequestDto){
         String result = "";
         if(userRepository.findByUserName(nameCheckRequestDto.getUserName()).isPresent()) {
             result = "닉네임이 이미 존재합니다.";
@@ -67,7 +67,7 @@ public class UserService {
 
     // 로그인
     @Transactional
-    public ResponseDto<?> signin(LoginRequestDto loginRequestDto, HttpServletResponse response) {
+    public ResponseDto<String> signin(LoginRequestDto loginRequestDto, HttpServletResponse response) {
         // userId 로 user 정보 호출
         User user = userRepository.findByUserId(loginRequestDto.getUserId()).orElseThrow(
                 () -> new RuntimeException("Not found Account")
