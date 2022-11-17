@@ -3,6 +3,7 @@ package com.moa.moabackend.service;
 import com.moa.moabackend.S3.S3Uploader;
 import com.moa.moabackend.entity.ResponseDto;
 import com.moa.moabackend.entity.user.MypageRequestDto;
+import com.moa.moabackend.entity.user.MypageResponseDto;
 import com.moa.moabackend.entity.user.User;
 import com.moa.moabackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -46,7 +47,13 @@ public class MypageService {
     }
 
     // 유저 정보 가져오기
-    public ResponseDto<User> getUserDetail(User user) {
-        return ResponseDto.success(user);
+    public ResponseDto<MypageResponseDto> getUserDetail(User user) {
+        return ResponseDto.success(
+                MypageResponseDto.builder()
+                        .id(user.getId())
+                        .userName(user.getUserName())
+                        .imgUrl(user.getImgUrl())
+                        .build()
+        );
     }
 }
