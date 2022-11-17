@@ -2,6 +2,7 @@ package com.moa.moabackend.controller;
 
 import com.moa.moabackend.entity.ResponseDto;
 import com.moa.moabackend.entity.user.MypageRequestDto;
+import com.moa.moabackend.entity.user.MypageResponseDto;
 import com.moa.moabackend.entity.user.UserRequestDto;
 import com.moa.moabackend.security.user.UserDetailsImpl;
 import com.moa.moabackend.service.FriendService;
@@ -20,13 +21,13 @@ public class MypageController {
 
     // 마이프로필 수정
     @PutMapping("/mypage")
-    public ResponseDto updateMypage(@AuthenticationPrincipal UserDetailsImpl userDetails, MypageRequestDto requestDto, @RequestPart(value = "file", required = false) MultipartFile imgUrl) throws IOException {
+    public ResponseDto<String> updateMypage(@AuthenticationPrincipal UserDetailsImpl userDetails, MypageRequestDto requestDto, @RequestPart(value = "file", required = false) MultipartFile imgUrl) throws IOException {
         return mypageService.updateMypage(userDetails.getUser(), requestDto, imgUrl);
     }
 
     // 유저 정보 가져오기
     @GetMapping("/mypage")
-    public ResponseDto getUserDetail(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseDto<MypageResponseDto> getUserDetail(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         return mypageService.getUserDetail(userDetails.getUser());
     }
 }
