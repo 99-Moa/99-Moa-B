@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Builder
 public class GroupResponseDto {
-    private String userName;
     private List<String> userList;
+    private String groupName;
+    private int userNum;
 }
