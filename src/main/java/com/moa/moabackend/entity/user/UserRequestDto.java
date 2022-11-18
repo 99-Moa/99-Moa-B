@@ -17,7 +17,7 @@ public class UserRequestDto {
     private String userId;
 
     @NotBlank(message="닉네임은 필수 입력사항입니다.")
-    @Pattern(regexp = "^[a-zA-Z0-9ㄱ-ㅎ가-힣][^@$!%*#?&]{2,8}$",
+    @Pattern(regexp = "^[a-zA-Z0-9가-힣][^@$!%*#?&]{1,7}$",
             message = "닉네임은 2자 ~ 8자여야 하고 특수기호는 포함할 수 없습니다.")
     private String userName;
 

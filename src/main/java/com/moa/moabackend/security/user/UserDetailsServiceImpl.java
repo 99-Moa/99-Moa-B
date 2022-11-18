@@ -1,6 +1,7 @@
 package com.moa.moabackend.security.user;
 
 import com.moa.moabackend.entity.user.User;
+import com.moa.moabackend.repository.KakaoRepository;
 import com.moa.moabackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

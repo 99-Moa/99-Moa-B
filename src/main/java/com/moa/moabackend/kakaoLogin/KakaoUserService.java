@@ -2,11 +2,13 @@ package com.moa.moabackend.kakaoLogin;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.moa.moabackend.entity.user.Kakao;
 import com.moa.moabackend.entity.user.SocialUserInfoDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.moa.moabackend.entity.user.User;
 import com.moa.moabackend.jwt.JwtUtil;
 import com.moa.moabackend.jwt.TokenDto;
+import com.moa.moabackend.repository.KakaoRepository;
 import com.moa.moabackend.repository.UserRepository;
 import com.moa.moabackend.security.user.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +31,7 @@ import java.util.UUID;
 public class KakaoUserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
-
+    private final KakaoRepository kakaoRepository;
     public SocialUserInfoDto kakaoLogin(String code, TokenDto tokenDto, HttpServletResponse response) throws JsonProcessingException {
         // 1. "인가 코드"로 "액세스 토큰" 요청
         String accessToken = getAccessToken(code);
@@ -38,7 +40,7 @@ public class KakaoUserService {
         SocialUserInfoDto kakaoUserInfo = getKakaoUserInfo(accessToken);
 
         // 3. 카카오ID로 회원가입 처리
-        User kakaoUser = registerKakaoUserIfNeed(kakaoUserInfo);
+        Kakao kakaoUser = registerKakaoUserIfNeed(kakaoUserInfo);
 
         // 4. 강제 로그인 처리
         Authentication authentication = forceLogin(kakaoUser);
@@ -109,11 +111,11 @@ public class KakaoUserService {
     }
 
     // 3. 카카오ID로 회원가입 처리
-    private User registerKakaoUserIfNeed (SocialUserInfoDto kakaoUserInfo) {
+    private Kakao registerKakaoUserIfNeed (SocialUserInfoDto kakaoUserInfo) {
         // DB 에 중복된 email이 있는지 확인
         String kakaoEmail = kakaoUserInfo.getEmail();
         String nickname = kakaoUserInfo.getNickname();
-        User kakaoUser = userRepository.findByUsername(kakaoEmail)
+        Kakao kakaoUser = kakaoRepository.findByUsername(kakaoEmail)
                 .orElse(null);
 
         if (kakaoUser == null) {
@@ -124,15 +126,15 @@ public class KakaoUserService {
 
             String profile = "https://ossack.s3.ap-northeast-2.amazonaws.com/basicprofile.png";
 
-            kakaoUser = new User(kakaoEmail, nickname, profile, encodedPassword);
-            userRepository.save(kakaoUser);
+            kakaoUser = new Kakao(kakaoEmail, nickname, profile, encodedPassword);
+            kakaoRepository.save(kakaoUser);
 
         }
         return kakaoUser;
     }
 
     // 4. 강제 로그인 처리
-    private Authentication forceLogin(User kakaoUser) {
+    private Authentication forceLogin(Kakao kakaoUser) {
         UserDetails userDetails = new UserDetailsImpl(kakaoUser);
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
