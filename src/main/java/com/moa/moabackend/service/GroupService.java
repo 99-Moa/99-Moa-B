@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +30,7 @@ public class GroupService {
         return ResponseDto.success("친구 그룹 등록 성공");
     }
 
-    // 그룹 조회
+    // 그룹 목록 조회
     public ResponseDto<List<GroupResponseDto>> getAllGroups() {
         List<GroupResponseDto> groupResponseLIst = new ArrayList<>();
         List<Group> groups = groupRepository.findAll();
@@ -38,9 +39,22 @@ public class GroupService {
                     GroupResponseDto.builder()
                             .userList(group.getUserList())
                             .groupName(group.getGroupName())
+                            .userNum(group.getUserNum())
                             .build()
             );
         }
         return ResponseDto.success(groupResponseLIst);
+    }
+
+    // 그룹 하나 조회
+    public ResponseDto<GroupResponseDto> getOneGroup(Long groupId) {
+        Group group = groupRepository.findById(groupId).get();
+        return ResponseDto.success(
+                GroupResponseDto.builder()
+                        .groupName(group.getGroupName())
+                        .userList(group.getUserList())
+                        .userNum(group.getUserNum())
+                        .build()
+        );
     }
 }
