@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dbed776-211d-4151-bfb0-21c51d864659" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/2022_11_10_8_58,_체크아웃_전에_커밋되지_않은_변경_내용_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/2022_11_10_8_58_________Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +79,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/신현재/Desktop/코딩/[Inflearn]/PracSpringSocketio",
+    "last_opened_file_path": "C:/Users/신현재/Desktop/코딩/[Inflearn]/ttinder/ttinder",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -182,6 +183,11 @@
       <workItem from="1668408210161" duration="599000" />
       <workItem from="1668429415016" duration="1659000" />
       <workItem from="1668437009202" duration="615000" />
+      <workItem from="1668671796311" duration="4101000" />
+      <workItem from="1668677863696" duration="46000" />
+      <workItem from="1668680574817" duration="97000" />
+      <workItem from="1668713095997" duration="2304000" />
+      <workItem from="1668859900986" duration="27000" />
     </task>
     <servers />
   </component>
