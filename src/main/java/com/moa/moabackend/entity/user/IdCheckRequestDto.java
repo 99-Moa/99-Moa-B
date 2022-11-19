@@ -12,7 +12,7 @@ import javax.validation.constraints.Pattern;
 public class IdCheckRequestDto {
 
     @NotBlank(message="아이디는 필수 입력값입니다.")
-    @Pattern(regexp = "^[.]]{4,16}$",
+    @Pattern(regexp = "^[a-zA-Z0-9]{4,16}$",
            message = "아이디는 4자 ~ 16자의 아이디여야 합니다.")
     private String userId;
 

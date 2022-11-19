@@ -1,5 +1,6 @@
 package com.moa.moabackend.security.user;
 
+import com.moa.moabackend.entity.user.Kakao;
 import com.moa.moabackend.entity.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,7 +9,17 @@ import java.util.Collection;
 
 public class UserDetailsImpl implements UserDetails {
 
-    private User user;
+    public UserDetailsImpl (User user){
+        this.user=user;
+    }
+
+    public UserDetailsImpl (Kakao kakao){
+        this.kakao=kakao;
+    }
+
+    private Kakao kakao;
+
+    private  User user;
 
     public User getUser() {
         return this.user;

@@ -1,6 +1,7 @@
 package com.moa.moabackend.security.user;
 
 import com.moa.moabackend.entity.user.User;
+import com.moa.moabackend.repository.KakaoRepository;
 import com.moa.moabackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,12 +19,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
 
         User user = userRepository.findByUserId(userId).orElseThrow(
-                () -> new RuntimeException("Not Found Account")
-        );
+                () -> new RuntimeException("Not Found Account"));
 
-        UserDetailsImpl userDetails = new UserDetailsImpl();
-        userDetails.setUser(user);
 
-        return userDetails;
+        return new UserDetailsImpl(user);
     }
 }
