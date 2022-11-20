@@ -19,14 +19,14 @@ public class GroupController {
 
     // 친구 그룹 생성
     @PostMapping("/group")
-    public ResponseDto<String> addGroup(@RequestBody GroupRequestDto requestDto) {
-        return groupService.addGroup(requestDto);
+    public ResponseDto<String> addGroup(@RequestBody GroupRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return groupService.addGroup(requestDto, userDetails.getUser());
     }
-    
+
     // 친구 그룹 목록 조회
     @GetMapping("/group")
-    public ResponseDto<List<GroupResponseDto>> getAllGroups() {
-        return groupService.getAllGroups();
+    public ResponseDto<List<GroupResponseDto>> getAllGroups(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return groupService.getAllGroups(userDetails.getUser());
     }
 
     // 친구 그룹 목록 하나 조회
