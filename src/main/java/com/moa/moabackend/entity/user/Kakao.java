@@ -16,19 +16,19 @@ public class Kakao extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true /*nullable = false*/)
     private String kakaoEmail;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true /*nullable = false*/)
     private String username;
 
     @Column(unique = true)
     private String nickname;
 
-    @Column(nullable = false)
+    @Column(/*nullable = false*/)
     private String profile;
 
-    @Column(nullable = false)
+    @Column(/*nullable = false*/)
     private String encodedPassword;
 
 

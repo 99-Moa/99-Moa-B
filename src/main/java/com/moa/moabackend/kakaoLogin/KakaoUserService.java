@@ -32,6 +32,7 @@ public class KakaoUserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final KakaoRepository kakaoRepository;
+    private final JwtUtil jwtUtil;
     public SocialUserInfoDto kakaoLogin(String code, TokenDto tokenDto, HttpServletResponse response) throws JsonProcessingException {
         // 1. "인가 코드"로 "액세스 토큰" 요청
         String accessToken = getAccessToken(code);
@@ -47,6 +48,10 @@ public class KakaoUserService {
 
         // 5. response Header에 JWT 토큰 추가
         kakaoUsersAuthorizationInput(response, tokenDto);
+        // 토큰 생성 후 tokenDto 에 저장
+        TokenDto token = jwtUtil.createAllToken(kakaoUserInfo.getEmail());
+        response.addHeader(JwtUtil.ACCESS_TOKEN, token.getAccessToken());
+        response.addHeader(JwtUtil.REFRESH_TOKEN, token.getRefreshToken());
         return kakaoUserInfo;
     }
 
@@ -55,6 +60,7 @@ public class KakaoUserService {
         // HTTP Header 생성
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+
 
         // HTTP Body 생성
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
@@ -96,16 +102,19 @@ public class KakaoUserService {
                 kakaoUserInfoRequest,
                 String.class
         );
-
         // responseBody에 있는 정보를 꺼냄
         String responseBody = response.getBody();
+
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(responseBody);
 
         Long id = jsonNode.get("id").asLong();
+
         String email = jsonNode.get("kakao_account").get("email").asText();
-        String nickname = jsonNode.get("properties")
-                .get("nickname").asText();
+
+        String nickname = jsonNode.get("properties").get("nickname").asText();
+
+
 
         return new SocialUserInfoDto(id, nickname, email);
     }
@@ -145,6 +154,7 @@ public class KakaoUserService {
     private void kakaoUsersAuthorizationInput(HttpServletResponse response, TokenDto tokenDto) {
         response.addHeader(JwtUtil.ACCESS_TOKEN, tokenDto.getAccessToken());
         response.addHeader(JwtUtil.REFRESH_TOKEN, tokenDto.getRefreshToken());
-    }
 
+    }
 }
+
