@@ -20,4 +20,6 @@ public class ScheduleRequestDto {
     private String content;
 
 //    private List<String> userNameList;
+
+//    private List<String> userNameList;
 }

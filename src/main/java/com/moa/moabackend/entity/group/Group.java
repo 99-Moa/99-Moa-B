@@ -31,6 +31,7 @@ public class Group {
     @Convert(converter = StringListConverter.class)
     @Column
     private List<String> userList;
+    // List<User> users
 
     // 그룹에 참가한 사람 수
     @Column

@@ -1,5 +1,6 @@
 package com.moa.moabackend.entity.schedule;
 
+import com.moa.moabackend.entity.group.Group;
 import com.moa.moabackend.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,6 +46,10 @@ public class Schedule {
 
 //    @OneToMany
 //    private List<String> userNameList;
+
+    @OneToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
 
     public void update(ScheduleRequestDto requestDto) {
         this.meetingDate = LocalDate.parse(requestDto.getMeetingDate());

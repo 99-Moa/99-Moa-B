@@ -1,5 +1,6 @@
 package com.moa.moabackend.entity.schedule;
 
+import com.moa.moabackend.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,6 +45,8 @@ public class ScheduleResponseDto {
         private String location;
 
         private String content;
+
+        private List<User> userList;
 
 //    private List<String> userNameList;
     }
