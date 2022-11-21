@@ -36,6 +36,12 @@ public class UserController {
         return userService.signin(loginRequestDto, response);
     }
 
+    // 로그아웃
+    @PostMapping("/signout")
+    public ResponseDto<String> signout(@AuthenticationPrincipal UserDetailsImpl userDetails){
+        return userService.signout(userDetails.getUser().getUserId());
+    }
+
     // 토큰 재발행
     @GetMapping("/issue/token")
     public UserResponseDto issuedToken(@AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletResponse response){

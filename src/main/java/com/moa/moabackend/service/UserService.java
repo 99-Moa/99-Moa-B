@@ -96,6 +96,23 @@ public class UserService {
         );
     }
 
+    // 로그아웃
+    @Transactional
+    public ResponseDto<String> signout(String userId){
+        // 해당 유저의 refreshtoken 이 없을 경우
+        if (refreshTokenRepository.findByAccountUserId(userId).isEmpty()){
+            return ResponseDto.fail(404,"Bad Request", "로그인을 해주세요.");
+        }
+        // 자신의 refreshtoken 만 삭제 가능
+        String userIdrepo = refreshTokenRepository.findByAccountUserId(userId).get().getAccountUserId();
+        if(userId.equals(userIdrepo)){
+            refreshTokenRepository.deleteByAccountUserId(userId);
+            return ResponseDto.success("로그아웃 성공");
+        }else{
+            return ResponseDto.fail(401,"Unauthorized","refreshtoken 삭제 권한이 없습니다.");
+        }
+    }
+
     // 친구 찾기
     public ResponseDto<FriendResponseDto.SearchFriendResDto> searchFriend(User user, String friendUsername ) {
 
