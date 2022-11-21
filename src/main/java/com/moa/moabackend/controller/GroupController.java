@@ -25,13 +25,13 @@ public class GroupController {
 
     // 친구 그룹 목록 조회
     @GetMapping("/group")
-    public ResponseDto<List<GroupResponseDto>> getAllGroups(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+    public ResponseDto<List<GroupResponseDto.groupList>> getAllGroups(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         return groupService.getAllGroups(userDetails.getUser());
     }
 
     // 친구 그룹 목록 하나 조회
     @GetMapping("/group/{groupId}")
-    public ResponseDto<GroupResponseDto> getOneGroup(@PathVariable Long groupId) {
+    public ResponseDto<GroupResponseDto.groupDetail> getOneGroup(@PathVariable Long groupId) {
         return groupService.getOneGroup(groupId);
     }
 }

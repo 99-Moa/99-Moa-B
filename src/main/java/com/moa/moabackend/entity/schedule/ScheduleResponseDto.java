@@ -50,7 +50,7 @@ public class ScheduleResponseDto {
 
         private String content;
 
-        private List<User> userList;
+        private List<User> users;
 
 //    private List<String> userNameList;
     }

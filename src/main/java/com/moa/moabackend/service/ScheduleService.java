@@ -39,8 +39,31 @@ public class ScheduleService {
         return ResponseDto.success(scheduleResponseLIst);
     }
 
-    // 일정 생성
-    public ResponseDto<String> addSchedule(Long groupId, ScheduleRequestDto requestDto, User user) {
+    // 일정 생성 (개인)
+    public ResponseDto<String> addSchedulePersonal(ScheduleRequestDto requestDto, User user) {
+        List<String> userList = new ArrayList<>();
+        userList.add(user.getUserName());
+        Group group = Group.builder()
+                .users(userList)
+                .userNum(1)
+                .build();
+        Schedule schedule = Schedule.builder()
+                .startDate(LocalDate.parse(requestDto.getStartDate()))
+                .endDate(LocalDate.parse(requestDto.getEndDate()))
+                .title(requestDto.getTitle())
+                .startTime(LocalTime.parse(requestDto.getStartTime()))
+                .endTime(LocalTime.parse(requestDto.getEndTime()))
+                .location(requestDto.getLocation())
+                .content(requestDto.getContent())
+                .user(user)
+                .group(group)
+                .build();
+        scheduleRepository.save(schedule);
+        return ResponseDto.success("일정 등록 성공");
+    }
+
+    // 일정 생성 (그룹)
+    public ResponseDto<String> addScheduleGroup(Long groupId, ScheduleRequestDto requestDto, User user) {
         Group group = groupRepository.findById(groupId).get();
 //        if (groupId == null) {
 //            Group group = null;
@@ -84,10 +107,13 @@ public class ScheduleService {
     public ResponseDto<ScheduleResponseDto.ScheduleDetail> getOneSchedule(Long scheduleId) {
         Schedule schedule = scheduleRepository.findById(scheduleId).get();
         List<User> userResponseList = new ArrayList<>();
+
         for (int i = 0; i <= schedule.getGroup().getUserNum()-1; i ++) {
-            User user = userRepository.findByUserName(schedule.getGroup().getUserList().get(i)).get();
+            User user = userRepository.findByUserName(schedule.getGroup().getUsers().get(i)).get();
             userResponseList.add(user);
         }
+
+//        userResponseList.add(schedule.getUser());
         return ResponseDto.success(
                 ScheduleResponseDto.ScheduleDetail.builder()
                         .startDate(schedule.getStartDate())
@@ -99,7 +125,7 @@ public class ScheduleService {
                         .content(schedule.getContent())
 //                        .userNameList(schedule.getUserNameList())
 //                        .userList(schedule.getGroup().getUserList())
-                        .userList(userResponseList)
+                        .users(userResponseList)
                         .build()
         );
     }

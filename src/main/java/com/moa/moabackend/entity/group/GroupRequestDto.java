@@ -8,6 +8,6 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class GroupRequestDto {
-    private List<String> userList;
+    private List<String> users;
     private String groupName;
 }
