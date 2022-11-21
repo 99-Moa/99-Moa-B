@@ -100,8 +100,11 @@ public class UserService {
     public ResponseDto<FriendResponseDto.SearchFriendResDto> searchFriend(User user, String friendUsername ) {
 
         // 친구에 해당하는 존재여부 -> Null값 예외처리 추가
-        User userFriend = userRepository.findByUserName((friendUsername)).orElseThrow();
-        // 이미 추가된 친구 제외
+        if (userRepository.findByUserName((friendUsername)).isEmpty()){
+            return ResponseDto.fail(400, "Bad Request", "등록되지 않은 유저입니다.");
+        }
+        User userFriend = userRepository.findByUserName(friendUsername).get();
+            // 이미 추가된 친구 제외
         if (friendService.checkMyFriend(user.getUserId(), friendUsername)) {
             return ResponseDto.fail(400, "Bad Request", "이미 등록된 친구입니다.");
             // 자기 자신을 추가
