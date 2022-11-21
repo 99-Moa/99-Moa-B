@@ -25,14 +25,21 @@ public class Schedule {
     private Long id;
 
     @Column
-    private LocalDate meetingDate;
+    private LocalDate startDate;
+
+    @Column
+    private LocalDate endDate;
 
     @Column
     private String title;
 
     @Column
     @DateTimeFormat(pattern = "HH:mm")
-    private LocalTime meetingTime;
+    private LocalTime startTime;
+
+    @Column
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime endTime;
 
     @Column
     private String location;
@@ -52,9 +59,11 @@ public class Schedule {
     private Group group;
 
     public void update(ScheduleRequestDto requestDto) {
-        this.meetingDate = LocalDate.parse(requestDto.getMeetingDate());
+        this.startDate = LocalDate.parse(requestDto.getStartDate());
+        this.endDate = LocalDate.parse(requestDto.getEndDate());
         this.title = requestDto.getTitle();
-        this.meetingTime = LocalTime.parse(requestDto.getMeetingTime());
+        this.startTime = LocalTime.parse(requestDto.getStartTime());
+        this.endTime = LocalTime.parse(requestDto.getEndTime());
         this.location = requestDto.getLocation();
         this.content = requestDto.getContent();
     }

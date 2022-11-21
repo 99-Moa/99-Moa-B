@@ -32,7 +32,7 @@ public class ScheduleService {
         for (Schedule schedule : schedules) {
             scheduleResponseLIst.add(
                     ScheduleResponseDto.Calendar.builder()
-                            .meetingDate(schedule.getMeetingDate())
+                            .startDate(schedule.getStartDate())
                             .build()
             );
         }
@@ -42,14 +42,21 @@ public class ScheduleService {
     // 일정 생성
     public ResponseDto<String> addSchedule(Long groupId, ScheduleRequestDto requestDto, User user) {
         Group group = groupRepository.findById(groupId).get();
+//        if (groupId == null) {
+//            Group group = null;
+//        } else {
+//            Group group = groupRepository.findById(groupId).get();
+//        }
+
         Schedule schedule = Schedule.builder()
-                .meetingDate(LocalDate.parse(requestDto.getMeetingDate()))
+                .startDate(LocalDate.parse(requestDto.getStartDate()))
+                .endDate(LocalDate.parse(requestDto.getEndDate()))
                 .title(requestDto.getTitle())
-                .meetingTime(LocalTime.parse(requestDto.getMeetingTime()))
+                .startTime(LocalTime.parse(requestDto.getStartTime()))
+                .endTime(LocalTime.parse(requestDto.getEndTime()))
                 .location(requestDto.getLocation())
                 .content(requestDto.getContent())
                 .user(user)
-//                .userNameList(requestDto.getUserNameList())
                 .group(group)
                 .build();
         scheduleRepository.save(schedule);
@@ -65,7 +72,7 @@ public class ScheduleService {
             scheduleResponseLIst.add(
                     ScheduleResponseDto.ScheduleList.builder()
                             .id(schedule.getId())
-                            .meetingDate(schedule.getMeetingDate())
+                            .startDate(schedule.getStartDate())
                             .title(schedule.getTitle())
                             .build()
             );
@@ -83,9 +90,11 @@ public class ScheduleService {
         }
         return ResponseDto.success(
                 ScheduleResponseDto.ScheduleDetail.builder()
-                        .meetingDate(schedule.getMeetingDate())
+                        .startDate(schedule.getStartDate())
+                        .endDate(schedule.getEndDate())
                         .title(schedule.getTitle())
-                        .meetingTime(schedule.getMeetingTime())
+                        .startTime(schedule.getStartTime())
+                        .endTime(schedule.getEndTime())
                         .location(schedule.getLocation())
                         .content(schedule.getContent())
 //                        .userNameList(schedule.getUserNameList())

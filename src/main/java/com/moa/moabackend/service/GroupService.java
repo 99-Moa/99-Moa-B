@@ -52,6 +52,7 @@ public class GroupService {
 
                     groupResponseList.add(
                             GroupResponseDto.builder()
+                                    .groupId(group.getId())
                                     .userList(group.getUserList())
                                     .groupName(group.getGroupName())
                                     .userNum(group.getUserNum())
