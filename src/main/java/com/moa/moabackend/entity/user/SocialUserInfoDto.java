@@ -10,6 +10,7 @@ public class SocialUserInfoDto {
     private String nickname;
     private String email;
 
+
     public SocialUserInfoDto(Long id, String nickname, String email) {
         this.id = id;
         this.nickname = nickname;

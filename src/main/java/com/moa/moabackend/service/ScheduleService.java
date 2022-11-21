@@ -1,10 +1,12 @@
 package com.moa.moabackend.service;
 
 import com.moa.moabackend.entity.ResponseDto;
+import com.moa.moabackend.entity.group.Group;
 import com.moa.moabackend.entity.schedule.Schedule;
 import com.moa.moabackend.entity.schedule.ScheduleRequestDto;
 import com.moa.moabackend.entity.schedule.ScheduleResponseDto;
 import com.moa.moabackend.entity.user.User;
+import com.moa.moabackend.repository.GroupRepository;
 import com.moa.moabackend.repository.ScheduleRepository;
 import com.moa.moabackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ import java.util.Optional;
 public class ScheduleService {
     private final ScheduleRepository scheduleRepository;
     private final UserRepository userRepository;
+    private final GroupRepository groupRepository;
 
     // calendar
     public ResponseDto<List<ScheduleResponseDto.Calendar>> getCalendar(User user) {
@@ -29,23 +32,55 @@ public class ScheduleService {
         for (Schedule schedule : schedules) {
             scheduleResponseLIst.add(
                     ScheduleResponseDto.Calendar.builder()
-                            .meetingDate(schedule.getMeetingDate())
+                            .startDate(schedule.getStartDate())
                             .build()
             );
         }
         return ResponseDto.success(scheduleResponseLIst);
     }
 
-    // 일정 생성
-    public ResponseDto<String> addSchedule(ScheduleRequestDto requestDto, User user) {
+    // 일정 생성 (개인)
+    public ResponseDto<String> addSchedulePersonal(ScheduleRequestDto requestDto, User user) {
+        List<String> userList = new ArrayList<>();
+        userList.add(user.getUserName());
+        Group group = Group.builder()
+                .users(userList)
+                .userNum(1)
+                .build();
         Schedule schedule = Schedule.builder()
-                .meetingDate(LocalDate.parse(requestDto.getMeetingDate()))
+                .startDate(LocalDate.parse(requestDto.getStartDate()))
+                .endDate(LocalDate.parse(requestDto.getEndDate()))
                 .title(requestDto.getTitle())
-                .meetingTime(LocalTime.parse(requestDto.getMeetingTime()))
+                .startTime(LocalTime.parse(requestDto.getStartTime()))
+                .endTime(LocalTime.parse(requestDto.getEndTime()))
                 .location(requestDto.getLocation())
                 .content(requestDto.getContent())
                 .user(user)
-//                .userNameList(requestDto.getUserNameList())
+                .group(group)
+                .build();
+        scheduleRepository.save(schedule);
+        return ResponseDto.success("일정 등록 성공");
+    }
+
+    // 일정 생성 (그룹)
+    public ResponseDto<String> addScheduleGroup(Long groupId, ScheduleRequestDto requestDto, User user) {
+        Group group = groupRepository.findById(groupId).get();
+//        if (groupId == null) {
+//            Group group = null;
+//        } else {
+//            Group group = groupRepository.findById(groupId).get();
+//        }
+
+        Schedule schedule = Schedule.builder()
+                .startDate(LocalDate.parse(requestDto.getStartDate()))
+                .endDate(LocalDate.parse(requestDto.getEndDate()))
+                .title(requestDto.getTitle())
+                .startTime(LocalTime.parse(requestDto.getStartTime()))
+                .endTime(LocalTime.parse(requestDto.getEndTime()))
+                .location(requestDto.getLocation())
+                .content(requestDto.getContent())
+                .user(user)
+                .group(group)
                 .build();
         scheduleRepository.save(schedule);
         return ResponseDto.success("일정 등록 성공");
@@ -60,7 +95,7 @@ public class ScheduleService {
             scheduleResponseLIst.add(
                     ScheduleResponseDto.ScheduleList.builder()
                             .id(schedule.getId())
-                            .meetingDate(schedule.getMeetingDate())
+                            .startDate(schedule.getStartDate())
                             .title(schedule.getTitle())
                             .build()
             );
@@ -71,14 +106,26 @@ public class ScheduleService {
     // 일정 상세 조회
     public ResponseDto<ScheduleResponseDto.ScheduleDetail> getOneSchedule(Long scheduleId) {
         Schedule schedule = scheduleRepository.findById(scheduleId).get();
+        List<User> userResponseList = new ArrayList<>();
+
+        for (int i = 0; i <= schedule.getGroup().getUserNum()-1; i ++) {
+            User user = userRepository.findByUserName(schedule.getGroup().getUsers().get(i)).get();
+            userResponseList.add(user);
+        }
+
+//        userResponseList.add(schedule.getUser());
         return ResponseDto.success(
                 ScheduleResponseDto.ScheduleDetail.builder()
-                        .meetingDate(schedule.getMeetingDate())
+                        .startDate(schedule.getStartDate())
+                        .endDate(schedule.getEndDate())
                         .title(schedule.getTitle())
-                        .meetingTime(schedule.getMeetingTime())
+                        .startTime(schedule.getStartTime())
+                        .endTime(schedule.getEndTime())
                         .location(schedule.getLocation())
                         .content(schedule.getContent())
 //                        .userNameList(schedule.getUserNameList())
+//                        .userList(schedule.getGroup().getUserList())
+                        .users(userResponseList)
                         .build()
         );
     }
