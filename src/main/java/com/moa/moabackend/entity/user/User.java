@@ -16,13 +16,13 @@ public class User extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
+//    @NotBlank
     private String userId;
-    @NotBlank
+//    @NotBlank
     private String password;
-    @NotBlank
+//    @NotBlank
     private String passwordCheck;
-    @NotBlank
+//    @NotBlank
     private String userName;
 
     private String imgUrl = "https://yuns8708bucket.s3.ap-northeast-2.amazonaws.com/images/Icon_Profile.png";
@@ -32,6 +32,11 @@ public class User extends Timestamped {
         this.password = userRequestDto.getPassword();
         this.passwordCheck = userRequestDto.getPasswordCheck();
         this.userName = userRequestDto.getUserName();
+    }
+
+    public User(String kakaouserId) {
+        this.userId = kakaouserId;
+        this.userName = kakaouserId;
     }
 
 

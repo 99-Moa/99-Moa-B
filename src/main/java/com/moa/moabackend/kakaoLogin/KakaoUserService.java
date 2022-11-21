@@ -2,8 +2,6 @@ package com.moa.moabackend.kakaoLogin;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.moa.moabackend.entity.user.Kakao;
-import com.moa.moabackend.entity.user.SocialUserInfoDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.moa.moabackend.entity.user.User;
 import com.moa.moabackend.jwt.JwtUtil;
@@ -41,13 +39,15 @@ public class KakaoUserService {
         SocialUserInfoDto kakaoUserInfo = getKakaoUserInfo(accessToken);
 
         // 3. 카카오ID로 회원가입 처리
-        Kakao kakaoUser = registerKakaoUserIfNeed(kakaoUserInfo);
+//        Kakao kakaoUser = registerKakaoUserIfNeed(kakaoUserInfo);
+        User kakaoUser = registerKakaoUserIfNeed(kakaoUserInfo);
 
         // 4. 강제 로그인 처리
         Authentication authentication = forceLogin(kakaoUser);
 
         // 5. response Header에 JWT 토큰 추가
         kakaoUsersAuthorizationInput(response, tokenDto);
+
         // 토큰 생성 후 tokenDto 에 저장
         TokenDto token = jwtUtil.createAllToken(kakaoUserInfo.getEmail());
         response.addHeader(JwtUtil.ACCESS_TOKEN, token.getAccessToken());
@@ -119,31 +119,53 @@ public class KakaoUserService {
         return new SocialUserInfoDto(id, nickname, email);
     }
 
-    // 3. 카카오ID로 회원가입 처리
-    private Kakao registerKakaoUserIfNeed (SocialUserInfoDto kakaoUserInfo) {
-        // DB 에 중복된 email이 있는지 확인
-        String kakaoEmail = kakaoUserInfo.getEmail();
-        String nickname = kakaoUserInfo.getNickname();
-        Kakao kakaoUser = kakaoRepository.findByUsername(kakaoEmail)
+//    // 3. 카카오ID로 회원가입 처리
+//    private Kakao registerKakaoUserIfNeed (SocialUserInfoDto kakaoUserInfo) {
+//        // DB 에 중복된 email이 있는지 확인
+//        String kakaoEmail = kakaoUserInfo.getEmail();
+//        String nickname = kakaoUserInfo.getNickname();
+//        Kakao kakaoUser = kakaoRepository.findByUsername(kakaoEmail)
+//                .orElse(null);
+//
+//        if (kakaoUser == null) {
+//            // 회원가입
+//            // password: random UUID
+//            String password = UUID.randomUUID().toString();
+//            String encodedPassword = passwordEncoder.encode(password);
+//
+//            String profile = "https://ossack.s3.ap-northeast-2.amazonaws.com/basicprofile.png";
+//
+//            kakaoUser = new Kakao(kakaoEmail, nickname, profile, encodedPassword);
+//            kakaoRepository.save(kakaoUser);
+//
+//        }
+//        return kakaoUser;
+//    }
+
+    private User registerKakaoUserIfNeed (SocialUserInfoDto kakaoUserInfo) {
+// DB 에 중복된 email이 있는지 확인
+        String kakaouserId = kakaoUserInfo.getId().toString();
+// String nickname = kakaoUserInfo.getNickname();
+        User kakaoUser = userRepository.findByUserName(kakaouserId)
                 .orElse(null);
 
         if (kakaoUser == null) {
-            // 회원가입
-            // password: random UUID
+// 회원가입
+// password: random UUID
             String password = UUID.randomUUID().toString();
             String encodedPassword = passwordEncoder.encode(password);
 
             String profile = "https://ossack.s3.ap-northeast-2.amazonaws.com/basicprofile.png";
 
-            kakaoUser = new Kakao(kakaoEmail, nickname, profile, encodedPassword);
-            kakaoRepository.save(kakaoUser);
+            kakaoUser = new User(kakaouserId);
+            userRepository.save(kakaoUser);
 
         }
         return kakaoUser;
     }
 
     // 4. 강제 로그인 처리
-    private Authentication forceLogin(Kakao kakaoUser) {
+    private Authentication forceLogin(User kakaoUser) {
         UserDetails userDetails = new UserDetailsImpl(kakaoUser);
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);

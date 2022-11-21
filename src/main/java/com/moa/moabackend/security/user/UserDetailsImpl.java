@@ -1,6 +1,6 @@
 package com.moa.moabackend.security.user;
 
-import com.moa.moabackend.entity.user.Kakao;
+import com.moa.moabackend.kakaoLogin.Kakao;
 import com.moa.moabackend.entity.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

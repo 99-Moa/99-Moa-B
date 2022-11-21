@@ -1,4 +1,4 @@
-package com.moa.moabackend.entity.user;
+package com.moa.moabackend.kakaoLogin;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

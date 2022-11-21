@@ -1,4 +1,4 @@
-package com.moa.moabackend.entity.user;
+package com.moa.moabackend.kakaoLogin;
 
 import com.moa.moabackend.entity.Timestamped;
 import lombok.Data;
