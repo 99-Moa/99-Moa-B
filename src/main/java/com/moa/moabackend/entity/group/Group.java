@@ -26,13 +26,12 @@ public class Group {
     private Schedule schedule;
 
     @Column
-    private String userName;
-
-//    @Column
-//    private String groupName;
+    private String groupName;
 
     @Convert(converter = StringListConverter.class)
-    private List<String> userList;
+    @Column
+    private List<String> users;
+    // List<User> users
 
     // 그룹에 참가한 사람 수
     @Column

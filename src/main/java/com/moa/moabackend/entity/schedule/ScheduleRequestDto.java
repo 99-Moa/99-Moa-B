@@ -9,15 +9,17 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class ScheduleRequestDto {
-    private String meetingDate;
+    private String startDate;
+
+    private String endDate;
 
     private String title;
 
-    private String meetingTime;
+    private String startTime;
+
+    private String endTime;
 
     private String location;
 
     private String content;
-
-//    private List<String> userNameList;
 }

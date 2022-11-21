@@ -22,10 +22,16 @@ public class ScheduleController {
         return scheduleService.getCalendar(userDetails.getUser());
     }
 
-    // 일정 생성
+    // 일정 생성 (개인)
     @PostMapping("/schedule")
-    public ResponseDto<String> addSchedule(@RequestBody ScheduleRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return scheduleService.addSchedule(requestDto, userDetails.getUser());
+    public ResponseDto<String> addSchedulePersonal(@RequestBody ScheduleRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return scheduleService.addSchedulePersonal(requestDto, userDetails.getUser());
+    }
+
+    // 일정 생성 (그룹)
+    @PostMapping("/schedule/{groupId}")
+    public ResponseDto<String> addScheduleGroup(@PathVariable Long groupId, @RequestBody ScheduleRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return scheduleService.addScheduleGroup(groupId, requestDto, userDetails.getUser());
     }
 
     // 일정 목록 조회
