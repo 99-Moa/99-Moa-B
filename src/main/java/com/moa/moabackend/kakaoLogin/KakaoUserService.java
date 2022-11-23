@@ -37,7 +37,7 @@ public class KakaoUserService {
     private final RefreshTokenRepository refreshTokenRepository;
 
 
-    public SocialUserInfoDto kakaoLogin(String code, TokenDto tokenDto, HttpServletResponse response) throws JsonProcessingException {
+    public SocialUserInfoDto kakaoLogin(String code, HttpServletResponse response) throws JsonProcessingException {
         // 1. "인가 코드"로 "액세스 토큰" 요청
         String accessToken = getAccessToken(code);
 
@@ -52,27 +52,19 @@ public class KakaoUserService {
         Authentication authentication = forceLogin(kakaoUser);
 
         // 5. response Header에 JWT 토큰 추가
-<<<<<<< HEAD
-        // 토큰 생성 후 tokenDto 에 저장
-        TokenDto token = jwtUtil.createAllToken(kakaoUserInfo.getEmail());
-        kakaoUsersAuthorizationInput(response, token);
-
-=======
-        TokenDto token = jwtUtil.createAllToken(kakaoUserInfo.getId().toString());   /*-*-*-*-*-*-*-*-*-*------------*/
-
+        TokenDto tokenDto = jwtUtil.createAllToken(kakaoUserInfo.getId().toString());
         Optional<RefreshToken> refreshToken = refreshTokenRepository.findByAccountUserId(kakaoUser.getId().toString());
 
         if (refreshToken.isPresent()) {
             refreshTokenRepository.save(refreshToken.get().updateToken(tokenDto.getRefreshToken()));
         } else {
-            RefreshToken newToken = new RefreshToken(tokenDto.getRefreshToken(), kakaoUser.getId().toString());
+            RefreshToken newToken = new RefreshToken(tokenDto.getRefreshToken(), kakaoUserInfo.getId().toString());
             refreshTokenRepository.save(newToken);
         }
 
-        kakaoUsersAuthorizationInput(response, token);
+        setHeader(response, tokenDto);
 
         // 토큰 생성 후 tokenDto 에 저장
->>>>>>> 903ba45952a1a5ce2941687e31944b3f5ff02e47
         return kakaoUserInfo;
     }
 
@@ -167,7 +159,7 @@ public class KakaoUserService {
 // DB 에 중복된 email이 있는지 확인
         String kakaouserId = kakaoUserInfo.getId().toString();
 // String nickname = kakaoUserInfo.getNickname();
-        User kakaoUser = userRepository.findByUserName(kakaouserId)
+        User kakaoUser = userRepository.findByUserId(kakaouserId)
                 .orElse(null);
 
         if (kakaoUser == null) {
@@ -178,7 +170,7 @@ public class KakaoUserService {
 
             String profile = "https://ossack.s3.ap-northeast-2.amazonaws.com/basicprofile.png";
 
-            kakaoUser = new User(kakaouserId);
+            kakaoUser = new User(kakaouserId, encodedPassword, encodedPassword);
             userRepository.save(kakaoUser);
 
         }
@@ -194,7 +186,7 @@ public class KakaoUserService {
     }
 
     // 5. response Header에 JWT 토큰 추가
-    private void kakaoUsersAuthorizationInput(HttpServletResponse response, TokenDto tokenDto) {
+    private void setHeader(HttpServletResponse response, TokenDto tokenDto) {
         response.addHeader(JwtUtil.ACCESS_TOKEN, tokenDto.getAccessToken());
         response.addHeader(JwtUtil.REFRESH_TOKEN, tokenDto.getRefreshToken());
 
