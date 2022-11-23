@@ -54,6 +54,7 @@ public class ScheduleService {
                 .startTime(LocalTime.parse(requestDto.getStartTime()))
                 .endTime(LocalTime.parse(requestDto.getEndTime()))
                 .location(requestDto.getLocation())
+                .locationRoadName(requestDto.getLocationRoadName())
                 .content(requestDto.getContent())
                 .user(user)
                 .group(group)
@@ -78,6 +79,7 @@ public class ScheduleService {
                 .startTime(LocalTime.parse(requestDto.getStartTime()))
                 .endTime(LocalTime.parse(requestDto.getEndTime()))
                 .location(requestDto.getLocation())
+                .locationRoadName(requestDto.getLocationRoadName())
                 .content(requestDto.getContent())
                 .user(user)
                 .group(group)
@@ -97,6 +99,7 @@ public class ScheduleService {
                             .id(schedule.getId())
                             .startDate(schedule.getStartDate())
                             .title(schedule.getTitle())
+                            .startTime(schedule.getStartTime())
                             .build()
             );
         }
@@ -122,6 +125,7 @@ public class ScheduleService {
                         .startTime(schedule.getStartTime())
                         .endTime(schedule.getEndTime())
                         .location(schedule.getLocation())
+                        .locationRoadName(schedule.getLocationRoadName())
                         .content(schedule.getContent())
 //                        .userNameList(schedule.getUserNameList())
 //                        .userList(schedule.getGroup().getUserList())
