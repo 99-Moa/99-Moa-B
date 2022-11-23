@@ -54,6 +54,8 @@ public class ScheduleResponseDto {
 
         private String location;
 
+        private String locationRoadName;
+
         private String content;
 
         private List<User> users;
