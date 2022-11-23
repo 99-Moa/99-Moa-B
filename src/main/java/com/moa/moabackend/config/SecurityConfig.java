@@ -81,7 +81,7 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.DELETE, "/schedules/{scheduleId}").authenticated()
 
                 // 파일 업로드 권한 설정?
-//                .anyRequest().permitAll()
+                .anyRequest().permitAll()
                 .and().addFilterBefore(new JwtAuthFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
