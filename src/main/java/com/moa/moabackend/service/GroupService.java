@@ -18,6 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class GroupService {
     private final GroupRepository groupRepository;
+    private final UserRepository userRepository;
 
     // 그룹 생성
     public ResponseDto<String> addGroup(GroupRequestDto requestDto, User user) {
@@ -41,18 +42,38 @@ public class GroupService {
     public ResponseDto<List<GroupResponseDto.groupList>> getAllGroups(User user) {
         List<GroupResponseDto.groupList> groupResponseList = new ArrayList<>();
         List<Group> groups = groupRepository.findAll();
+        List<String> imgList = new ArrayList<>();
 
         for (Group group : groups) {
             for (int i = 0; i <= group.getUsers().size() - 1; i++) {
+                User findUser = userRepository.findByUserName(group.getUsers().get(i)).get();
+                imgList.add(findUser.getImgUrl());
                 if (group.getUsers().get(i).equals(user.getUserName())) {
-                    groupResponseList.add(
-                            GroupResponseDto.groupList.builder()
-                                    .groupId(group.getId())
-                                    .groupName(group.getGroupName())
-                                    .userNum(group.getUserNum())
-                                    .build()
-                    );
-
+                    if (group.getSchedule() == null) {
+                        groupResponseList.add(
+                                GroupResponseDto.groupList.builder()
+                                        .groupId(group.getId())
+                                        .groupName(group.getGroupName())
+                                        .userNum(group.getUserNum())
+                                        .startDate(null)
+                                        .startTime(null)
+                                        .location(null)
+                                        .imgUrls(imgList)
+                                        .build()
+                        );
+                    } else {
+                        groupResponseList.add(
+                                GroupResponseDto.groupList.builder()
+                                        .groupId(group.getId())
+                                        .groupName(group.getGroupName())
+                                        .userNum(group.getUserNum())
+                                        .startDate(group.getSchedule().getStartDate())
+                                        .startTime(group.getSchedule().getStartTime())
+                                        .location(group.getSchedule().getLocation())
+                                        .imgUrls(imgList)
+                                        .build()
+                        );
+                    }
                 }
 
             }

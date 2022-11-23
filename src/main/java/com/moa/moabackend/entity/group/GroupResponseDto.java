@@ -1,10 +1,11 @@
 package com.moa.moabackend.entity.group;
 
-import com.moa.moabackend.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -19,6 +20,10 @@ public class GroupResponseDto {
         private Long groupId;
         private String groupName;
         private int userNum;
+        private LocalDate startDate;
+        private String location;
+        private LocalTime startTime;
+        private List<String> imgUrls;
     }
 
     @AllArgsConstructor
