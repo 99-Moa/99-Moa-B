@@ -32,7 +32,7 @@ public class MypageService {
         }
         
         // 공백일 시 imgUrl 그대로
-        if (imgUrl.isEmpty()) {
+        if (imgUrl==null) {
             requestDto.setImgUrl(user.getImgUrl());
         } else {
             // 이미지 업로드 .upload(파일, 경로)
