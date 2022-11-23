@@ -30,6 +30,8 @@ public class ScheduleResponseDto {
         private LocalDate startDate;
 
         private String title;
+
+        private LocalTime startTime;
     }
 
     @Getter

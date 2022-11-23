@@ -97,6 +97,7 @@ public class ScheduleService {
                             .id(schedule.getId())
                             .startDate(schedule.getStartDate())
                             .title(schedule.getTitle())
+                            .startTime(schedule.getStartTime())
                             .build()
             );
         }
