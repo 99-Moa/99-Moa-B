@@ -16,7 +16,7 @@ public class SocialLoginController {
 
     // 카카오 로그인
     @GetMapping("/kakao")
-    public SocialUserInfoDto kakaoLogin(@RequestParam(name="code") String code, TokenDto tokenDto, HttpServletResponse response) throws JsonProcessingException {
-        return kakaoUserService.kakaoLogin(code, tokenDto, response);
+    public SocialUserInfoDto kakaoLogin(@RequestParam(name="code") String code, HttpServletResponse response) throws JsonProcessingException {
+        return kakaoUserService.kakaoLogin(code, response);
     }
 }

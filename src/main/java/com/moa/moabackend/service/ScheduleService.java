@@ -98,6 +98,8 @@ public class ScheduleService {
                             .startDate(schedule.getStartDate())
                             .title(schedule.getTitle())
                             .startTime(schedule.getStartTime())
+                            .endDate(schedule.getEndDate())
+                            .endTime(schedule.getEndTime())
                             .build()
             );
         }
