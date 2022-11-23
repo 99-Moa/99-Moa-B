@@ -113,6 +113,13 @@ public class UserService {
         }
     }
 
+    // 토큰 재발행
+    public ResponseDto<String> issuedToken(String userId, HttpServletResponse response){
+        response.addHeader(JwtUtil.ACCESS_TOKEN, jwtUtil.createToken(userId, "Access"));
+        return ResponseDto.success("토큰재발행 성공");
+    }
+
+
     // 친구 찾기
     public ResponseDto<FriendResponseDto.SearchFriendResDto> searchFriend(User user, String friendUsername ) {
 
@@ -130,6 +137,7 @@ public class UserService {
         } else {
             return ResponseDto.success(
                     FriendResponseDto.SearchFriendResDto.builder()
+                            .userId(userFriend.getUserId())
                             .friendUsername(userFriend.getUserName())
                             .imgUrl(userFriend.getImgUrl())
                             .build());
