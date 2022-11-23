@@ -21,7 +21,7 @@ public class MypageController {
 
     // 마이프로필 수정
     @PutMapping("/mypage")
-    public ResponseDto<String> updateMypage(@AuthenticationPrincipal UserDetailsImpl userDetails, MypageRequestDto requestDto, @RequestPart(value = "file", required = false) MultipartFile imgUrl) throws IOException {
+    public ResponseDto<String> updateMypage(@AuthenticationPrincipal UserDetailsImpl userDetails, MypageRequestDto requestDto, @RequestParam(value = "file", required = false) MultipartFile imgUrl) throws IOException {
         return mypageService.updateMypage(userDetails.getUser(), requestDto, imgUrl);
     }
 

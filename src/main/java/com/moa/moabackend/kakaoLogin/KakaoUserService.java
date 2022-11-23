@@ -3,10 +3,12 @@ package com.moa.moabackend.kakaoLogin;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.moa.moabackend.entity.user.RefreshToken;
 import com.moa.moabackend.entity.user.User;
 import com.moa.moabackend.jwt.JwtUtil;
 import com.moa.moabackend.jwt.TokenDto;
 import com.moa.moabackend.repository.KakaoRepository;
+import com.moa.moabackend.repository.RefreshTokenRepository;
 import com.moa.moabackend.repository.UserRepository;
 import com.moa.moabackend.security.user.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -31,6 +34,9 @@ public class KakaoUserService {
     private final UserRepository userRepository;
     private final KakaoRepository kakaoRepository;
     private final JwtUtil jwtUtil;
+    private final RefreshTokenRepository refreshTokenRepository;
+
+
     public SocialUserInfoDto kakaoLogin(String code, TokenDto tokenDto, HttpServletResponse response) throws JsonProcessingException {
         // 1. "인가 코드"로 "액세스 토큰" 요청
         String accessToken = getAccessToken(code);
@@ -46,12 +52,20 @@ public class KakaoUserService {
         Authentication authentication = forceLogin(kakaoUser);
 
         // 5. response Header에 JWT 토큰 추가
-        kakaoUsersAuthorizationInput(response, tokenDto);
+        TokenDto token = jwtUtil.createAllToken(kakaoUserInfo.getId().toString());   /*-*-*-*-*-*-*-*-*-*------------*/
+
+        Optional<RefreshToken> refreshToken = refreshTokenRepository.findByAccountUserId(kakaoUser.getId().toString());
+
+        if (refreshToken.isPresent()) {
+            refreshTokenRepository.save(refreshToken.get().updateToken(tokenDto.getRefreshToken()));
+        } else {
+            RefreshToken newToken = new RefreshToken(tokenDto.getRefreshToken(), kakaoUser.getId().toString());
+            refreshTokenRepository.save(newToken);
+        }
+
+        kakaoUsersAuthorizationInput(response, token);
 
         // 토큰 생성 후 tokenDto 에 저장
-        TokenDto token = jwtUtil.createAllToken(kakaoUserInfo.getEmail());
-        response.addHeader(JwtUtil.ACCESS_TOKEN, token.getAccessToken());
-        response.addHeader(JwtUtil.REFRESH_TOKEN, token.getRefreshToken());
         return kakaoUserInfo;
     }
 
