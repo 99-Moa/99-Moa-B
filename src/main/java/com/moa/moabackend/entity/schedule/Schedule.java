@@ -45,6 +45,9 @@ public class Schedule {
     private String location;
 
     @Column
+    private String locationRoadName;
+
+    @Column
     private String content;
 
     @ManyToOne
@@ -65,6 +68,7 @@ public class Schedule {
         this.startTime = LocalTime.parse(requestDto.getStartTime());
         this.endTime = LocalTime.parse(requestDto.getEndTime());
         this.location = requestDto.getLocation();
+        this.locationRoadName = requestDto.getLocationRoadName();
         this.content = requestDto.getContent();
     }
 }
