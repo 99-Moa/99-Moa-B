@@ -21,5 +21,7 @@ public class ScheduleRequestDto {
 
     private String location;
 
+    private String locationRoadName;
+
     private String content;
 }

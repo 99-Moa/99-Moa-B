@@ -32,6 +32,10 @@ public class ScheduleResponseDto {
         private String title;
 
         private LocalTime startTime;
+
+        private LocalDate endDate;
+
+        private LocalTime endTime;
     }
 
     @Getter
@@ -49,6 +53,8 @@ public class ScheduleResponseDto {
         private LocalTime endTime;
 
         private String location;
+
+        private String locationRoadName;
 
         private String content;
 

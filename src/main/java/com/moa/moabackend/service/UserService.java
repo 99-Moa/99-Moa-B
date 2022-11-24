@@ -130,6 +130,7 @@ public class UserService {
         } else {
             return ResponseDto.success(
                     FriendResponseDto.SearchFriendResDto.builder()
+                            .userId(userFriend.getUserId())
                             .friendUsername(userFriend.getUserName())
                             .imgUrl(userFriend.getImgUrl())
                             .build());

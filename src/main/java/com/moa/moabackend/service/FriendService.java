@@ -50,6 +50,7 @@ public class FriendService {
             friendListResDto.add(
                     FriendResponseDto.GetMyFriendResDto.builder()
                             .id(friend.getId())
+                            .userId(userFriend.getUserId())
                             .friendUsername(userFriend.getUserName())
                             .imgUrl(userFriend.getImgUrl())
                             .build());

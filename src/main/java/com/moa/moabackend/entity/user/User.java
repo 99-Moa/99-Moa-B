@@ -34,9 +34,11 @@ public class User extends Timestamped {
         this.userName = userRequestDto.getUserName();
     }
 
-    public User(String kakaouserId) {
+    public User(String kakaouserId, String password, String passwordCheck) {
         this.userId = kakaouserId;
         this.userName = kakaouserId;
+        this.password = password;
+        this.passwordCheck = passwordCheck;
     }
 
 
