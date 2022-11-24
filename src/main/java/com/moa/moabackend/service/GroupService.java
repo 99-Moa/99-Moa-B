@@ -42,9 +42,10 @@ public class GroupService {
     public ResponseDto<List<GroupResponseDto.groupList>> getAllGroups(User user) {
         List<GroupResponseDto.groupList> groupResponseList = new ArrayList<>();
         List<Group> groups = groupRepository.findAll();
-        List<String> imgList = new ArrayList<>();
+
 
         for (Group group : groups) {
+            List<String> imgList = new ArrayList<>();
             for (int i = 0; i <= group.getUsers().size() - 1; i++) {
                 User findUser = userRepository.findByUserName(group.getUsers().get(i)).get();
                 imgList.add(findUser.getImgUrl());
