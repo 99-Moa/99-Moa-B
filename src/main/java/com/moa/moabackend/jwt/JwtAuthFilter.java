@@ -29,7 +29,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         if(accessToken != null) {
             if(!jwtUtil.tokenValidation(accessToken)){
-                jwtExceptionHandler(response, "AccessToken Expired", HttpStatus.BAD_REQUEST);
+                jwtExceptionHandler(response, "AccessToken Expired", HttpStatus.UNAUTHORIZED);
                 return;
             }
             setAuthentication(jwtUtil.getUserIdFromToken(accessToken));
