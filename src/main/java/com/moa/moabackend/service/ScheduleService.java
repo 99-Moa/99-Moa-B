@@ -16,7 +16,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -41,12 +40,6 @@ public class ScheduleService {
 
     // 일정 생성 (개인)
     public ResponseDto<String> addSchedulePersonal(ScheduleRequestDto requestDto, User user) {
-        List<String> userList = new ArrayList<>();
-        userList.add(user.getUserName());
-        Group group = Group.builder()
-                .users(userList)
-                .userNum(1)
-                .build();
         Schedule schedule = Schedule.builder()
                 .startDate(LocalDate.parse(requestDto.getStartDate()))
                 .endDate(LocalDate.parse(requestDto.getEndDate()))
@@ -57,7 +50,7 @@ public class ScheduleService {
                 .locationRoadName(requestDto.getLocationRoadName())
                 .content(requestDto.getContent())
                 .user(user)
-                .group(group)
+                .group(null)
                 .build();
         scheduleRepository.save(schedule);
         return ResponseDto.success("일정 등록 성공");
@@ -66,11 +59,6 @@ public class ScheduleService {
     // 일정 생성 (그룹)
     public ResponseDto<String> addScheduleGroup(Long groupId, ScheduleRequestDto requestDto, User user) {
         Group group = groupRepository.findById(groupId).get();
-//        if (groupId == null) {
-//            Group group = null;
-//        } else {
-//            Group group = groupRepository.findById(groupId).get();
-//        }
 
         Schedule schedule = Schedule.builder()
                 .startDate(LocalDate.parse(requestDto.getStartDate()))
@@ -91,7 +79,6 @@ public class ScheduleService {
     // 일정 목록 조회
     public ResponseDto<List<ScheduleResponseDto.ScheduleList>> getAllSchedules(User user) {
         List<ScheduleResponseDto.ScheduleList> scheduleResponseLIst = new ArrayList<>();
-//        List<Schedule> schedules = scheduleRepository.findAllByOrderByMeetingDate();
         List<Schedule> schedules = scheduleRepository.findAllByUser(user);
         for (Schedule schedule : schedules) {
             scheduleResponseLIst.add(
@@ -100,6 +87,8 @@ public class ScheduleService {
                             .startDate(schedule.getStartDate())
                             .title(schedule.getTitle())
                             .startTime(schedule.getStartTime())
+                            .endDate(schedule.getEndDate())
+                            .endTime(schedule.getEndTime())
                             .build()
             );
         }
@@ -111,12 +100,16 @@ public class ScheduleService {
         Schedule schedule = scheduleRepository.findById(scheduleId).get();
         List<User> userResponseList = new ArrayList<>();
 
-        for (int i = 0; i <= schedule.getGroup().getUserNum()-1; i ++) {
-            User user = userRepository.findByUserName(schedule.getGroup().getUsers().get(i)).get();
-            userResponseList.add(user);
+        // group이 없으면 개인, 있으면 그룹 처리
+        if (schedule.getGroup() == null) {
+            userResponseList.add(schedule.getUser());
+        } else {
+            for (int i = 0; i <= schedule.getGroup().getUserNum() - 1; i++) {
+                User user = userRepository.findByUserName(schedule.getGroup().getUsers().get(i)).get();
+                userResponseList.add(user);
+            }
         }
 
-//        userResponseList.add(schedule.getUser());
         return ResponseDto.success(
                 ScheduleResponseDto.ScheduleDetail.builder()
                         .startDate(schedule.getStartDate())
@@ -127,8 +120,6 @@ public class ScheduleService {
                         .location(schedule.getLocation())
                         .locationRoadName(schedule.getLocationRoadName())
                         .content(schedule.getContent())
-//                        .userNameList(schedule.getUserNameList())
-//                        .userList(schedule.getGroup().getUserList())
                         .users(userResponseList)
                         .build()
         );
