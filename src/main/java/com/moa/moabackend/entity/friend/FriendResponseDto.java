@@ -19,7 +19,7 @@ public class FriendResponseDto {
 
         private String imgUrl;
 
-        private String userId;
+//        private String userId;
     }
 
         @Getter
@@ -33,6 +33,5 @@ public class FriendResponseDto {
 
             private String imgUrl;
 
-            private String userId;
     }
 }
