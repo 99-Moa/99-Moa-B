@@ -1,4 +1,4 @@
-package com.moa.moabackend.entity.user;
+package com.moa.moabackend.entity.user.mypage;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

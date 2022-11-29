@@ -2,13 +2,11 @@ package com.moa.moabackend.service;
 
 import com.moa.moabackend.S3.S3Uploader;
 import com.moa.moabackend.entity.ResponseDto;
-import com.moa.moabackend.entity.user.MypageRequestDto;
-import com.moa.moabackend.entity.user.MypageResponseDto;
+import com.moa.moabackend.entity.user.mypage.MypageRequestDto;
+import com.moa.moabackend.entity.user.mypage.MypageResponseDto;
 import com.moa.moabackend.entity.user.User;
 import com.moa.moabackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.parsing.Problem;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
