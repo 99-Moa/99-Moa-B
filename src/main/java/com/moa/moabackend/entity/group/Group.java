@@ -2,15 +2,13 @@ package com.moa.moabackend.entity.group;
 
 import com.moa.moabackend.entity.schedule.Schedule;
 import com.moa.moabackend.entity.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,4 +34,8 @@ public class Group {
     // 그룹에 참가한 사람 수
     @Column
     private int userNum;
+
+    public void updateGroup(String userName) {
+        users.add(userName);
+    }
 }
