@@ -2,6 +2,7 @@ package com.moa.moabackend.service;
 
 import com.moa.moabackend.entity.ResponseDto;
 import com.moa.moabackend.entity.group.Group;
+import com.moa.moabackend.entity.group.GroupAddRequestDto;
 import com.moa.moabackend.entity.group.GroupRequestDto;
 import com.moa.moabackend.entity.group.GroupResponseDto;
 import com.moa.moabackend.entity.user.User;
@@ -95,5 +96,16 @@ public class GroupService {
                         .userNum(group.getUserNum())
                         .build()
         );
+    }
+
+    // 그룹에 친구 추가
+    public ResponseDto<String> addFriendToGroup(Long groupId, GroupAddRequestDto requestDto) {
+        Group group = groupRepository.findById(groupId).get();
+        for(int i = 0; i <= requestDto.getUsers().size() - 1; i ++) {
+            group.getUsers().add(requestDto.getUsers().get(i));
+        }
+        group.setUserNum(group.getUsers().size());
+        groupRepository.save(group);
+        return ResponseDto.success("그룹 친구 추가 성공");
     }
 }
