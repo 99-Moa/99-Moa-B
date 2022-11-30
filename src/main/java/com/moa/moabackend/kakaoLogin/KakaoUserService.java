@@ -126,8 +126,6 @@ public class KakaoUserService {
 
         String nickname = jsonNode.get("properties").get("nickname").asText();
 
-
-
         return new SocialUserInfoDto(id, nickname, email);
     }
 
