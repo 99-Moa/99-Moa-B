@@ -1,5 +1,6 @@
 package com.moa.moabackend.entity.group;
 
+import com.moa.moabackend.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,7 +33,7 @@ public class GroupResponseDto {
     public static class groupDetail {
         // 그룹 상세 조회
         private Long groupId;
-        private List<String> users;
+        private List<Long> userIdList;
         private String groupName;
         private int userNum;
     }
