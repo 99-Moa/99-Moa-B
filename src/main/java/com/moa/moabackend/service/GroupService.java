@@ -2,6 +2,7 @@ package com.moa.moabackend.service;
 
 import com.moa.moabackend.entity.ResponseDto;
 import com.moa.moabackend.entity.group.Group;
+import com.moa.moabackend.entity.group.GroupAddRequestDto;
 import com.moa.moabackend.entity.group.GroupRequestDto;
 import com.moa.moabackend.entity.group.GroupResponseDto;
 import com.moa.moabackend.entity.user.User;
@@ -87,13 +88,29 @@ public class GroupService {
     // 그룹 하나 조회
     public ResponseDto<GroupResponseDto.groupDetail> getOneGroup(Long groupId) {
         Group group = groupRepository.findById(groupId).get();
+        List<Long> userIdList = new ArrayList<>();
+        for (int i = 0; i <= group.getUsers().size() - 1; i ++) {
+            User user = userRepository.findByUserName(group.getUsers().get(i)).get();
+            userIdList.add(user.getId());
+        }
         return ResponseDto.success(
                 GroupResponseDto.groupDetail.builder()
                         .groupId(groupId)
                         .groupName(group.getGroupName())
-                        .users(group.getUsers())
+                        .userIdList(userIdList)
                         .userNum(group.getUserNum())
                         .build()
         );
+    }
+
+    // 그룹에 친구 추가
+    public ResponseDto<String> addFriendToGroup(Long groupId, GroupAddRequestDto requestDto) {
+        Group group = groupRepository.findById(groupId).get();
+        for(int i = 0; i <= requestDto.getUsers().size() - 1; i ++) {
+            group.getUsers().add(requestDto.getUsers().get(i));
+        }
+        group.setUserNum(group.getUsers().size());
+        groupRepository.save(group);
+        return ResponseDto.success("그룹 친구 추가 성공");
     }
 }
