@@ -1,32 +1,19 @@
 package com.moa.moabackend.config;
 
-import com.moa.moabackend.entity.ResponseDto;
-import com.moa.moabackend.entity.friend.FriendResponseDto;
-import com.moa.moabackend.entity.schedule.ScheduleResponseDto;
-import com.moa.moabackend.entity.user.MypageRequestDto;
-import com.moa.moabackend.entity.user.UserResponseDto;
 import com.moa.moabackend.jwt.JwtAuthFilter;
 import com.moa.moabackend.jwt.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-import java.io.IOException;
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity

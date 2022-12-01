@@ -2,11 +2,11 @@ package com.moa.moabackend.entity.user;
 
 
 import com.moa.moabackend.entity.Timestamped;
+import com.moa.moabackend.entity.user.mypage.MypageRequestDto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
 @Data
 @Entity

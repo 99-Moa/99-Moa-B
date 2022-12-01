@@ -2,6 +2,7 @@ package com.moa.moabackend.controller;
 
 import com.moa.moabackend.chat.service.ChatRoomService;
 import com.moa.moabackend.entity.ResponseDto;
+import com.moa.moabackend.entity.group.GroupAddRequestDto;
 import com.moa.moabackend.entity.group.GroupRequestDto;
 import com.moa.moabackend.entity.group.GroupResponseDto;
 import com.moa.moabackend.entity.schedule.ScheduleRequestDto;
@@ -35,5 +36,11 @@ public class GroupController {
     @GetMapping("/group/{groupId}")
     public ResponseDto<GroupResponseDto.groupDetail> getOneGroup(@PathVariable Long groupId) {
         return groupService.getOneGroup(groupId);
+    }
+
+    // 그룹에 친구 추가
+    @PostMapping("/group/{groupId}")
+    public ResponseDto<String> addFreindToGroup(@RequestBody GroupAddRequestDto requestDto, @PathVariable Long groupId) {
+        return groupService.addFriendToGroup(groupId, requestDto);
     }
 }

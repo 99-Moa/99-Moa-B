@@ -21,6 +21,8 @@ repositories {
 dependencies {
 	//카카오톡 로그인
 	implementation'com.google.code.gson:gson:2.8.7'
+	//웹소켓
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -43,6 +45,7 @@ dependencies {
 
 	// redis
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+<<<<<<< HEAD
 	//embedded-redis
 	implementation group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'
 	implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.2'
@@ -58,6 +61,12 @@ dependencies {
 	implementation 'org.webjars.bower:axios:0.21.1'
 	implementation 'com.google.code.gson:gson:2.8.0'
 
+=======
+//embedded-redis
+	implementation group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'
+	implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.2'
+
+>>>>>>> 83cdd035c78b4cffe71009fc3f43ae10d7eaa69c
 }
 
 tasks.named('test') {

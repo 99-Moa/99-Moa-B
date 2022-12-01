@@ -1,7 +1,6 @@
 package com.moa.moabackend.kakaoLogin;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.moa.moabackend.jwt.TokenDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

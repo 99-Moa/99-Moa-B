@@ -1,11 +1,9 @@
 package com.moa.moabackend.controller;
 
 import com.moa.moabackend.entity.ResponseDto;
-import com.moa.moabackend.entity.user.MypageRequestDto;
-import com.moa.moabackend.entity.user.MypageResponseDto;
-import com.moa.moabackend.entity.user.UserRequestDto;
+import com.moa.moabackend.entity.user.mypage.MypageRequestDto;
+import com.moa.moabackend.entity.user.mypage.MypageResponseDto;
 import com.moa.moabackend.security.user.UserDetailsImpl;
-import com.moa.moabackend.service.FriendService;
 import com.moa.moabackend.service.MypageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
