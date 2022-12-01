@@ -1,7 +1,7 @@
 package com.moa.moabackend.service;
 
 import com.moa.moabackend.entity.ResponseDto;
-import com.moa.moabackend.jwt.RefreshToken;
+import com.moa.moabackend.entity.user.RefreshToken;
 import com.moa.moabackend.entity.friend.FriendResponseDto;
 import com.moa.moabackend.entity.user.*;
 import com.moa.moabackend.jwt.JwtUtil;

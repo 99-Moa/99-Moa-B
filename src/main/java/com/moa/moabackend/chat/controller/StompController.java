@@ -6,6 +6,7 @@ import com.moa.moabackend.chat.entity.SocketPlan;
 import com.moa.moabackend.chat.entity.Status;
 import com.moa.moabackend.chat.service.ChatRoomService;
 import com.moa.moabackend.jwt.JwtUtil;
+import com.moa.moabackend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
 public class StompController {
     private final ChatRoomService chatRoomService;
     private final JwtUtil jwtUtil;
+    private final UserService userService;
 
     @Autowired
     private SimpMessageSendingOperations simpMessageSendingOperations;
@@ -32,6 +34,8 @@ public class StompController {
         // token 으로 userId 추출  -----> userId 로 닉네임 추출
         String userId = jwtUtil.getUserIdFromToken(socketMessage.getToken());
         System.out.println("userId : " + userId);
+        String userName = userService.getUserNameByUserId(userId);
+        System.out.println("userName :" + userName);
         // /topic/chatRoomId/message
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/message", socketMessage);
     }
@@ -48,6 +52,8 @@ public class StompController {
     public void receiveUser(@Payload SocketMessage socketMessage) {
         Long chatRoomId = socketMessage.getChatRoomId();
         ChatRoom chatRoom = chatRoomService.setUser(chatRoomId, socketMessage);
+        System.out.println(chatRoom);
+        System.out.println(chatRoom.getUsers());
         // /topic/chatRoomId/user
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/user", chatRoom.getUsers());
     }

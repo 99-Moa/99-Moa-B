@@ -3,7 +3,7 @@ package com.moa.moabackend.kakaoLogin;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.moa.moabackend.jwt.RefreshToken;
+import com.moa.moabackend.entity.user.RefreshToken;
 import com.moa.moabackend.entity.user.User;
 import com.moa.moabackend.jwt.JwtUtil;
 import com.moa.moabackend.jwt.TokenDto;
