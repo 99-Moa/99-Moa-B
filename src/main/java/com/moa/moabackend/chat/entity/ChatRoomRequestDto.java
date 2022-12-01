@@ -1,4 +1,4 @@
-package com.moa.moabackend.chat.config;
+package com.moa.moabackend.chat.entity;
 
 import lombok.Getter;
 

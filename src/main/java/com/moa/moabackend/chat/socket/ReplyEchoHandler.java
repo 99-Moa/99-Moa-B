@@ -1,4 +1,4 @@
-//package com.moa.moabackend.chat.config;
+//package com.moa.moabackend.chat.socket;
 //
 //import org.springframework.stereotype.Component;
 //import org.springframework.web.socket.CloseStatus;

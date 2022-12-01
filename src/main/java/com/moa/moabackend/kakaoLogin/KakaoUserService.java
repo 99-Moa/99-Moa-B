@@ -50,7 +50,7 @@ public class KakaoUserService {
         Authentication authentication = forceLogin(kakaoUser);
 
         // 5. response Header에 JWT 토큰 추가
-        TokenDto tokenDto = jwtUtil.createAllToken(kakaoUserInfo.getId().toString());   /*-*-*-*-*-*-*-*-*-*------------*/
+        TokenDto tokenDto = jwtUtil.createAllToken(kakaoUserInfo.getId().toString());
 
         Optional<RefreshToken> refreshToken = refreshTokenRepository.findByAccountUserId(kakaoUser.getId().toString());
 

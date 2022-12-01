@@ -1,5 +1,6 @@
 package com.moa.moabackend.controller;
 
+import com.moa.moabackend.chat.service.ChatRoomService;
 import com.moa.moabackend.entity.ResponseDto;
 import com.moa.moabackend.entity.group.GroupAddRequestDto;
 import com.moa.moabackend.entity.group.GroupRequestDto;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GroupController {
     private final GroupService groupService;
+    private final ChatRoomService chatRoomService;
 
     // 친구 그룹 생성
     @PostMapping("/group")

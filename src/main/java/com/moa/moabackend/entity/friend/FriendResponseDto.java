@@ -13,11 +13,13 @@ public class FriendResponseDto {
     @Getter
     @Builder
     public static class SearchFriendResDto {
+        private String userId;
+
         private String friendUsername;
 
         private String imgUrl;
 
-        private String userId;
+//        private String userId;
     }
 
         @Getter
@@ -25,10 +27,11 @@ public class FriendResponseDto {
         public static class GetMyFriendResDto {
             private Long id;
 
+            private String userId;
+
             private String friendUsername;
 
             private String imgUrl;
 
-            private String userId;
     }
 }

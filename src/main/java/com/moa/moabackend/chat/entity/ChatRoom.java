@@ -1,12 +1,11 @@
-package com.moa.moabackend.chat.config;
+package com.moa.moabackend.chat.entity;
 
 import lombok.*;
 import org.springframework.data.redis.core.RedisHash;
-
-
 import java.io.Serializable;
 import java.util.List;
 
+// redis 사용시
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,15 +14,8 @@ import java.util.List;
 @RedisHash("chatroom")
 public class ChatRoom implements Serializable {
     // redis 에 저장되는 객체는 직렬화 해야됨
-// private static final long serialVersionUID = 6494678977089006639L;
+//     private static final long serialVersionUID = 6494678977089006639L;
     private Long id;
-    // private String roomName;
     private List<String> users;
 
-// public static ChatRoom create(String name){
-// ChatRoom room = new ChatRoom();
-// room.roomId = UUID.randomUUID().toString();
-// room.roomName = name;
-// return room;
-// }
 }

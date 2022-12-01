@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dbed776-211d-4151-bfb0-21c51d864659" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/2022_11_10_8_58,_체크아웃_전에_커밋되지_않은_변경_내용_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/2022_11_10_8_58_________Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7dbed776-211d-4151-bfb0-21c51d864659" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,12 +49,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-messaging/5.3.23/df70a056ff9610f1c054a92f8447fcc69593478b/spring-messaging-5.3.23-sources.jar!/org/springframework/messaging/simp/SimpMessagingTemplate.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,30 +70,37 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/신현재/Desktop/코딩/[Inflearn]/ttinder/ttinder",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "spring.configuration.checksum": "f2cdb14d7ab1b60e97aac7b27fd4a165"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/신현재/Desktop/코딩/[Inflearn]/spring-socket-JWT&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;f2cdb14d7ab1b60e97aac7b27fd4a165&quot;
   }
-}]]></component>
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\신현재\Desktop\코딩\[Inflearn]\99-Moa-B\src\main\resources\templates\chat" />
       <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\service" />
       <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\entity\schedule" />
       <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\repository" />
       <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\controller" />
-      <recent name="C:\Users\juuu0\Desktop\9rl\week_8_project\99-Moa-B\src\main\java\com\moa\moabackend\entity" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\신현재\Desktop\코딩\[Inflearn]\99-Moa-B\src\main\resources\templates" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.MoaBackendApplication (1)">
@@ -188,6 +195,16 @@
       <workItem from="1668680574817" duration="97000" />
       <workItem from="1668713095997" duration="2304000" />
       <workItem from="1668859900986" duration="27000" />
+      <workItem from="1669075564346" duration="13607000" />
+      <workItem from="1669107667891" duration="16308000" />
+      <workItem from="1669171209650" duration="4144000" />
+      <workItem from="1669621306316" duration="8770000" />
+      <workItem from="1669631722601" duration="3119000" />
+      <workItem from="1669690539245" duration="15058000" />
+      <workItem from="1669757843512" duration="36163000" />
+      <workItem from="1669807782353" duration="1925000" />
+      <workItem from="1669810556396" duration="193000" />
+      <workItem from="1669860989594" duration="8753000" />
     </task>
     <servers />
   </component>

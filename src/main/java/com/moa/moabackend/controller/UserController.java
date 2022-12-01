@@ -44,9 +44,8 @@ public class UserController {
 
     // 토큰 재발행
     @GetMapping("/issue/token")
-    public UserResponseDto issuedToken(@AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletResponse response){
-        response.addHeader(JwtUtil.ACCESS_TOKEN, jwtUtil.createToken(userDetails.getUser().getUserId(), "Access"));
-        return new UserResponseDto("Success IssuedToken", HttpStatus.OK.value());
+    public ResponseDto<String> issuedToken(@AuthenticationPrincipal UserDetailsImpl userDetails, HttpServletResponse response){
+        return userService.issuedToken(userDetails.getUser().getUserId(), response);
     }
 
     // 전체 유저 중 친구 찾기

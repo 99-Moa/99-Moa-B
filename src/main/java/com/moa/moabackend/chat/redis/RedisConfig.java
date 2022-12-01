@@ -1,4 +1,4 @@
-package com.moa.moabackend.chat.config;
+package com.moa.moabackend.chat.redis;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
@@ -25,10 +25,10 @@ public class RedisConfig {
     public RedisTemplate<String, Object> redisTemplate(){
         RedisTemplate<String,Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory());
-//redisTemplate.setKeySerializer(new StringRedisSerializer()); //key serializer
-//redisTemplate.setValueSerializer(new StringRedisSerializer()); //value serializer
-//redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-//redisTemplate.setHashValueSerializer(new StringRedisSerializer());
+        //redisTemplate.setKeySerializer(new StringRedisSerializer());    //key serializer
+        //redisTemplate.setValueSerializer(new StringRedisSerializer());  //value serializer
+        //redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        //redisTemplate.setHashValueSerializer(new StringRedisSerializer());
         redisTemplate.setDefaultSerializer(new StringRedisSerializer());
         return redisTemplate;
     }

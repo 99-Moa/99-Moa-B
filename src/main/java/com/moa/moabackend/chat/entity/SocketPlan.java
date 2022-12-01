@@ -1,4 +1,4 @@
-package com.moa.moabackend.chat.config;
+package com.moa.moabackend.chat.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,9 +11,8 @@ import java.time.LocalTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Plan {
+public class SocketPlan {
 
-    private Long chatRoomId;
     private LocalDate startDate;
     private LocalDate endDate;
     private String title;
@@ -22,4 +21,5 @@ public class Plan {
     private String location;
     private String locationRoadName;
     private String content;
+    private Long chatRoomId;
 }
