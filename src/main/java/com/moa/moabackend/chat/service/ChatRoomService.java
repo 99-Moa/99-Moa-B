@@ -66,17 +66,15 @@ public class ChatRoomService {
 
         // token 으로 userId 추출  -----> userId 로 닉네임 추출
         String userId = jwtUtil.getUserIdFromToken(socketMessage.getToken());
-
+        System.out.println(userId);
         String userName = userService.getUserNameByUserId(userId);
-
+        System.out.println(userName);
         List<String> userList = chatRoom.getUsers();
 
         if (status.equals(JOIN) && !(userList.contains(userName))) {
             userList.add(userName);
-
         } else if (status.equals(LEAVE) && userList.contains(userName)) {
             userList.remove(userName);
-
         }
         chatRoom.setUsers(userList);
 
