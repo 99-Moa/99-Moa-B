@@ -66,23 +66,44 @@ public class AlertService {
 //    }
 
     // 그룹 알람 조회
-    public ResponseDto<String> alertEvent(GroupRequestDto requestDto) {
-        for (int i = 0; i <= requestDto.getUsers().size() - 1; i++) {
-            User user = userRepository.findByUserName(requestDto.getUsers().get(i)).get();
-            String userId = user.getUserId();
-
-            if (sseEmitters.containsKey(userId)) {
-
-                SseEmitter sseEmitter = sseEmitters.get(userId);
-                try {
-                    sseEmitter.send(SseEmitter.event().name("readAlert").data("알람을 보냈습니다"));
+    public ResponseDto<String> alertEventAddGroup(User user, Alert alert) {
+        String userId = user.getUserId();
+        if (sseEmitters.containsKey(userId)) {
+            SseEmitter sseEmitter = sseEmitters.get(userId);
+            try {
+                sseEmitter.send(SseEmitter.event().data(alert));
 //                    System.out.println("완료");
-                } catch (Exception e) {
-                    System.out.println("exception");
-                    sseEmitters.remove(userId);
-                }
+            } catch (Exception e) {
+                System.out.println("exception");
+                sseEmitters.remove(userId);
             }
         }
+
+        return ResponseDto.success("알람 보내기 완료");
+    }
+
+    public ResponseDto<String> alertEvent(String userName) {
+        User user = userRepository.findByUserId(userName).get();
+        String userId = user.getUserId();
+
+        if (sseEmitters.containsKey(userId)) {
+            SseEmitter sseEmitter = sseEmitters.get(userId);
+            try {
+//                    sseEmitter.send(SseEmitter.event().name("readAlert").data("알람을 보냈습니다"));
+//                    Alert alert = alertRepository.findById(1L).get();
+                List<Alert> alerts = alertRepository.findAllByReceiver(user.getUserName());
+                for (Alert alert : alerts
+                ) {
+                    sseEmitter.send(SseEmitter.event().data(alert));
+                }
+//                    sseEmitter.send(SseEmitter.event().name("readAlert").data(alert));
+//                    System.out.println("완료");
+            } catch (Exception e) {
+                System.out.println("exception");
+                sseEmitters.remove(userId);
+            }
+        }
+
         return ResponseDto.success("알람 보내기 완료");
     }
 
@@ -106,7 +127,7 @@ public class AlertService {
     }
 
     // 알람 확인 시 check => true 변경
-    public ResponseDto<String> alertCheck (Long alertId) {
+    public ResponseDto<String> alertCheck(Long alertId) {
         Alert alert = alertRepository.findById(alertId).get();
         alert.setCheck(true);
         alertRepository.save(alert);
