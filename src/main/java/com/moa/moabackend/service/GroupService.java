@@ -8,6 +8,8 @@ import com.moa.moabackend.entity.group.GroupResponseDto;
 import com.moa.moabackend.entity.user.User;
 import com.moa.moabackend.repository.GroupRepository;
 import com.moa.moabackend.repository.UserRepository;
+import com.moa.moabackend.sse.Alert;
+import com.moa.moabackend.sse.AlertRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +21,39 @@ import java.util.List;
 public class GroupService {
     private final GroupRepository groupRepository;
     private final UserRepository userRepository;
+    private final AlertRepository alertRepository;
 
-    // 그룹 생성
+//    // 그룹 생성
+//    public ResponseDto<String> addGroup(GroupRequestDto requestDto, User user) {
+//        List<String> userList = new ArrayList<>();
+//        userList.add(user.getUserName());
+//        for (int i = 0; i <= requestDto.getUsers().size() - 1; i++) {
+//            userList.add(requestDto.getUsers().get(i));
+//        }
+////        userList.add(requestDto.getUserList().toString());
+//        int userNum = userList.size();
+//        Group group = Group.builder()
+//                .users(userList)
+//                .groupName(requestDto.getGroupName())
+//                .userNum(userNum)
+//                .build();
+//        groupRepository.save(group);
+//        return ResponseDto.success("친구 그룹 등록 성공");
+//    }
+
+    // 그룹 생성 + 알람저장
     public ResponseDto<String> addGroup(GroupRequestDto requestDto, User user) {
         List<String> userList = new ArrayList<>();
         userList.add(user.getUserName());
         for (int i = 0; i <= requestDto.getUsers().size() - 1; i++) {
             userList.add(requestDto.getUsers().get(i));
+            // 알람 저장
+            Alert alert = Alert.builder()
+                    .message(user.getUserName() + "님이 그룹에 초대했습니다.")
+                    .receiver(requestDto.getUsers().get(i))
+                    .check(false)
+                    .build();
+            alertRepository.save(alert);
         }
 //        userList.add(requestDto.getUserList().toString());
         int userNum = userList.size();
@@ -35,6 +63,7 @@ public class GroupService {
                 .userNum(userNum)
                 .build();
         groupRepository.save(group);
+
         return ResponseDto.success("친구 그룹 등록 성공");
     }
 
