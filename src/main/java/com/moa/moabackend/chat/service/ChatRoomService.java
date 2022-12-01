@@ -1,14 +1,13 @@
 package com.moa.moabackend.chat.service;
 
 
-import com.moa.moabackend.chat.entity.ChatRoom;
-import com.moa.moabackend.chat.entity.ChatRoomRequestDto;
-import com.moa.moabackend.chat.entity.ChatRoomResponseDto;
-import com.moa.moabackend.chat.entity.Status;
+import com.moa.moabackend.chat.entity.*;
 import com.moa.moabackend.chat.repository.ChatRoomRedisRepository;
 //import com.moa.moabackend.chat.repository.ChatRoomRepository;
 import com.moa.moabackend.entity.ResponseDto;
 import com.moa.moabackend.entity.group.GroupRequestDto;
+import com.moa.moabackend.jwt.JwtUtil;
+import com.moa.moabackend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -24,6 +23,8 @@ import static com.moa.moabackend.chat.entity.Status.LEAVE;
 @RequiredArgsConstructor
 public class ChatRoomService {
 
+    private final JwtUtil jwtUtil;
+    private final UserService userService;
     private final ChatRoomRedisRepository chatRoomRedisRepository;
     //    private static final String CHAT_ROOMS = "CHAT_ROOM";
     private final RedisTemplate<String, Object> redisTemplate;
@@ -32,7 +33,6 @@ public class ChatRoomService {
     // 채팅방 생성
     public ResponseDto<ChatRoomResponseDto> createRoom(ChatRoomRequestDto chatRoomRequestDto) {
         List<String> users = new ArrayList<>();
-        users.add("이동진");
 
         // 채팅방 저장
         ChatRoom chatRoom = ChatRoom.builder()
@@ -56,9 +56,13 @@ public class ChatRoomService {
     }
 
     // 채팅방 인원 추가, 삭제
-    public ChatRoom setUser(Long chatRoomId, Status status, String userName) {
+    public ChatRoom setUser(Long chatRoomId, SocketMessage socketMessage) {
         ChatRoom chatRoom = chatRoomRedisRepository.findById(chatRoomId).get();
         //null값 예외처리추가
+        Status status = socketMessage.getStatus();
+        // token 으로 userId 추출  -----> userId 로 닉네임 추출
+        String userId = jwtUtil.getUserIdFromToken(socketMessage.getToken());
+        String userName = userService.getUserNameByUserId(userId);
         List<String> userList = chatRoom.getUsers();
         if (status.equals(JOIN) && !(userList.contains(userName))) {
             userList.add(userName);
@@ -69,6 +73,7 @@ public class ChatRoomService {
         chatRoomRedisRepository.save(chatRoom);
         return chatRoom;
     }
+
 }
 
 

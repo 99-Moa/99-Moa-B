@@ -5,6 +5,7 @@ import com.moa.moabackend.chat.entity.SocketMessage;
 import com.moa.moabackend.chat.entity.SocketPlan;
 import com.moa.moabackend.chat.entity.Status;
 import com.moa.moabackend.chat.service.ChatRoomService;
+import com.moa.moabackend.jwt.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 @RequiredArgsConstructor
 public class StompController {
     private final ChatRoomService chatRoomService;
+    private final JwtUtil jwtUtil;
 
     @Autowired
     private SimpMessageSendingOperations simpMessageSendingOperations;
@@ -27,6 +29,9 @@ public class StompController {
 //    @SendTo("/topic/socketMessage") // return 값을 /topic/socketMessage 로 넘겨준다.
     public void receiveMessage(@Payload SocketMessage socketMessage) {
         Long chatRoomId = socketMessage.getChatRoomId();
+        // token 으로 userId 추출  -----> userId 로 닉네임 추출
+        String userId = jwtUtil.getUserIdFromToken(socketMessage.getToken());
+        System.out.println("userId : " + userId);
         // /topic/chatRoomId/message
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/message", socketMessage);
     }
@@ -42,8 +47,7 @@ public class StompController {
 //    public ChatRoom receiveUser(@Payload SocketMessage socketMessage, java.security.Principal principal)
     public void receiveUser(@Payload SocketMessage socketMessage) {
         Long chatRoomId = socketMessage.getChatRoomId();
-        Status status = socketMessage.getStatus();
-        ChatRoom chatRoom = chatRoomService.setUser(chatRoomId, status, "윤상민");
+        ChatRoom chatRoom = chatRoomService.setUser(chatRoomId, socketMessage);
         // /topic/chatRoomId/user
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/user", chatRoom.getUsers());
     }

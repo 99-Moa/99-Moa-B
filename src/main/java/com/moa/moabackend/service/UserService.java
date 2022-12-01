@@ -148,4 +148,9 @@ public class UserService {
         response.addHeader(JwtUtil.ACCESS_TOKEN, tokenDto.getAccessToken());
         response.addHeader(JwtUtil.REFRESH_TOKEN, tokenDto.getRefreshToken());
     }
+
+    // userId 로 userName 추축
+    public String getUserNameByUserId(String userId){
+        return userRepository.findByUserId(userId).get().getUserName();
+    }
 }

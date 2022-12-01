@@ -14,4 +14,5 @@ public class SocketMessage {
     //    private String receiver;
     private String message; //FE에서 전달
     private String time; //BE에서 생성
+    private String token;
 }
