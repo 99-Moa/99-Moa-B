@@ -8,6 +8,7 @@ import com.moa.moabackend.entity.group.GroupResponseDto;
 import com.moa.moabackend.entity.schedule.ScheduleRequestDto;
 import com.moa.moabackend.security.user.UserDetailsImpl;
 import com.moa.moabackend.service.GroupService;
+import com.moa.moabackend.sse.AlertService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +20,13 @@ import java.util.List;
 public class GroupController {
     private final GroupService groupService;
     private final ChatRoomService chatRoomService;
+    private final AlertService alertService;
 
     // 친구 그룹 생성
     @PostMapping("/group")
     public ResponseDto<String> addGroup(@RequestBody GroupRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        // 알람 보내기
+        alertService.alertEvent(requestDto);
         return groupService.addGroup(requestDto, userDetails.getUser());
     }
 
