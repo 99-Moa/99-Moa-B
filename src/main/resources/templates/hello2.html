@@ -6,20 +6,44 @@
 </head>
 <body>
 <h1>Thymeleaf Test Page</h1>
-<!--<h3 th:text="${uname}"></h3>-->
+<h3 th:text="${uname}"></h3>
 
 <div class="well">
-  <input type="text" id="msg" value="테스트" class="form-control" />
+  <input type="text" id="msg" value="1212" class="form-control" />
   <button id="btnSend" class="btn btn-primary">Send Message</button>
 </div>
 
-<!--<a th:href="@{http://localhost:9090/hello}">HELLO</a>-->
+<p th:text="'Name: ' + ${name}"></p>
+<form method="POST" action="korean">
+  <input type="text" name="name" value="세종대왕" />
+  <button type="submit">KOREAN</button>
+</form>
+
+<div th:if="${user}">
+  <div th:text="${user}"></div>
+  <div th:object="${user}">Thymeleaf Test : <span th:text="|*{uname}|"/></div>
+  <div th:text="${user.uname}"></div>
+</div>
+<div th:unless="${user}">
+  <div>No User!!</div>
+</div>
+
+<ul>
+  <li th:each="data: ${users}" th:text="${data}"></li>
+  <li th:each="data: ${users}" th:text="${data.uid} + '. ' + ${data.uname}"></li>
+  <li th:each="data: ${users}" th:object="${data}">
+    <span th:text="|*{uid}|"></span>
+    <strong th:text="|*{uname}|"></strong>
+  </li>
+</ul>
+
+<a th:href="@{http://localhost:9090/hello}">HELLO</a>
 
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous">
-</script>
+        crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <script>
@@ -33,9 +57,9 @@
       if (!isStomp && socket.readyState !== 1) return;
 
       let msg = $('input#msg').val();
-      console.log("msg")
+      console.log("mmmmmmmmmmmm>>", msg)
       if (isStomp)
-        socket.send('/socket/message', {}, JSON.stringify({roomid: 'message', id: 124, msg: msg}));
+        socket.send('/TTT', {}, JSON.stringify({roomid: 'socketMessage', id: 124, msg: msg}));
       else
         socket.send(msg);
     });
@@ -45,18 +69,18 @@
   var isStomp = false;
 
   function connectStomp() {
-    var sock = new SockJS("/socket/chat"); // endpoint
+    var sock = new SockJS("/chatroom"); // endpoint
     var client = Stomp.over(sock);
     isStomp = true;
     socket = client;
 
     client.connect({}, function () {
-      console.log("소켓 연결 완료!");
-      // Controller's MessageMapping, header, message(자유형식)
-      client.send('app/socket/message', {}, "msg");
+      console.log("Connected stompTest!");
+      // Controller's MessageMapping, header, socketMessage(자유형식)
+      client.send('/app/socketMessage', {}, "msg: Haha~~~");
 
       // 해당 토픽을 구독한다!
-      client.subscribe('app/topic/message', function (event) {
+      client.subscribe('/topic/socketMessage', function (event) {
         console.log("!!!!!!!!!!!!event>>", event)
       });
     });

@@ -1,7 +1,7 @@
-//package com.moa.moabackend.chat.entity;
-//
-//public enum Status {
-//    JOIN,
-//    MESSAGE,
-//    LEAVE
-//}
+package com.moa.moabackend.chat.entity;
+
+public enum Status {
+    JOIN,
+    MESSAGE,
+    LEAVE
+}

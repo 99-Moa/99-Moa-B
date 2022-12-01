@@ -1,7 +1,7 @@
 //package com.moa.moabackend.chat.controller;
 //
 //import com.moa.moabackend.chat.entity.ChatMessage;
-//import com.moa.moabackend.chat.entity.Message;
+//import com.moa.moabackend.chat.entity.SocketMessage;
 //import com.moa.moabackend.chat.service.ChatService;
 //import com.moa.moabackend.jwt.JwtUtil;
 //import lombok.RequiredArgsConstructor;
@@ -13,6 +13,7 @@
 //import org.springframework.messaging.handler.annotation.Payload;
 //import org.springframework.messaging.handler.annotation.SendTo;
 //import org.springframework.messaging.simp.SimpMessagingTemplate;
+//import org.springframework.security.core.annotation.AuthenticationPrincipal;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.web.bind.annotation.RestController;
 //
@@ -26,12 +27,13 @@
 //
 //    @MessageMapping("/message") // /app/message
 //    @SendTo("/chatroom/public")
-//    public Message receivePublicMessage(@Payload Message message) {
+//    public SocketMessage receivePublicMessage(@Payload SocketMessage message, @AuthenticationPrincipal
+//    ) {
 //        return message;
 //    }
 //
 //    @MessageMapping("/private-message")
-//    public Message receivePrivateMessage(@Payload Message message){
+//    public SocketMessage receivePrivateMessage(@Payload SocketMessage message){
 //        simpMessagingTemplate.convertAndSendToUser(message.getReceiverName(),"/private",message); // /user/David/private
 //        return message;
 //    }

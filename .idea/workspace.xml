@@ -5,23 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dbed776-211d-4151-bfb0-21c51d864659" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/socket/ReplyEchoHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/controller/ChatRoomController2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/controller/StompController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/ChatRoomRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/ChatRoomResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/SocketMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/SocketPlan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/redis/RedisConfig2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/repository/ChatRoomRedisRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/repository/ChatRoomRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/service/ChatRoomService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/LoginInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/LoginInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/controller/ChatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/controller/ChatRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/controller/ChatRoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/ChatMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/ChatMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/ChatRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/Message.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/entity/Status.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/redis/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/redis/RedisConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/redis/RedisLocalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/redis/RedisLocalConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/redis/RedisSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/redis/RedisSubscriber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/service/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/service/ChatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/socket/ReplyEchoHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/socket/ReplyEchoHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/socket/StompHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/socket/StompHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/socket/StompWebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/socket/StompWebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/socket/WebsocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/socket/WebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/FriendResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/socket/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/socket/WebSocketConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/GroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/controller/GroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/GroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/GroupService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/hello2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/hello2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/room.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/room.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/roomdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/roomdetail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +86,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-messaging/5.3.23/df70a056ff9610f1c054a92f8447fcc69593478b/spring-messaging-5.3.23-sources.jar!/org/springframework/messaging/simp/SimpMessagingTemplate.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -85,24 +99,27 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/신현재/Desktop/코딩/[Inflearn]/99-Moa-B",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "spring.configuration.checksum": "f2cdb14d7ab1b60e97aac7b27fd4a165"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/신현재/Desktop/코딩/[Inflearn]/spring-socket-JWT&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;f2cdb14d7ab1b60e97aac7b27fd4a165&quot;
   }
-}]]></component>
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\신현재\Desktop\코딩\[Inflearn]\99-Moa-B\src\main\resources\templates\chat" />
@@ -211,7 +228,12 @@
       <workItem from="1669107667891" duration="16308000" />
       <workItem from="1669171209650" duration="4144000" />
       <workItem from="1669621306316" duration="8770000" />
-      <workItem from="1669631722601" duration="2329000" />
+      <workItem from="1669631722601" duration="3119000" />
+      <workItem from="1669690539245" duration="15058000" />
+      <workItem from="1669757843512" duration="36163000" />
+      <workItem from="1669807782353" duration="1925000" />
+      <workItem from="1669810556396" duration="193000" />
+      <workItem from="1669860989594" duration="6370000" />
     </task>
     <servers />
   </component>
