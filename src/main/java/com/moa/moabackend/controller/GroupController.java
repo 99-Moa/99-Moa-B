@@ -26,7 +26,7 @@ public class GroupController {
     @PostMapping("/group")
     public ResponseDto<String> addGroup(@RequestBody GroupRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         // 알람 보내기
-        alertService.alertEvent(requestDto);
+//        alertService.alertEvent(requestDto);
         return groupService.addGroup(requestDto, userDetails.getUser());
     }
 

@@ -10,6 +10,7 @@ import com.moa.moabackend.repository.GroupRepository;
 import com.moa.moabackend.repository.UserRepository;
 import com.moa.moabackend.sse.Alert;
 import com.moa.moabackend.sse.AlertRepository;
+import com.moa.moabackend.sse.AlertService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class GroupService {
     private final GroupRepository groupRepository;
     private final UserRepository userRepository;
     private final AlertRepository alertRepository;
+    private final AlertService alertService;
 
 //    // 그룹 생성
 //    public ResponseDto<String> addGroup(GroupRequestDto requestDto, User user) {
@@ -53,7 +55,10 @@ public class GroupService {
                     .receiver(requestDto.getUsers().get(i))
                     .check(false)
                     .build();
+
+            User findUser = userRepository.findByUserName(requestDto.getUsers().get(i)).get();
             alertRepository.save(alert);
+            alertService.alertEventAddGroup(findUser, alert);
         }
 //        userList.add(requestDto.getUserList().toString());
         int userNum = userList.size();
