@@ -1,4 +1,4 @@
-package com.moa.moabackend.jwt;
+package com.moa.moabackend.entity.user;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

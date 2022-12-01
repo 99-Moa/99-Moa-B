@@ -33,6 +33,7 @@ public class ChatRoomService {
     // 채팅방 생성
     public ResponseDto<ChatRoomResponseDto> createRoom(ChatRoomRequestDto chatRoomRequestDto) {
         List<String> users = new ArrayList<>();
+        users.add("이동진");
 
         // 채팅방 저장
         ChatRoom chatRoom = ChatRoom.builder()
@@ -57,20 +58,38 @@ public class ChatRoomService {
 
     // 채팅방 인원 추가, 삭제
     public ChatRoom setUser(Long chatRoomId, SocketMessage socketMessage) {
+        System.out.println("111111111111111111111111111111111111111111");
         ChatRoom chatRoom = chatRoomRedisRepository.findById(chatRoomId).get();
+        System.out.println("2222222222222222222222222222222222222222222222");
         //null값 예외처리추가
         Status status = socketMessage.getStatus();
+        System.out.println("33333333333333333333333333333333333333333");
+
         // token 으로 userId 추출  -----> userId 로 닉네임 추출
         String userId = jwtUtil.getUserIdFromToken(socketMessage.getToken());
+        System.out.println("44444444444444444444444444444444444444444444");
+
         String userName = userService.getUserNameByUserId(userId);
+        System.out.println("5555555555555555555555555555555555555555555");
+
         List<String> userList = chatRoom.getUsers();
+        System.out.println("666666666666666666666666666666666666666666666");
+
         if (status.equals(JOIN) && !(userList.contains(userName))) {
             userList.add(userName);
+            System.out.println("77777777777777777777777777777777777777777777777");
+
         } else if (status.equals(LEAVE) && userList.contains(userName)) {
             userList.remove(userName);
+            System.out.println("888888888888888888888888888888888888888888");
+
         }
         chatRoom.setUsers(userList);
+        System.out.println("999999999999999999999999999999999999999999999");
+
         chatRoomRedisRepository.save(chatRoom);
+        System.out.println("101010101010101010101010101010101010101010101010101010");
+
         return chatRoom;
     }
 
