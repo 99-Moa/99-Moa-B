@@ -24,6 +24,7 @@ public class SseController {
 
     public static Map<String, SseEmitter> sseEmitters = new ConcurrentHashMap<>();
     private final JwtUtil jwtUtil;
+    public final AlertService alertService;
 
     @CrossOrigin
     @GetMapping(value = "/sub", consumes = MediaType.ALL_VALUE)
@@ -48,6 +49,7 @@ public class SseController {
         sseEmitter.onTimeout(() -> sseEmitters.remove(userName));
         sseEmitter.onError((e) -> sseEmitters.remove(userName));
 
+        alertService.alertEvent(userName);
         return sseEmitter;
     }
 
