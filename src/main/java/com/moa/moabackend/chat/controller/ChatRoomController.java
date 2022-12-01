@@ -6,7 +6,9 @@ import com.moa.moabackend.chat.entity.ChatRoomRequestDto;
 import com.moa.moabackend.chat.entity.ChatRoomResponseDto;
 import com.moa.moabackend.chat.service.ChatRoomService;
 import com.moa.moabackend.entity.ResponseDto;
+import com.moa.moabackend.security.user.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +20,8 @@ public class ChatRoomController {
 
     // 채팅방 생성
     @PostMapping("/room")
-    public ResponseDto<ChatRoomResponseDto> createRoom(@RequestBody ChatRoomRequestDto chatRoomRequestDto){
-        return chatRoomService.createRoom(chatRoomRequestDto);
+    public ResponseDto<ChatRoomResponseDto> createRoom(@RequestBody ChatRoomRequestDto chatRoomRequestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
+        return chatRoomService.createRoom(chatRoomRequestDto, userDetails.getUser());
     }
 
     // 채팅방 단일 조회
