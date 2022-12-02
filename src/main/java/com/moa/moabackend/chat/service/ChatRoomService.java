@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.moa.moabackend.chat.entity.Status.JOIN;
@@ -35,7 +36,9 @@ public class ChatRoomService {
     public ResponseDto<ChatRoomResponseDto> createRoom(ChatRoomRequestDto chatRoomRequestDto, User user) {
         List<String> users = new ArrayList<>();
         // 초기값 생성, 초기값 없을시 NullpointException
-        users.add("");
+        users.add(user.getUserName());
+        System.out.println(user.getUserName());
+        System.out.println(Collections.unmodifiableList(users));
 
         // 채팅방 저장
         ChatRoom chatRoom = ChatRoom.builder()
