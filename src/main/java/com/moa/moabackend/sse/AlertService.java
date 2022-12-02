@@ -19,52 +19,6 @@ public class AlertService {
     private final AlertRepository alertRepository;
     private final UserRepository userRepository;
 
-//    public ResponseDto<String> alertEvent(String userName) {
-//        if (sseEmitters.containsKey(userName)) {
-//
-//            SseEmitter sseEmitter = sseEmitters.get(userName);
-//            try {
-//                sseEmitter.send(SseEmitter.event().name("addComment").data("알람을 보냈습니다"));
-//                Alert alert = Alert.builder()
-//                        .message("알람을 보냈습니다")
-//                        .reciever(userName)
-//                        .check(false)
-//                        .build();
-//                alertRepository.save(alert);
-//                System.out.println("완료");
-//            } catch (Exception e) {
-//                System.out.println("exception");
-//                sseEmitters.remove(userName);
-//            }
-////            return ResponseDto.success("if");
-//        }
-//        return ResponseDto.success("알람 보내기 완료");
-//    }
-
-
-//    public ResponseDto<String> alertEvent(User user, String reciever) {
-//        String userName = user.getUserId();
-//        if (sseEmitters.containsKey(userName)) {
-//
-//            SseEmitter sseEmitter = sseEmitters.get(userName);
-//            try {
-//                sseEmitter.send(SseEmitter.event().name("addComment").data("알람을 보냈습니다"));
-//                Alert alert = Alert.builder()
-//                        .message(user.getUserName() + "님이 그룹에 초대했습니다.")
-//                        .reciever(reciever)
-//                        .check(false)
-//                        .build();
-//                alertRepository.save(alert);
-//                System.out.println("완료");
-//            } catch (Exception e) {
-//                System.out.println("exception");
-//                sseEmitters.remove(userName);
-//            }
-////            return ResponseDto.success("if");
-//        }
-//        return ResponseDto.success("알람 보내기 완료");
-//    }
-
     // 그룹 알람 조회
     public ResponseDto<String> alertEventAddGroup(User user, Alert alert) {
         String userId = user.getUserId();
@@ -72,13 +26,10 @@ public class AlertService {
             SseEmitter sseEmitter = sseEmitters.get(userId);
             try {
                 sseEmitter.send(SseEmitter.event().data(alert));
-//                    System.out.println("완료");
             } catch (Exception e) {
-                System.out.println("exception");
                 sseEmitters.remove(userId);
             }
         }
-
         return ResponseDto.success("알람 보내기 완료");
     }
 
@@ -89,21 +40,17 @@ public class AlertService {
         if (sseEmitters.containsKey(userId)) {
             SseEmitter sseEmitter = sseEmitters.get(userId);
             try {
-//                    sseEmitter.send(SseEmitter.event().name("readAlert").data("알람을 보냈습니다"));
-//                    Alert alert = alertRepository.findById(1L).get();
                 List<Alert> alerts = alertRepository.findAllByReceiver(user.getUserName());
                 for (Alert alert : alerts
                 ) {
-                    sseEmitter.send(SseEmitter.event().data(alert));
+                    if (alert.isCheck() != true) {
+                        sseEmitter.send(SseEmitter.event().data(alert));
+                    }
                 }
-//                    sseEmitter.send(SseEmitter.event().name("readAlert").data(alert));
-//                    System.out.println("완료");
             } catch (Exception e) {
-                System.out.println("exception");
                 sseEmitters.remove(userId);
             }
         }
-
         return ResponseDto.success("알람 보내기 완료");
     }
 
