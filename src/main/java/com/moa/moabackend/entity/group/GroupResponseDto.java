@@ -8,6 +8,7 @@ import lombok.Getter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @Getter
@@ -25,6 +26,7 @@ public class GroupResponseDto {
         private String location;
         private LocalTime startTime;
         private List<String> imgUrls;
+        private List<Map<String, String>> userInfoList;
     }
 
     @AllArgsConstructor
