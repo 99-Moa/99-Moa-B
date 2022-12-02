@@ -62,12 +62,14 @@ public class GroupService {
 
         for (Group group : groups) {
             List<Map<String, String>> userInfoList = new ArrayList<>();
+            List<String> imgList = new ArrayList<>();
             for (int i = 0; i <= group.getUsers().size() - 1; i++) {
                 Map<String, String> userMap = new HashMap<String, String>();
                 User findUser = userRepository.findByUserName(group.getUsers().get(i)).get();
                 userMap.put("userName", findUser.getUserName());
                 userMap.put("imgUrl", findUser.getImgUrl());
                 userInfoList.add(userMap);
+                imgList.add(findUser.getImgUrl());
                 if (group.getUsers().get(i).equals(user.getUserName())) {
                     if (group.getSchedule() == null) {
                         groupResponseList.add(
@@ -78,6 +80,7 @@ public class GroupService {
                                         .startDate(null)
                                         .startTime(null)
                                         .location(null)
+                                        .imgUrls(imgList)
                                         .userInfoList(userInfoList)
                                         .build()
                         );
@@ -90,6 +93,7 @@ public class GroupService {
                                         .startDate(group.getSchedule().getStartDate())
                                         .startTime(group.getSchedule().getStartTime())
                                         .location(group.getSchedule().getLocation())
+                                        .imgUrls(imgList)
                                         .userInfoList(userInfoList)
                                         .build()
                         );
