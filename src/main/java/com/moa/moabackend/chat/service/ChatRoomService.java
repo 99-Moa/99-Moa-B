@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.moa.moabackend.chat.entity.Status.JOIN;
@@ -35,7 +36,9 @@ public class ChatRoomService {
     public ResponseDto<ChatRoomResponseDto> createRoom(ChatRoomRequestDto chatRoomRequestDto, User user) {
         List<String> users = new ArrayList<>();
         // 초기값 생성, 초기값 없을시 NullpointException
-        users.add("");
+        users.add(user.getUserName());
+        System.out.println(user.getUserName());
+        System.out.println(Collections.unmodifiableList(users));
 
         // 채팅방 저장
         ChatRoom chatRoom = ChatRoom.builder()
@@ -60,15 +63,17 @@ public class ChatRoomService {
 
     // 채팅방 인원 추가, 삭제
     public ChatRoom setUser(Long chatRoomId, SocketMessage socketMessage) {
+        System.out.println("chatRoomId : " +chatRoomId);
         ChatRoom chatRoom = chatRoomRedisRepository.findById(chatRoomId).get();
         //null값 예외처리추가
         Status status = socketMessage.getStatus();
+        System.out.println("status : " +status);
 
         // token 으로 userId 추출  -----> userId 로 닉네임 추출
         String userId = jwtUtil.getUserIdFromToken(socketMessage.getToken());
         System.out.println(userId);
         String userName = userService.getUserNameByUserId(userId);
-        System.out.println(userName);
+        System.out.println("userName : " + userName);
         List<String> userList = chatRoom.getUsers();
 
         if (status.equals(JOIN) && !(userList.contains(userName))) {

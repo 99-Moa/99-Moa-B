@@ -14,6 +14,9 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Controller
 @RequiredArgsConstructor
 public class StompController {
@@ -35,6 +38,8 @@ public class StompController {
         String userId = jwtUtil.getUserIdFromToken(socketMessage.getToken());
         String userName = userService.getUserNameByUserId(userId);
         socketMessage.setSender(userName);
+        LocalDateTime time = LocalDateTime.now();
+        socketMessage.setTime(time);
         // /topic/chatRoomId/message
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/message", socketMessage);
     }
