@@ -108,31 +108,17 @@ public class GroupService {
     // 그룹 하나 조회
     public ResponseDto<GroupResponseDto.groupDetail> getOneGroup(Long groupId) {
         Group group = groupRepository.findById(groupId).get();
-//        List<Long> userIdList = new ArrayList<>();
-        List<Map<String, String>> userInfoList = new ArrayList<>();
+        List<Long> userIdList = new ArrayList<>();
         for (int i = 0; i <= group.getUsers().size() - 1; i++) {
-//            User user = userRepository.findByUserName(group.getUsers().get(i)).get();
-//            userIdList.add(user.getId());
-            Map<String, String> userMap = new HashMap<String, String>();
-            User findUser = userRepository.findByUserName(group.getUsers().get(i)).get();
-            userMap.put("userName", findUser.getUserName());
-            userMap.put("imgUrl", findUser.getImgUrl());
-            userInfoList.add(userMap);
+            User user = userRepository.findByUserName(group.getUsers().get(i)).get();
+            userIdList.add(user.getId());
         }
         return ResponseDto.success(
                 GroupResponseDto.groupDetail.builder()
                         .groupId(groupId)
                         .groupName(group.getGroupName())
-                        .userInfoList(userInfoList)
+                        .userIdList(userIdList)
                         .userNum(group.getUserNum())
-                        .startDate(null)
-                        .endDate(null)
-                        .title(null)
-                        .startTime(null)
-                        .endTime(null)
-                        .location(null)
-                        .locationRoadName(null)
-                        .content(null)
                         .build()
         );
     }
