@@ -3,6 +3,7 @@ package com.moa.moabackend.chat.entity;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Getter
 @Setter
@@ -15,6 +16,6 @@ public class SocketMessage {
     private Long chatRoomId; //FE에서 전달
     //    private String receiver;
     private String message; //FE에서 전달
-    private LocalDateTime time; //BE에서 생성
+    private ZonedDateTime time; //BE에서 생성
     private String token;
 }

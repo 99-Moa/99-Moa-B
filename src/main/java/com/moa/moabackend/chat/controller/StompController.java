@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 @Controller
 @RequiredArgsConstructor
@@ -39,7 +41,10 @@ public class StompController {
         String userName = userService.getUserNameByUserId(userId);
         socketMessage.setSender(userName);
         LocalDateTime time = LocalDateTime.now();
-        socketMessage.setTime(time);
+        System.out.println("LocalDateTime : " +time);
+        ZonedDateTime timeSeoul = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
+        System.out.println("ZonedDateTime : " +timeSeoul);
+        socketMessage.setTime(timeSeoul);
         // /topic/chatRoomId/message
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/message", socketMessage);
     }
@@ -52,7 +57,6 @@ public class StompController {
     }
 
     @MessageMapping("/user")
-//    public ChatRoom receiveUser(@Payload SocketMessage socketMessage, java.security.Principal principal)
     public void receiveUser(@Payload SocketMessage socketMessage) {
         Long chatRoomId = socketMessage.getChatRoomId();
         ChatRoom chatRoom = chatRoomService.setUser(chatRoomId, socketMessage);
