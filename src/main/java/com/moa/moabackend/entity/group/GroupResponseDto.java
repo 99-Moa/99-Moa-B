@@ -35,8 +35,17 @@ public class GroupResponseDto {
     public static class groupDetail {
         // 그룹 상세 조회
         private Long groupId;
-        private List<Long> userIdList;
+        private List<Map<String, String>> userInfoList;
         private String groupName;
         private int userNum;
+
+        private LocalDate startDate;
+        private LocalDate endDate;
+        private String title;
+        private LocalTime startTime;
+        private LocalTime endTime;
+        private String location;
+        private String locationRoadName;
+        private String content;
     }
 }
