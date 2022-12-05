@@ -34,22 +34,24 @@ public class ChatRoomService {
 
     // 채팅방 생성
     public ResponseDto<ChatRoomResponseDto> createRoom(ChatRoomRequestDto chatRoomRequestDto, User user) {
-        List<String> users = new ArrayList<>();
-        // 초기값 생성, 초기값 없을시 NullpointException
-        users.add(user.getUserName());
-        System.out.println(user.getUserName());
-        System.out.println(Collections.unmodifiableList(users));
+        Long chatRoomId = chatRoomRequestDto.getChatRoomId();
+        // 채팅방 없을시 저장
+        if(chatRoomRedisRepository.findById(chatRoomId).isEmpty()){
+            // 초기값 생성, 초기값 없을시 NullpointException
+            List<String> users = new ArrayList<>();
+            users.add(user.getUserName());
 
-        // 채팅방 저장
-        ChatRoom chatRoom = ChatRoom.builder()
-                .id(chatRoomRequestDto.getChatRoomId())
-                .users(users)
-                .build();
+            ChatRoom chatRoom = ChatRoom.builder()
+                    .id(chatRoomRequestDto.getChatRoomId())
+                    .users(users)
+                    .build();
 
-        chatRoomRedisRepository.save(chatRoom);
+            chatRoomRedisRepository.save(chatRoom);
+        }
 
+        ChatRoom chatRoomRepo = chatRoomRedisRepository.findById(chatRoomId).get();
         ChatRoomResponseDto chatRoomResponseDto = ChatRoomResponseDto.builder()
-                .chatRoomId(chatRoom.getId())
+                .chatRoomId(chatRoomRepo.getId())
                 .build();
 
         // 채팅방 Id값 리턴
