@@ -1,9 +1,7 @@
 package com.moa.moabackend.chat.controller;
 
-import com.moa.moabackend.chat.entity.ChatRoom;
-import com.moa.moabackend.chat.entity.SocketMessage;
-import com.moa.moabackend.chat.entity.SocketPlan;
-import com.moa.moabackend.chat.entity.Status;
+import com.moa.moabackend.chat.entity.*;
+import com.moa.moabackend.chat.service.ChatMessageService;
 import com.moa.moabackend.chat.service.ChatRoomService;
 import com.moa.moabackend.jwt.JwtUtil;
 import com.moa.moabackend.service.UserService;
@@ -23,6 +21,7 @@ import java.time.ZonedDateTime;
 @RequiredArgsConstructor
 public class StompController {
     private final ChatRoomService chatRoomService;
+    private final ChatMessageService chatMessageService;
     private final JwtUtil jwtUtil;
     private final UserService userService;
 
@@ -34,19 +33,11 @@ public class StompController {
 
     @MessageMapping("/message") // /app/socketMessage 로 받으면
 //    @SendTo("/topic/socketMessage") // return 값을 /topic/socketMessage 로 넘겨준다.
-    public void receiveMessage(@Payload SocketMessage socketMessage) {
-        Long chatRoomId = socketMessage.getChatRoomId();
-        // token 으로 userId 추출  -----> userId 로 닉네임 추출
-        String userId = jwtUtil.getUserIdFromToken(socketMessage.getToken());
-        String userName = userService.getUserNameByUserId(userId);
-        socketMessage.setSender(userName);
-        LocalDateTime time = LocalDateTime.now();
-        System.out.println("LocalDateTime : " +time);
-        ZonedDateTime timeSeoul = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
-        System.out.println("ZonedDateTime : " +timeSeoul);
-        socketMessage.setTime(timeSeoul);
+    public void receiveMessage(@Payload SocketMessageRequsetDto socketMessageRequsetDto) {
+        Long chatRoomId = socketMessageRequsetDto.getChatRoomId();
+        SocketMessage chatMessage = chatMessageService.getMessage(socketMessageRequsetDto);
         // /topic/chatRoomId/message
-        simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/message", socketMessage);
+        simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/message", chatMessage);
     }
 
     @MessageMapping("/plan")
@@ -60,8 +51,6 @@ public class StompController {
     public void receiveUser(@Payload SocketMessage socketMessage) {
         Long chatRoomId = socketMessage.getChatRoomId();
         ChatRoom chatRoom = chatRoomService.setUser(chatRoomId, socketMessage);
-        System.out.println(chatRoom);
-        System.out.println(chatRoom.getUsers());
         // /topic/chatRoomId/user
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/user", chatRoom.getUsers());
     }
