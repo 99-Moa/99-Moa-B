@@ -25,7 +25,7 @@ public class User extends Timestamped {
 //    @NotBlank
     private String userName;
 
-    private String imgUrl = "https://yuns8708bucket.s3.ap-northeast-2.amazonaws.com/images/Icon_Profile.png";
+    private String imgUrl = "https://yuns8708bucket.s3.ap-northeast-2.amazonaws.com/images/moa99_profile.jpg";
 
     public User(UserRequestDto userRequestDto) {
         this.userId = userRequestDto.getUserId();
