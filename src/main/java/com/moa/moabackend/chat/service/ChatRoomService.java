@@ -34,12 +34,21 @@ public class ChatRoomService {
 
     // 채팅방 생성
     public ResponseDto<ChatRoomResponseDto> createRoom(ChatRoomRequestDto chatRoomRequestDto, User user) {
+        System.out.println("33333333333333333333333333333333333333333333333333333333333333333333");
+
         Long chatRoomId = chatRoomRequestDto.getChatRoomId();
+
+        System.out.println("444444444444444444444444444444444444444444444444444444444444444444444");
+
         // 채팅방 없을시 저장
         if(chatRoomRedisRepository.findById(chatRoomId).isEmpty()){
+            System.out.println("555555555555555555555555555555555555555555555555555555555555555555555");
+
             // 초기값 생성, 초기값 없을시 NullpointException
             List<String> users = new ArrayList<>();
+            users.add("chatRoomId"+chatRoomId);
             users.add(user.getUserName());
+            System.out.println("77777777777777777777777777777777777777777777777777777777777777777777");
 
             ChatRoom chatRoom = ChatRoom.builder()
                     .id(chatRoomRequestDto.getChatRoomId())
@@ -48,6 +57,7 @@ public class ChatRoomService {
 
             chatRoomRedisRepository.save(chatRoom);
         }
+        System.out.println("8888888888888888888888888888888888888888888888888888888888888888888");
 
         ChatRoom chatRoomRepo = chatRoomRedisRepository.findById(chatRoomId).get();
         ChatRoomResponseDto chatRoomResponseDto = ChatRoomResponseDto.builder()
@@ -66,6 +76,8 @@ public class ChatRoomService {
     // 채팅방 인원 추가, 삭제
     public ChatRoom setUser(Long chatRoomId, SocketMessage socketMessage) {
         System.out.println("chatRoomId : " +chatRoomId);
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
         ChatRoom chatRoom = chatRoomRedisRepository.findById(chatRoomId).get();
         //null값 예외처리추가
         Status status = socketMessage.getStatus();
@@ -77,13 +89,28 @@ public class ChatRoomService {
         String userName = userService.getUserNameByUserId(userId);
         System.out.println("userName : " + userName);
         List<String> userList = chatRoom.getUsers();
+        System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+        System.out.println(userList);
+//        System.out.println(userList.size());
+        // 초기값 생성, 초기값 없을시 NullpointException
+//        if(userList == null) {
+//            System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+//            List<String> users = new ArrayList<>();
+//            users.add(userName);
+//            System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+//        }
 
         if (status.equals(JOIN) && !(userList.contains(userName))) {
             userList.add(userName);
+            System.out.println("cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
+
         } else if (status.equals(LEAVE) && userList.contains(userName)) {
             userList.remove(userName);
+            System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
+
         }
         chatRoom.setUsers(userList);
+        System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 
         chatRoomRedisRepository.save(chatRoom);
 

@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "member")  // table name 은 'user' 가 아닌 'users' 로 변경
+@Table(name = "users")  // table name 은 'user' 가 아닌 'users' 로 변경
 @NoArgsConstructor
 public class User extends Timestamped {
     @Id
@@ -34,12 +34,8 @@ public class User extends Timestamped {
 //    @Column
     private String userName;
 
-<<<<<<< HEAD
 //    @Column
-    private String imgUrl = "https://yuns8708bucket.s3.ap-northeast-2.amazonaws.com/images/Icon_Profile.png";
-=======
     private String imgUrl = "https://yuns8708bucket.s3.ap-northeast-2.amazonaws.com/images/moa99_profile.jpg";
->>>>>>> 6d89aa32b608976265457ed726a82be5dcb4ce01
 
     public User(UserRequestDto userRequestDto) {
         this.userId = userRequestDto.getUserId();

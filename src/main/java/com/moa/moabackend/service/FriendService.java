@@ -24,6 +24,10 @@ public class FriendService {
     public ResponseDto<String> addFriend(User user, FriendRequestDto friendRequestDto) {
 
         String friendUsername = friendRequestDto.getUserName();
+        if (checkMyFriend(user.getUserId(), friendUsername)) {
+            return ResponseDto.fail(400, "Bad Request", "이미 등록된 친구입니다.");
+        }
+
         if(userRepository.findByUserName(friendUsername).isPresent()){
             Friend friend = Friend.builder()
                     .userId(user.getUserId())

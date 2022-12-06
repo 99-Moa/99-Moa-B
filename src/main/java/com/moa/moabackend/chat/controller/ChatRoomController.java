@@ -24,8 +24,9 @@ public class ChatRoomController {
     // 채팅방 생성
     @PostMapping("/room")
     public ResponseDto<ChatRoomResponseDto> createRoom(@RequestBody ChatRoomRequestDto chatRoomRequestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        System.out.println(userDetails.getUser());
+        System.out.println("1111111111111111111111111111111111111111111111111111111111111111");
         System.out.println(userDetails.getUser().getUserName());
+        System.out.println("222222222222222222222222222222222222222222222222222222222222");
         return chatRoomService.createRoom(chatRoomRequestDto, userDetails.getUser());
     }
 
