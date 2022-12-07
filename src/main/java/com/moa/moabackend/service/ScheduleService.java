@@ -128,7 +128,7 @@ public class ScheduleService {
     // 일정 수정
     public ResponseDto<String> updateSchedule(Long scheduleId, ScheduleRequestDto requestDto, User user) {
         Schedule schedule = scheduleRepository.findById(scheduleId).get();
-        if (user.getUserId() != schedule.getUser().getUserId()) {
+        if (!user.getUserId().equals(schedule.getUser().getUserId())) {
             return ResponseDto.fail(404, "사용자가 일치하지 않습니다.", "Not Found");
         }
         schedule.update(requestDto);
@@ -139,7 +139,7 @@ public class ScheduleService {
     // 일정 삭제
     public ResponseDto<String> deleteSchedule(Long scheduleId, User user) {
         Schedule schedule = scheduleRepository.findById(scheduleId).get();
-        if (user.getUserId() != schedule.getUser().getUserId()) {
+        if (!user.getUserId().equals(schedule.getUser().getUserId())) {
             return ResponseDto.fail(404, "사용자가 일치하지 않습니다.", "Not Found");
         }
         scheduleRepository.delete(schedule);
