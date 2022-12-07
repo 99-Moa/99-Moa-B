@@ -76,7 +76,7 @@ public class MypageService {
 
         // 알람에서 보낸사람 닉네임 업데이트
         for (Alert alert : alertList) {
-            alert.updateAlert(user.getUserName());
+            alert.updateAlert(user.getUserName(), user.getImgUrl());
             alertRepository.save(alert);
         }
         return ResponseDto.success("수정 완료!");
