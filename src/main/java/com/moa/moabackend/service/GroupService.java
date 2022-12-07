@@ -155,4 +155,21 @@ public class GroupService {
         groupRepository.save(group);
         return ResponseDto.success("그룹 친구 추가 성공");
     }
+
+    // 그룹에서 나가기
+    public ResponseDto<String> exitGroup(User user) {
+        List<GroupResponseDto.groupList> groupResponseList = new ArrayList<>();
+        List<Group> groups = groupRepository.findAll();
+
+        for (Group group : groups) {
+            for (int i = 0; i <= group.getUsers().size() - 1; i++) {
+                if (group.getUsers().get(i).equals(user.getUserName())) {
+                    group.getUsers().remove(i);
+                    group.setUserNum(group.getUsers().size());
+                    groupRepository.save(group);
+                }
+            }
+        }
+        return ResponseDto.success("그룹 나가기 완료");
+    }
 }
