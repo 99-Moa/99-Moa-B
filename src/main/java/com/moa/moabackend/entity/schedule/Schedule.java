@@ -54,10 +54,7 @@ public class Schedule {
     @JoinColumn(name = "user_id")
     private User user;
 
-//    @OneToMany
-//    private List<String> userNameList;
-
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "group_id")
     private Group group;
 

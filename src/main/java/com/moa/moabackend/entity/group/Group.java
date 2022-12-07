@@ -19,7 +19,7 @@ public class Group {
     @Column
     private Long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;
 
@@ -29,7 +29,6 @@ public class Group {
     @Convert(converter = StringListConverter.class)
     @Column
     private List<String> users;
-    // List<User> users
 
     // 그룹에 참가한 사람 수
     @Column
