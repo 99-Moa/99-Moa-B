@@ -8,6 +8,9 @@ import com.moa.moabackend.entity.user.mypage.MypageResponseDto;
 import com.moa.moabackend.entity.user.User;
 import com.moa.moabackend.repository.GroupRepository;
 import com.moa.moabackend.repository.UserRepository;
+import com.moa.moabackend.sse.Alert;
+import com.moa.moabackend.sse.AlertRepository;
+import com.moa.moabackend.sse.AlertService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,11 +25,15 @@ public class MypageService {
     private final S3Uploader s3Uploader;
     private final UserRepository userRepository;
     private final GroupRepository groupRepository;
+    private final AlertRepository alertRepository;
 
     // 마이페이지 수정
     public ResponseDto<String> updateMypage(User user, MypageRequestDto requestDto, MultipartFile imgUrl) throws IOException {
         // 바꾸기 전 닉네임 저장
         String preUserName = user.getUserName();
+
+        // 알람에서 보낸사람 닉네임 업데이트
+        List<Alert> alertList = alertRepository.findAllBySender(user.getUserName());
 
         // 그룹 유저리스트에서 로그인한 유저 닉네임 삭제
         List<Group> groups = groupRepository.findAll();
@@ -65,6 +72,12 @@ public class MypageService {
         for (Group group : myGroups) {
             group.updateGroup(user.getUserName());
             groupRepository.save(group);
+        }
+
+        // 알람에서 보낸사람 닉네임 업데이트
+        for (Alert alert : alertList) {
+            alert.updateAlert(user.getUserName(), user.getImgUrl());
+            alertRepository.save(alert);
         }
         return ResponseDto.success("수정 완료!");
     }

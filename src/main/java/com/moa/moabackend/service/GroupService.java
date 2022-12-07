@@ -31,11 +31,16 @@ public class GroupService {
     public ResponseDto<String> addGroup(GroupRequestDto requestDto, User user) {
         List<String> userList = new ArrayList<>();
         userList.add(user.getUserName());
+        String sender = user.getUserName();
+        String groupName = requestDto.getGroupName();
         for (int i = 0; i <= requestDto.getUsers().size() - 1; i++) {
             userList.add(requestDto.getUsers().get(i));
             // 알람 저장
             Alert alert = Alert.builder()
-                    .message(user.getUserName() + "님이 그룹에 초대했습니다.")
+                    .sender(sender)
+                    .imgUrl(user.getImgUrl())
+                    .groupName(groupName)
+                    .message(sender + "님이 " + groupName + " 그룹에 초대했습니다.")
                     .receiver(requestDto.getUsers().get(i))
                     .check(false)
                     .build();
