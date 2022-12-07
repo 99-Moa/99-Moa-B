@@ -26,6 +26,7 @@ public class ChatMessageService {
     // 메세지 저장
     public SocketMessage getMessage(SocketMessageRequsetDto socketMessageRequsetDto){
         System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+<<<<<<< HEAD
 
         // sender 추가
         String userId = jwtUtil.getUserIdFromToken(socketMessageRequsetDto.getToken());
@@ -34,8 +35,17 @@ public class ChatMessageService {
         String userName = userService.getUserNameByUserId(userId);
         System.out.println("userName : " + userName);
         System.out.println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
+=======
+>>>>>>> 55e2bd3ef140e4728daef3a46f7a1192d39f76e4
 
-        // time 추가
+// sender 추가
+        String userId = jwtUtil.getUserIdFromToken(socketMessageRequsetDto.getToken());
+        System.out.println("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+        System.out.println(userId);
+        String userName = userService.getUserNameByUserId(userId);
+        System.out.println("userName : " + userName);
+        System.out.println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
+// time 추가
         ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
         System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
 
@@ -60,10 +70,10 @@ public class ChatMessageService {
 
         for (SocketMessage socketMessage : socketMessageList){
             socketMessageResponseDtoList.add(SocketMessageResponseDto.builder()
-                            .sender(socketMessage.getSender())
-                            .message(socketMessage.getMessage())
-                            .time(socketMessage.getTime())
-                            .build()
+                    .sender(socketMessage.getSender())
+                    .message(socketMessage.getMessage())
+                    .time(socketMessage.getTime())
+                    .build()
             );
         }
         return ResponseDto.success(socketMessageResponseDtoList);

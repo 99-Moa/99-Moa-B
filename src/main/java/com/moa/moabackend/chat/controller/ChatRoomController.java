@@ -36,7 +36,7 @@ public class ChatRoomController {
         return chatRoomService.getRoom(chatRoomId);
     }
 
-    //  // 채팅방 인원 추가, 삭제
+    // // 채팅방 인원 추가, 삭제
     @PostMapping("/room/person")
     public ChatRoom setUser(@RequestBody SocketMessage socketMessage){
         Long chatRoomId = socketMessage.getChatRoomId();

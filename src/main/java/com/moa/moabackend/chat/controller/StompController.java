@@ -28,11 +28,11 @@ public class StompController {
     @Autowired
     private SimpMessageSendingOperations simpMessageSendingOperations;
 
-//    @Autowired
-//    private SimpMessagingTemplate simpMessagingTemplate;
+// @Autowired
+// private SimpMessagingTemplate simpMessagingTemplate;
 
     @MessageMapping("/message") // /app/socketMessage 로 받으면
-//    @SendTo("/topic/socketMessage") // return 값을 /topic/socketMessage 로 넘겨준다.
+// @SendTo("/topic/socketMessage") // return 값을 /topic/socketMessage 로 넘겨준다.
     public void receiveMessage(@Payload SocketMessageRequsetDto socketMessageRequsetDto) {
         Long chatRoomId = socketMessageRequsetDto.getChatRoomId();
         System.out.println("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -40,14 +40,18 @@ public class StompController {
         SocketMessage chatMessage = chatMessageService.getMessage(socketMessageRequsetDto);
         System.out.println("ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg");
 
+<<<<<<< HEAD
         // /topic/chatRoomId/message
+=======
+// /topic/chatRoomId/message
+>>>>>>> 55e2bd3ef140e4728daef3a46f7a1192d39f76e4
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/message", chatMessage);
     }
 
     @MessageMapping("/plan")
     public void receivePlan(@Payload SocketPlan socketPlan) {
         Long chatRoomId = socketPlan.getChatRoomId();
-        // /topic/chatRoomId/plan
+// /topic/chatRoomId/plan
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/plan", socketPlan);
     }
 
@@ -59,21 +63,25 @@ public class StompController {
         ChatRoom chatRoom = chatRoomService.setUser(chatRoomId, socketMessage);
         System.out.println("10101010101010101010101010101010101010101010101010101010101010101010101010101010101010");
 
+<<<<<<< HEAD
         // /topic/chatRoomId/user
+=======
+// /topic/chatRoomId/user
+>>>>>>> 55e2bd3ef140e4728daef3a46f7a1192d39f76e4
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/user", chatRoom.getUsers());
     }
 }
 
-//    @SubscribeMapping
+// @SubscribeMapping
 
-//    @MessageMapping("/private-message")
-//    public SocketMessage receivePrivateMessage(@Payload SocketMessage message){
-//        simpMessagingTemplate.convertAndSendToUser(message.getReceiverName(),"/private",message); // /user/David/private
-//        return message;
-//    }
+// @MessageMapping("/private-message")
+// public SocketMessage receivePrivateMessage(@Payload SocketMessage message){
+// simpMessagingTemplate.convertAndSendToUser(message.getReceiverName(),"/private",message); // /user/David/private
+// return message;
+// }
 
-//        messagingTemplate.convertAndSend("/topic/" + message.getRoomid(), message.getMsg());
-////		messagingTemplate.convertAndSendToUser(message.getId(), "/topic/" + message.getRoomid(), message.getMsg());
+// messagingTemplate.convertAndSend("/topic/" + message.getRoomid(), message.getMsg());
+//// messagingTemplate.convertAndSendToUser(message.getId(), "/topic/" + message.getRoomid(), message.getMsg());
 //
-//        return message;
-//    }
+// return message;
+// }

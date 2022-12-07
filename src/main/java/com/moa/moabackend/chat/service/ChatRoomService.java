@@ -28,7 +28,7 @@ public class ChatRoomService {
     private final JwtUtil jwtUtil;
     private final UserService userService;
     private final ChatRoomRedisRepository chatRoomRedisRepository;
-    //    private static final String CHAT_ROOMS = "CHAT_ROOM";
+    // private static final String CHAT_ROOMS = "CHAT_ROOM";
     private final RedisTemplate<String, Object> redisTemplate;
     private HashOperations<String, String, ChatRoom> opsHashChatRoom;
 
@@ -40,11 +40,19 @@ public class ChatRoomService {
 
         System.out.println("444444444444444444444444444444444444444444444444444444444444444444444");
 
+<<<<<<< HEAD
         // 채팅방 없을시 저장
         if(chatRoomRedisRepository.findById(chatRoomId).isEmpty()){
             System.out.println("555555555555555555555555555555555555555555555555555555555555555555555");
 
             // 초기값 생성, 초기값 없을시 NullpointException
+=======
+// 채팅방 없을시 저장
+        if(chatRoomRedisRepository.findById(chatRoomId).isEmpty()){
+            System.out.println("555555555555555555555555555555555555555555555555555555555555555555555");
+
+// 초기값 생성, 초기값 없을시 NullpointException
+>>>>>>> 55e2bd3ef140e4728daef3a46f7a1192d39f76e4
             List<String> users = new ArrayList<>();
             users.add("chatRoomId"+chatRoomId);
             users.add(user.getUserName());
@@ -64,7 +72,7 @@ public class ChatRoomService {
                 .chatRoomId(chatRoomRepo.getId())
                 .build();
 
-        // 채팅방 Id값 리턴
+// 채팅방 Id값 리턴
         return ResponseDto.success(chatRoomResponseDto);
     }
 
@@ -79,17 +87,18 @@ public class ChatRoomService {
         System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
         ChatRoom chatRoom = chatRoomRedisRepository.findById(chatRoomId).get();
-        //null값 예외처리추가
+//null값 예외처리추가
         Status status = socketMessage.getStatus();
         System.out.println("status : " +status);
 
-        // token 으로 userId 추출  -----> userId 로 닉네임 추출
+// token 으로 userId 추출 -----> userId 로 닉네임 추출
         String userId = jwtUtil.getUserIdFromToken(socketMessage.getToken());
         System.out.println(userId);
         String userName = userService.getUserNameByUserId(userId);
         System.out.println("userName : " + userName);
         List<String> userList = chatRoom.getUsers();
         System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+<<<<<<< HEAD
         System.out.println(userList);
 //        System.out.println(userList.size());
         // 초기값 생성, 초기값 없을시 NullpointException
@@ -99,6 +108,12 @@ public class ChatRoomService {
 //            users.add(userName);
 //            System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
 //        }
+=======
+
+        System.out.println(userList);
+
+
+>>>>>>> 55e2bd3ef140e4728daef3a46f7a1192d39f76e4
 
         if (status.equals(JOIN) && !(userList.contains(userName))) {
             userList.add(userName);
@@ -118,5 +133,3 @@ public class ChatRoomService {
     }
 
 }
-
-

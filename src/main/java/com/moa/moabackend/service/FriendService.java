@@ -7,6 +7,9 @@ import com.moa.moabackend.entity.friend.FriendResponseDto;
 import com.moa.moabackend.entity.user.User;
 import com.moa.moabackend.repository.FriendRepository;
 import com.moa.moabackend.repository.UserRepository;
+import com.moa.moabackend.sse.Alert;
+import com.moa.moabackend.sse.AlertRepository;
+import com.moa.moabackend.sse.AlertService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,8 @@ public class FriendService {
 
     private final FriendRepository friendRepository;
     private final UserRepository userRepository;
+    private final AlertRepository alertRepository;
+    private final AlertService alertService;
 
     // 친구 추가
     public ResponseDto<String> addFriend(User user, FriendRequestDto friendRequestDto) {
@@ -27,7 +32,10 @@ public class FriendService {
         if (checkMyFriend(user.getUserId(), friendUsername)) {
             return ResponseDto.fail(400, "Bad Request", "이미 등록된 친구입니다.");
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 55e2bd3ef140e4728daef3a46f7a1192d39f76e4
         if(userRepository.findByUserName(friendUsername).isPresent()){
             Friend friend = Friend.builder()
                     .userId(user.getUserId())
@@ -35,6 +43,20 @@ public class FriendService {
                     .friendUsername(friendUsername)
                     .build();
             friendRepository.save(friend);
+
+            // 알람 저장
+            String sender = user.getUserName();
+            Alert alert = Alert.builder()
+                    .sender(sender)
+                    .imgUrl(user.getImgUrl())
+                    .message(sender + "님이 친구추가 하셨습니다.")
+                    .receiver(friendUsername)
+                    .check(false)
+                    .alertType(1)
+                    .build();
+
+            alertRepository.save(alert);
+            alertService.alertEventAddGroup(userRepository.findByUserName(friendUsername).get(), alert);
             return ResponseDto.success("친구 추가 완료");
         }else{
             // 친구존재하지 않을 경우
