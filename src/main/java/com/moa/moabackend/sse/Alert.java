@@ -1,6 +1,7 @@
 package com.moa.moabackend.sse;
 
 import com.moa.moabackend.entity.schedule.Schedule;
+import com.moa.moabackend.entity.user.mypage.MypageRequestDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,5 +25,17 @@ public class Alert {
     private String receiver;
 
     @Column
+    private String sender;
+
+    @Column
+    private String groupName;
+
+    @Column
     private boolean check;
+
+    // 알람 보내는 사람 닉네임 수정 시
+    public void updateAlert(String sender) {
+        this.sender = sender;
+        this.message = sender + "님이 " + groupName + " 그룹에 초대했습니다.";
+    }
 }
