@@ -40,19 +40,13 @@ public class ChatRoomService {
 
         System.out.println("444444444444444444444444444444444444444444444444444444444444444444444");
 
-<<<<<<< HEAD
-        // 채팅방 없을시 저장
-        if(chatRoomRedisRepository.findById(chatRoomId).isEmpty()){
-            System.out.println("555555555555555555555555555555555555555555555555555555555555555555555");
 
-            // 초기값 생성, 초기값 없을시 NullpointException
-=======
 // 채팅방 없을시 저장
         if(chatRoomRedisRepository.findById(chatRoomId).isEmpty()){
             System.out.println("555555555555555555555555555555555555555555555555555555555555555555555");
 
 // 초기값 생성, 초기값 없을시 NullpointException
->>>>>>> 55e2bd3ef140e4728daef3a46f7a1192d39f76e4
+
             List<String> users = new ArrayList<>();
             users.add("chatRoomId"+chatRoomId);
             users.add(user.getUserName());
@@ -98,7 +92,6 @@ public class ChatRoomService {
         System.out.println("userName : " + userName);
         List<String> userList = chatRoom.getUsers();
         System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-<<<<<<< HEAD
         System.out.println(userList);
 //        System.out.println(userList.size());
         // 초기값 생성, 초기값 없을시 NullpointException
@@ -108,12 +101,6 @@ public class ChatRoomService {
 //            users.add(userName);
 //            System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
 //        }
-=======
-
-        System.out.println(userList);
-
-
->>>>>>> 55e2bd3ef140e4728daef3a46f7a1192d39f76e4
 
         if (status.equals(JOIN) && !(userList.contains(userName))) {
             userList.add(userName);

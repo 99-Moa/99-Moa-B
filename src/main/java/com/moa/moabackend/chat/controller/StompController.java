@@ -40,11 +40,6 @@ public class StompController {
         SocketMessage chatMessage = chatMessageService.getMessage(socketMessageRequsetDto);
         System.out.println("ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg");
 
-<<<<<<< HEAD
-        // /topic/chatRoomId/message
-=======
-// /topic/chatRoomId/message
->>>>>>> 55e2bd3ef140e4728daef3a46f7a1192d39f76e4
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/message", chatMessage);
     }
 
@@ -63,11 +58,6 @@ public class StompController {
         ChatRoom chatRoom = chatRoomService.setUser(chatRoomId, socketMessage);
         System.out.println("10101010101010101010101010101010101010101010101010101010101010101010101010101010101010");
 
-<<<<<<< HEAD
-        // /topic/chatRoomId/user
-=======
-// /topic/chatRoomId/user
->>>>>>> 55e2bd3ef140e4728daef3a46f7a1192d39f76e4
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/user", chatRoom.getUsers());
     }
 }
