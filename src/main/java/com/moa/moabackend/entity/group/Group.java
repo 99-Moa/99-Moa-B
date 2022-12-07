@@ -34,6 +34,9 @@ public class Group {
     @Column
     private int userNum;
 
+    @Column
+    private boolean isPlan;
+
     public void updateGroup(String userName) {
         users.add(userName);
     }

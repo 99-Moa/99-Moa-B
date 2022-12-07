@@ -55,6 +55,7 @@ public class GroupService {
                 .users(userList)
                 .groupName(requestDto.getGroupName())
                 .userNum(userNum)
+                .isPlan(false)
                 .build();
         groupRepository.save(group);
 
@@ -139,6 +140,7 @@ public class GroupService {
                         .location(null)
                         .locationRoadName(null)
                         .content(null)
+                        .isPlan(group.isPlan())
                         .build()
         );
     }
