@@ -145,7 +145,7 @@ public class KakaoUserService {
 
             String profile = "https://ossack.s3.ap-northeast-2.amazonaws.com/basicprofile.png";
 
-            kakaoUser = new User(kakaouserId, encodedPassword, encodedPassword);
+            kakaoUser = new User(kakaouserId, encodedPassword);
             userRepository.save(kakaoUser);
 
         }

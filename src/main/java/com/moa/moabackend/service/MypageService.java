@@ -15,6 +15,7 @@ import com.moa.moabackend.sse.AlertRepository;
 import com.moa.moabackend.sse.AlertService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -29,7 +30,7 @@ public class MypageService {
     private final GroupRepository groupRepository;
     private final AlertRepository alertRepository;
     private final FriendRepository friendRepository;
-
+    @Transactional
     // 마이페이지 수정
     public ResponseDto<String> updateMypage(User user, MypageRequestDto requestDto, MultipartFile imgUrl) throws IOException {
         // 바꾸기 전 닉네임 저장

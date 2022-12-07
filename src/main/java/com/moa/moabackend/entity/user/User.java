@@ -29,7 +29,7 @@ public class User extends Timestamped {
     private String password;
 //    @NotBlank
 //    @Column
-    private String passwordCheck;
+//    private String passwordCheck;
 //    @NotBlank
 //    @Column
     private String userName;
@@ -40,15 +40,15 @@ public class User extends Timestamped {
     public User(UserRequestDto userRequestDto) {
         this.userId = userRequestDto.getUserId();
         this.password = userRequestDto.getPassword();
-        this.passwordCheck = userRequestDto.getPasswordCheck();
+//        this.passwordCheck = userRequestDto.getPasswordCheck();
         this.userName = userRequestDto.getUserName();
     }
 
-    public User(String kakaouserId, String password, String passwordCheck) {
+    public User(String kakaouserId, String password) {
         this.userId = kakaouserId;
         this.userName = kakaouserId;
         this.password = password;
-        this.passwordCheck = passwordCheck;
+//        this.passwordCheck = passwordCheck;
     }
 
 
