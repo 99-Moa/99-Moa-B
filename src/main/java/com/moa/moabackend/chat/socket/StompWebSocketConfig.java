@@ -35,9 +35,3 @@ public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.enableSimpleBroker("/topic", "/queue"); // sub
     }
 }
-    // websocket 앞단에서 jwt 토큰을 검증할 수 있도록 stompHander를 interceptor로 추가.
-//    @Override
-//    public void configureClientInboundChannel(ChannelRegistration registration) {
-//        registration.interceptors(stompHandler);
-//    }
-//}
