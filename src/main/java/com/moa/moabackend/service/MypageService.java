@@ -2,10 +2,12 @@ package com.moa.moabackend.service;
 
 import com.moa.moabackend.S3.S3Uploader;
 import com.moa.moabackend.entity.ResponseDto;
+import com.moa.moabackend.entity.friend.Friend;
 import com.moa.moabackend.entity.group.Group;
 import com.moa.moabackend.entity.user.mypage.MypageRequestDto;
 import com.moa.moabackend.entity.user.mypage.MypageResponseDto;
 import com.moa.moabackend.entity.user.User;
+import com.moa.moabackend.repository.FriendRepository;
 import com.moa.moabackend.repository.GroupRepository;
 import com.moa.moabackend.repository.UserRepository;
 import com.moa.moabackend.sse.Alert;
@@ -26,6 +28,7 @@ public class MypageService {
     private final UserRepository userRepository;
     private final GroupRepository groupRepository;
     private final AlertRepository alertRepository;
+    private final FriendRepository friendRepository;
 
     // 마이페이지 수정
     public ResponseDto<String> updateMypage(User user, MypageRequestDto requestDto, MultipartFile imgUrl) throws IOException {
@@ -72,6 +75,19 @@ public class MypageService {
         for (Group group : myGroups) {
             group.updateGroup(user.getUserName());
             groupRepository.save(group);
+        }
+
+        // Friend 리스트에서 UserName 닉네임 수정
+        List<Friend> friendListByuserName = friendRepository.findAllByUserName(preUserName);
+        for (Friend friend : friendListByuserName){
+            friend.updateUserName(requestDto.getUserName());
+            friendRepository.save(friend);
+        }
+        // Friend 리스트에서 friendUserName 닉네임 수정
+        List <Friend> friendListByfrienduserName = friendRepository.findAllByFriendUsername(preUserName);
+        for (Friend friend : friendListByfrienduserName){
+            friend.updateFriendUserName(requestDto.getUserName());
+            friendRepository.save(friend);
         }
 
         // 알람에서 보낸사람 닉네임 업데이트

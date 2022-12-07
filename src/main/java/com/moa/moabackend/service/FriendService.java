@@ -32,10 +32,7 @@ public class FriendService {
         if (checkMyFriend(user.getUserId(), friendUsername)) {
             return ResponseDto.fail(400, "Bad Request", "이미 등록된 친구입니다.");
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> 55e2bd3ef140e4728daef3a46f7a1192d39f76e4
         if(userRepository.findByUserName(friendUsername).isPresent()){
             Friend friend = Friend.builder()
                     .userId(user.getUserId())
