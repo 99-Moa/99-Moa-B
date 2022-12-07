@@ -128,9 +128,6 @@ public class ScheduleService {
     // 일정 수정
     public ResponseDto<String> updateSchedule(Long scheduleId, ScheduleRequestDto requestDto, User user) {
         Schedule schedule = scheduleRepository.findById(scheduleId).get();
-        if (!user.getUserId().equals(schedule.getUser().getUserId())) {
-            return ResponseDto.fail(404, "사용자가 일치하지 않습니다.", "Not Found");
-        }
         schedule.update(requestDto);
         scheduleRepository.save(schedule);
         return ResponseDto.success("일정이 수정되었습니다.");
