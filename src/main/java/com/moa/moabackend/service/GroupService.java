@@ -42,6 +42,7 @@ public class GroupService {
                     .groupName(groupName)
                     .message(sender + "님이 " + groupName + " 그룹에 초대했습니다.")
                     .receiver(requestDto.getUsers().get(i))
+                    .alertType(0)
                     .check(false)
                     .build();
 

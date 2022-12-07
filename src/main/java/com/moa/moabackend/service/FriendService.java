@@ -48,6 +48,7 @@ public class FriendService {
                     .message(sender + "님이 친구추가 하셨습니다.")
                     .receiver(friendUsername)
                     .check(false)
+                    .alertType(1)
                     .build();
 
             alertRepository.save(alert);
