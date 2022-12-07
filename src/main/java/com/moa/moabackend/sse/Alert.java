@@ -36,10 +36,17 @@ public class Alert {
     @Column
     private boolean check;
 
+    // 그룹 알람일 시 0, 친구 알람일 시 1
+    private int alertType;
+
     // 알람 보내는 사람 닉네임 수정 시
     public void updateAlert(String sender, String imgUrl) {
         this.sender = sender;
-        this.message = sender + "님이 " + groupName + " 그룹에 초대했습니다.";
+        if (alertType == 0) {
+            this.message = sender + "님이 " + groupName + " 그룹에 초대했습니다.";
+        } else {
+            this.message = sender + "님이 친구추가 하셨습니다.";
+        }
         this.imgUrl = imgUrl;
     }
 }
