@@ -24,6 +24,7 @@ public class GroupResponseDto {
         private int userNum;
         private LocalDate startDate;
         private String location;
+        private String locationRoadName;
         private LocalTime startTime;
         private List<String> imgUrls;
         private List<Map<String, String>> userInfoList;
