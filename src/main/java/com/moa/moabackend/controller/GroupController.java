@@ -49,8 +49,8 @@ public class GroupController {
     }
 
     // 그룹에서 나가기
-    @PostMapping("/group/exit")
-    public ResponseDto<String> exitGroup(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return groupService.exitGroup(userDetails.getUser());
+    @PostMapping("/group/exit/{groupId}")
+    public ResponseDto<String> exitGroup(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long groupId) {
+        return groupService.exitGroup(userDetails.getUser(), groupId);
     }
 }
