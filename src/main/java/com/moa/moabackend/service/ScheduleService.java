@@ -74,6 +74,7 @@ public class ScheduleService {
                 .build();
         scheduleRepository.save(schedule);
         group.setPlan(true);
+        group.setSchedule(schedule);
         groupRepository.save(group);
         return ResponseDto.success("일정 등록 성공");
     }

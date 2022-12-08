@@ -126,23 +126,45 @@ public class GroupService {
             userMap.put("imgUrl", findUser.getImgUrl());
             userInfoList.add(userMap);
         }
-        return ResponseDto.success(
-                GroupResponseDto.groupDetail.builder()
-                        .groupId(groupId)
-                        .groupName(group.getGroupName())
-                        .userInfoList(userInfoList)
-                        .userNum(group.getUserNum())
-                        .startDate(null)
-                        .endDate(null)
-                        .title(null)
-                        .startTime(null)
-                        .endTime(null)
-                        .location(null)
-                        .locationRoadName(null)
-                        .content(null)
-                        .isPlan(group.isPlan())
-                        .build()
-        );
+        if (group.isPlan() == false) {
+            return ResponseDto.success(
+                    GroupResponseDto.groupDetail.builder()
+                            .groupId(groupId)
+                            .groupName(group.getGroupName())
+                            .userInfoList(userInfoList)
+                            .userNum(group.getUserNum())
+                            .startDate(null)
+                            .endDate(null)
+                            .title(null)
+                            .startTime(null)
+                            .endTime(null)
+                            .location(null)
+                            .locationRoadName(null)
+                            .content(null)
+                            .isPlan(group.isPlan())
+                            .scheduleId(null)
+                            .build()
+            );
+        } else {
+            return ResponseDto.success(
+                    GroupResponseDto.groupDetail.builder()
+                            .groupId(groupId)
+                            .groupName(group.getGroupName())
+                            .userInfoList(userInfoList)
+                            .userNum(group.getUserNum())
+                            .startDate(group.getSchedule().getStartDate())
+                            .endDate(group.getSchedule().getEndDate())
+                            .title(group.getSchedule().getTitle())
+                            .startTime(group.getSchedule().getStartTime())
+                            .endTime(group.getSchedule().getEndTime())
+                            .location(group.getSchedule().getLocation())
+                            .locationRoadName(group.getSchedule().getLocationRoadName())
+                            .content(group.getSchedule().getContent())
+                            .isPlan(group.isPlan())
+                            .scheduleId(group.getSchedule().getId())
+                            .build()
+            );
+        }
     }
 
     // 그룹에 친구 추가
