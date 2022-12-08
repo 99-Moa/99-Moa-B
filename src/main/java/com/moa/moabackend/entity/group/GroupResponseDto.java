@@ -48,5 +48,6 @@ public class GroupResponseDto {
         private String locationRoadName;
         private String content;
         private boolean isPlan;
+        private Long scheduleId;
     }
 }
