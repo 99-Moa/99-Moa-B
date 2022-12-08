@@ -96,6 +96,7 @@ public class ScheduleService {
                                     .startTime(schedule.getStartTime())
                                     .endDate(schedule.getEndDate())
                                     .endTime(schedule.getEndTime())
+                                    .userNum(1)
                                     .build()
                     );
                 }
