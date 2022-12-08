@@ -112,6 +112,7 @@ public class ScheduleService {
                                         .startTime(schedule.getStartTime())
                                         .endDate(schedule.getEndDate())
                                         .endTime(schedule.getEndTime())
+                                        .userNum(schedule.getGroup().getUserNum())
                                         .build()
                         );
                     }

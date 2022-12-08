@@ -36,6 +36,8 @@ public class ScheduleResponseDto {
         private LocalDate endDate;
 
         private LocalTime endTime;
+
+        private int userNum;
     }
 
     @Getter
