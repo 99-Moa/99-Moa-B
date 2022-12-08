@@ -82,19 +82,43 @@ public class ScheduleService {
     // 일정 목록 조회
     public ResponseDto<List<ScheduleResponseDto.ScheduleList>> getAllSchedules(User user) {
         List<ScheduleResponseDto.ScheduleList> scheduleResponseLIst = new ArrayList<>();
-        List<Schedule> schedules = scheduleRepository.findAllByUser(user);
+//        List<Schedule> schedules = scheduleRepository.findAllByUser(user);
+        List<Schedule> schedules = scheduleRepository.findAll();
         for (Schedule schedule : schedules) {
-            scheduleResponseLIst.add(
-                    ScheduleResponseDto.ScheduleList.builder()
-                            .id(schedule.getId())
-                            .startDate(schedule.getStartDate())
-                            .title(schedule.getTitle())
-                            .startTime(schedule.getStartTime())
-                            .endDate(schedule.getEndDate())
-                            .endTime(schedule.getEndTime())
-                            .build()
-            );
+
+            if (schedule.getGroup() == null) {
+                if (schedule.getUser().getUserName().equals(user.getUserName())) {
+                    scheduleResponseLIst.add(
+                            ScheduleResponseDto.ScheduleList.builder()
+                                    .id(schedule.getId())
+                                    .startDate(schedule.getStartDate())
+                                    .title(schedule.getTitle())
+                                    .startTime(schedule.getStartTime())
+                                    .endDate(schedule.getEndDate())
+                                    .endTime(schedule.getEndTime())
+                                    .build()
+                    );
+                }
+
+
+            } else {
+                for (int i = 0; i <= schedule.getGroup().getUsers().size() - 1; i++) {
+                    if (user.getUserName().equals(schedule.getGroup().getUsers().get(i))) {
+                        scheduleResponseLIst.add(
+                                ScheduleResponseDto.ScheduleList.builder()
+                                        .id(schedule.getId())
+                                        .startDate(schedule.getStartDate())
+                                        .title(schedule.getTitle())
+                                        .startTime(schedule.getStartTime())
+                                        .endDate(schedule.getEndDate())
+                                        .endTime(schedule.getEndTime())
+                                        .build()
+                        );
+                    }
+                }
+            }
         }
+
         return ResponseDto.success(scheduleResponseLIst);
     }
 
