@@ -26,7 +26,7 @@ public class GroupService {
     private final UserRepository userRepository;
     private final AlertRepository alertRepository;
     private final AlertService alertService;
-
+//
     // 그룹 생성 + 알람저장
     public ResponseDto<String> addGroup(GroupRequestDto requestDto, User user) {
         List<String> userList = new ArrayList<>();
