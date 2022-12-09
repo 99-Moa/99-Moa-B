@@ -63,5 +63,7 @@ public class ScheduleResponseDto {
         private List<User> users;
 
         private Long groupId;
+
+        private String groupName;
     }
 }
