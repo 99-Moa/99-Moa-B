@@ -3,7 +3,6 @@ package com.moa.moabackend.entity.user;
 
 import com.moa.moabackend.entity.Timestamped;
 import com.moa.moabackend.entity.user.mypage.MypageRequestDto;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

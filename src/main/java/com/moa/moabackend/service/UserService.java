@@ -72,10 +72,17 @@ public class UserService {
         User user = userRepository.findByUserId(loginRequestDto.getUserId()).orElseThrow(
                 () -> new RuntimeException("Not found Account")
         );
-        // password 일치 여부 확인 -> password 인코딩
-        if (passwordEncoder.matches(passwordEncoder.encode(loginRequestDto.getPassword()), user.getPassword())) {
-            throw new RuntimeException("Not matches Password");
+
+
+        if (!passwordEncoder.matches(loginRequestDto.getPassword(), user.getPassword())) {
+            return ResponseDto.fail(500, "비밀번호가 일치하지 않습니다", "Bad Request");
         }
+
+//        // password 일치 여부 확인 -> password 인코딩
+//        if (passwordEncoder.matches(passwordEncoder.encode(loginRequestDto.getPassword()), user.getPassword())) {
+//            throw new RuntimeException("Not matches Password");
+//        }
+
         // userId 값을 포함한 토큰 생성 후 tokenDto 에 저장
         TokenDto tokenDto = jwtUtil.createAllToken(loginRequestDto.getUserId());
 
