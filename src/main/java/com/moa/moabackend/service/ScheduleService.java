@@ -144,6 +144,7 @@ public class ScheduleService {
                             .content(schedule.getContent())
                             .users(userResponseList)
                             .groupId(null)
+                            .groupName(null)
                             .build()
             );
         } else {
@@ -163,6 +164,7 @@ public class ScheduleService {
                             .content(schedule.getContent())
                             .users(userResponseList)
                             .groupId(schedule.getGroup().getId())
+                            .groupName(schedule.getGroup().getGroupName())
                             .build()
             );
         }
