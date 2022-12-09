@@ -25,18 +25,12 @@ public class ChatMessageService {
 
     // 메세지 저장
     public SocketMessage getMessage(SocketMessageRequsetDto socketMessageRequsetDto){
-        System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
 
 // sender 추가
         String userId = jwtUtil.getUserIdFromToken(socketMessageRequsetDto.getToken());
-        System.out.println("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-        System.out.println(userId);
         String userName = userService.getUserNameByUserId(userId);
-        System.out.println("userName : " + userName);
-        System.out.println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
 // time 추가
         ZonedDateTime time = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
-        System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
 
         SocketMessage socketMessage = SocketMessage.builder()
                 .chatRoomId(socketMessageRequsetDto.getChatRoomId())
@@ -46,7 +40,6 @@ public class ChatMessageService {
                 .build();
 
         chatMessageRepository.save(socketMessage);
-        System.out.println("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
 
         return socketMessage;
     }

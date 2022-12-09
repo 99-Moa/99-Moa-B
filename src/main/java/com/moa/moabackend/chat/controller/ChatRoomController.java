@@ -24,9 +24,6 @@ public class ChatRoomController {
     // 채팅방 생성
     @PostMapping("/room")
     public ResponseDto<ChatRoomResponseDto> createRoom(@RequestBody ChatRoomRequestDto chatRoomRequestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
-        System.out.println("1111111111111111111111111111111111111111111111111111111111111111");
-        System.out.println(userDetails.getUser().getUserName());
-        System.out.println("222222222222222222222222222222222222222222222222222222222222");
         return chatRoomService.createRoom(chatRoomRequestDto, userDetails.getUser());
     }
 
@@ -40,7 +37,6 @@ public class ChatRoomController {
     @PostMapping("/room/person")
     public ChatRoom setUser(@RequestBody SocketMessage socketMessage){
         Long chatRoomId = socketMessage.getChatRoomId();
-        System.out.println("chatRoomId : " +chatRoomId);
         return chatRoomService.setUser(chatRoomId, socketMessage);
     }
 }

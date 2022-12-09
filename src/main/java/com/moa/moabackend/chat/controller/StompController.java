@@ -35,29 +35,20 @@ public class StompController {
 // @SendTo("/topic/socketMessage") // return 값을 /topic/socketMessage 로 넘겨준다.
     public void receiveMessage(@Payload SocketMessageRequsetDto socketMessageRequsetDto) {
         Long chatRoomId = socketMessageRequsetDto.getChatRoomId();
-        System.out.println("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-
         SocketMessage chatMessage = chatMessageService.getMessage(socketMessageRequsetDto);
-        System.out.println("ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg");
-
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/message", chatMessage);
     }
 
     @MessageMapping("/plan")
     public void receivePlan(@Payload SocketPlan socketPlan) {
         Long chatRoomId = socketPlan.getChatRoomId();
-// /topic/chatRoomId/plan
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/plan", socketPlan);
     }
 
     @MessageMapping("/user")
     public void receiveUser(@Payload SocketMessage socketMessage) {
         Long chatRoomId = socketMessage.getChatRoomId();
-        System.out.println("99999999999999999999999999999999999999999999999999999999999999999999999999");
-
         ChatRoom chatRoom = chatRoomService.setUser(chatRoomId, socketMessage);
-        System.out.println("10101010101010101010101010101010101010101010101010101010101010101010101010101010101010");
-
         simpMessageSendingOperations.convertAndSend("/topic/" + chatRoomId + "/user", chatRoom.getUsers());
     }
 }

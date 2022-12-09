@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dbed776-211d-4151-bfb0-21c51d864659" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/controller/ChatRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/controller/ChatRoomController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/controller/StompController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/controller/StompController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/service/ChatMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/service/ChatMessageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/service/ChatRoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/chat/service/ChatRoomService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/entity/friend/Friend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/repository/FriendRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/repository/FriendRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/FriendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/FriendService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/MypageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moa/moabackend/service/MypageService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
