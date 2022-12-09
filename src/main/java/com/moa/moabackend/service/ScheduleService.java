@@ -132,26 +132,40 @@ public class ScheduleService {
         // group이 없으면 개인, 있으면 그룹 처리
         if (schedule.getGroup() == null) {
             userResponseList.add(schedule.getUser());
+            return ResponseDto.success(
+                    ScheduleResponseDto.ScheduleDetail.builder()
+                            .startDate(schedule.getStartDate())
+                            .endDate(schedule.getEndDate())
+                            .title(schedule.getTitle())
+                            .startTime(schedule.getStartTime())
+                            .endTime(schedule.getEndTime())
+                            .location(schedule.getLocation())
+                            .locationRoadName(schedule.getLocationRoadName())
+                            .content(schedule.getContent())
+                            .users(userResponseList)
+                            .groupId(null)
+                            .build()
+            );
         } else {
             for (int i = 0; i <= schedule.getGroup().getUserNum() - 1; i++) {
                 User user = userRepository.findByUserName(schedule.getGroup().getUsers().get(i)).get();
                 userResponseList.add(user);
             }
+            return ResponseDto.success(
+                    ScheduleResponseDto.ScheduleDetail.builder()
+                            .startDate(schedule.getStartDate())
+                            .endDate(schedule.getEndDate())
+                            .title(schedule.getTitle())
+                            .startTime(schedule.getStartTime())
+                            .endTime(schedule.getEndTime())
+                            .location(schedule.getLocation())
+                            .locationRoadName(schedule.getLocationRoadName())
+                            .content(schedule.getContent())
+                            .users(userResponseList)
+                            .groupId(schedule.getGroup().getId())
+                            .build()
+            );
         }
-
-        return ResponseDto.success(
-                ScheduleResponseDto.ScheduleDetail.builder()
-                        .startDate(schedule.getStartDate())
-                        .endDate(schedule.getEndDate())
-                        .title(schedule.getTitle())
-                        .startTime(schedule.getStartTime())
-                        .endTime(schedule.getEndTime())
-                        .location(schedule.getLocation())
-                        .locationRoadName(schedule.getLocationRoadName())
-                        .content(schedule.getContent())
-                        .users(userResponseList)
-                        .build()
-        );
     }
 
     // 일정 수정
