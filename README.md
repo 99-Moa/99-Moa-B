@@ -3,4 +3,4 @@
 
 🛠 아키텍쳐 | Architecture
 
-![스크린샷 2022-11-28 17 02 11](https://user-images.githubusercontent.com/113868566/204264793-ec949b1c-4efd-40a4-a704-027b1c7a8c2e.png)
+<img width="1048" alt="스크린샷 2022-12-10 13 49 34" src="https://user-images.githubusercontent.com/113868566/206829731-694589f4-a2df-400f-92b7-14cd749c6a4a.png">
