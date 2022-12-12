@@ -24,6 +24,14 @@
 
 🧑‍🤝‍🧑그룹, 친구 추가 시 알림 기능
 
+| 페이지 | 기능                                                                                                                           |
+|-----|------------------------------------------------------------------------------------------------------------------------------|
+| 로그인 | Spring Security + JWT 토큰 발급을 통한 로그인<br>소셜 로그인(카카오)                                                                           |
+|메인페이지| 캘린더, 일정 목록 확인(제일 시간이 가까운 일정이 최상단)<br>제일 시간이 가까운 일정 카운트(d-day)<br>일정 클릭시 확장하며 상세 내용 표시<br>로그인 한 회원만 접근 가능                     |
+|일정 추가하기(메인페이지)| 일정 정보 입력(날짜, 모임내용, 목적지 등)<br>카카오지도 api 연동<br>참가자 선택(그룹생성)                                                                    |
+|그룹 및 친구 목록 페이지| 유저 검색 및 친구 추가 기능<br>일정 추가시 친구(모임) 그룹 생성 및 확인<br>친구 목록 확인                                                                     |
+|그룹 채팅방| 웹소켓 + 스톰프를 이용한 모임끼리 실시간 채팅 구현<br>실시간 일정 변경<br>현재 참여중인 참가자 표시<br>모임 정보 요약 표시<br>카카오지도 api 연동<br>나가기 버튼 클릭시 그룹 및 친구 목록 페이지로 이동 |
+|공통 상단 nav바| 	내 프로필이미지 클릭시 내정보 수정 가능<br>sse를 이용한 친구, 그룹 추가 알림 보내기                                                                         |
 ## ⚙️ 기술 스택
 <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white"><img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"><img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"><img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white"><img src="https://img.shields.io/badge/AmazonRDS-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white"><img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white"><img src="https://img.shields.io/badge/websocket-444444?style=for-the-badge&logo=websocket&logoColor=white"><img src="https://img.shields.io/badge/STOMP-000000?style=for-the-badge&logo=STOMP&logoColor=white"><img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=Redis&logoColor=white">
 
