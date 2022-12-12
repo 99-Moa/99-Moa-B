@@ -66,19 +66,6 @@
 </div>
 </details>
 
-<details>
-<summary>SSE 연결 시 hikariCP connection 에러</summary>
-<div markdown="1">
-
-📌 문제 상황
-
-- SSE 연결 한 뒤 다른 요청을 보냈을 때 30초간 지연이 되다 connection timeout에러가 발생
-
-💡 해결
-- hikari timeout 설정으로 시간 늘리기 : 늘린 시간만큼 지연되다 다시 에러 발생
-
-</div>
-</details>
 
 <details>
 <summary>web socket 유저 정보 요청</summary>
