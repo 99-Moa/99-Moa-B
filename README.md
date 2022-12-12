@@ -39,11 +39,11 @@
 <summary>MySQL 연동 후 기능 작동 에러</summary>
 <div markdown="1">       
 
-- 📌 문제 상황
+📌 문제 상황
 - MySQL 연동 후 api테스트 시 500에러가 나며 실행되지 않음
 
 
-- 💡 해결
+💡 해결
 - 테이블, 컬럼에 예약어를 사용하는지 확인 : group, check 등의 예약어를 사용하고 있었으나, 에러는 user테이블에서 발생하고 있었으며 globally_quoted_identifiers로 예약어 이름도 허용할 수 있게 해놓은 상태
 - MySQL workbench에 연결해보니 DB에 테이블이 아예 생성이 되지 않는 것을 발견 : JPA 설정에서 database-platform을 h2에서 mySQL로 변경 후 정상 작동
 
@@ -54,12 +54,12 @@
 <summary>SSE 연결 시 hikariCP connection 에러</summary>
 <div markdown="1">
 
-- 📌 문제 상황
+📌 문제 상황
 
 - SSE 연결 한 뒤 다른 요청을 보냈을 때 30초간 지연이 되다 connection timeout에러가 발생
 
 
-- 💡 해결
+💡 해결
 - hikari timeout 설정으로 시간 늘리기 : 늘린 시간만큼 지연되다 다시 에러 발생
 - OSIV 설정을 false로 변경하여 트랜잭션을 종료한 뒤 DB 커넥션을 반환하게 함
 
@@ -70,12 +70,11 @@
 <summary>SSE 연결 시 hikariCP connection 에러</summary>
 <div markdown="1">
 
-- 📌 문제 상황
+📌 문제 상황
 
 - SSE 연결 한 뒤 다른 요청을 보냈을 때 30초간 지연이 되다 connection timeout에러가 발생
 
-
-- 💡 해결
+💡 해결
 - hikari timeout 설정으로 시간 늘리기 : 늘린 시간만큼 지연되다 다시 에러 발생
 
 </div>
@@ -85,12 +84,12 @@
 <summary>web socket 유저 정보 요청</summary>
 <div markdown="1">    
 
-- 📌 문제 상황
+📌 문제 상황
 
 - MessageMapping으로 소켓 메시지 전송 시 로그인한 유저의 정보를 받아오는 @AuthenticationPrincipal을 사용할 수 없음
 
 
-- 💡 해결
+💡 해결
 - 소켓 통신은 http 와 다르게 header가 존재하지 않아 payload에 token을 포함시켜 보내서 유저 정보를 받음
 </div>
 </details>
@@ -99,12 +98,12 @@
 <summary>채팅방 null 에러</summary>
 <div markdown="1">
 
-- 📌 문제 상황
+📌 문제 상황
 
 - 채팅방에 접속중인 유저를 List 형식으로 받는데, 모든 유저가 나갈경우 List 값이 null이 되어 리스트 관련 함수(contains, isEmpty, size 등) 사용불가 (NullpointerException)
 
 
-- 💡 해결
+💡 해결
 - 유저 리스트안에 모든 유저가 나가도 남아있는 값(chatRommId)을 default로 저장해둠
 </div>
 </details>
@@ -113,12 +112,12 @@
 <summary>카카오 로그인 유저 정보</summary>
 <div markdown="1">
 
-- 📌 문제 상황
+📌 문제 상황
 
 - 카카오 로그인시 일반 로그인과 다르게 DB에 유저정보를 저장하지 않아, 다른 서비스 이용시 유저정보를 사용할 수 없음
 
 
-- 💡 해결
+💡 해결
 - 카카오에서 임의로 부여하는 ID가 있다는 것을 발견, 그것을 기본값으로 가지고 와서 유저 정보 생성
 
 </div>
