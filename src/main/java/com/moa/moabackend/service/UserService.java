@@ -33,6 +33,11 @@ public class UserService {
         if(userRepository.findByUserId(userRequestDto.getUserId()).isPresent()){
             throw new RuntimeException("Overlap Check");
         }
+        // passwordCheck와 같은지 확인
+        if (!userRequestDto.getPasswordCheck().equals(userRequestDto.getPassword())) {
+            return ResponseDto.fail(500, "Bad Request", "비밀번호 확인이 일치하지 않습니다");
+        }
+
         // password 값 인코딩 후 Dto 에 재주입 후 Dto 를 Entity 로  변환
         userRequestDto.setEncodePwd(passwordEncoder.encode(userRequestDto.getPassword()));
         User user = new User(userRequestDto);
